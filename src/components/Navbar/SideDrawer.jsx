@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import fonts from "../assets/css/fonts.css";
 import "./SideDrawer.css";
 
@@ -11,19 +12,19 @@ const SideDrawer = ({ show }) => {
     <nav className={drawerClasses}>
       <ul>
         <li>
-          <a href="">New</a>
+          <NavLink to="/not-found">New</NavLink>
         </li>
         <li>
-          <a href="">Ladies</a>
+          <NavLink to="/products">Ladies</NavLink>
         </li>
         <li>
-          <a href="">Men</a>
+          <NavLink to="/not-found">Men</NavLink>
         </li>
         <li>
-          <a href="">Kids</a>
+          <NavLink to="/not-found">Kids</NavLink>
         </li>
         <li>
-          <a href="">Gōsha Home</a>
+          <NavLink to="not-found">Gōsha Home</NavLink>
         </li>
       </ul>
     </nav>

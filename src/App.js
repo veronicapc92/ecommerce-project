@@ -1,12 +1,15 @@
 import React, { Component } from "react";
+import { Route, Redirect, Switch } from "react-router-dom";
 import NavBar from "./components/Navbar/Navbar";
-import Slider from "./components/Slider";
-import Container from "./components/Container";
-import Footer from "./components/Footer";
-import ProductList from "./components/ProductList";
+import Footer from "./components/Footer/Footer";
 import SideDrawer from "./components/Navbar/SideDrawer";
-import Backdrop from "./components/Backdrop";
-import axios from "axios";
+import Backdrop from "./components/Backdrop/Backdrop";
+import Homepage from "./components/Homepage/Homepage";
+import ProductList from "./components/ProductPage/ProductPage";
+import SignIn from "./components/SignIn";
+import Wishlist from "./components/Wishlist";
+import ShoppingCart from "./components/ShoppingCart";
+import NotFound from "./components/NotFound";
 
 class App extends Component {
   state = { sideDrawerOpen: false };
@@ -28,15 +31,22 @@ class App extends Component {
     }
 
     return (
-      <div style={{ height: "100vh" }}>
+      <main style={{ height: "100vh" }}>
         <NavBar onDrawerToggleClick={this.handleDrawerToggleClick} />
-        {/* <Slider />
-        <Container />
         <SideDrawer show={sideDrawerOpen} />
-        {backdrop} */}
-        <ProductList />
-        {/* <Footer /> */}
-      </div>
+        {backdrop}
+        <Switch>
+          <Route path="/home" component={Homepage}></Route>
+          <Route path="/products" component={ProductList}></Route>
+          <Route path="/sign-in" component={SignIn}></Route>
+          <Route path="/wishlist" component={Wishlist}></Route>
+          <Route path="/shopping-cart" component={ShoppingCart}></Route>
+          <Route path="/not-found" component={NotFound}></Route>
+          <Redirect from="/" exact to="/home" />
+          <Redirect to="not-found" />
+        </Switch>
+        <Footer />
+      </main>
     );
   }
 }

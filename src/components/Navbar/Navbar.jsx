@@ -1,65 +1,72 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import DrawerToggleButton from "./DrawerToggleButton";
-import fonts from "../assets/css/fonts.css";
-import styles from "./navbar.module.css";
 import logo from "../assets/photos/gosha_transparent.png";
+import fonts from "../assets/css/fonts.css";
+import "./Navbar.css";
 
 const NavBar = ({ onDrawerToggleClick }) => {
   return (
     <React.Fragment>
-      <header className={styles.header}>
-        <div className={styles.mainNav}>
-          <div className={styles.toggleButtonContainer}>
+      <header className="header">
+        <div className="main-nav">
+          <div className="toggle-button-container">
             <DrawerToggleButton click={onDrawerToggleClick} />
           </div>
-          <div className={styles.logoContainer}>
-            <a href="">
+          <div className="logo-container">
+            <NavLink to="/">
               <img alt="logo" src={logo} />
-            </a>
+            </NavLink>
           </div>
-          <nav className={styles.navbar}>
+          <nav className="navbar">
             <ul>
               <li>
-                <a className={styles.navbarLinks} href="">
+                <NavLink className="navbar-links" to="/not-found">
                   New
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a className={styles.navbarLinks} href="">
+                <NavLink className="navbar-links" to="/products">
                   Ladies
-                </a>
+                </NavLink>
               </li>
               <li>
                 {" "}
-                <a className={styles.navbarLinks} href="">
+                <NavLink className="navbar-links" to="/not-found">
                   Men
-                </a>
+                </NavLink>
               </li>
               <li>
                 {" "}
-                <a className={styles.navbarLinks} href="">
+                <NavLink className="navbar-links" to="/not-found">
                   Kids
-                </a>
+                </NavLink>
               </li>
               <li>
                 {" "}
-                <a className={styles.navbarLinks} href="">
+                <NavLink className="navbar-links" to="/not-found">
                   Gōsha Home
-                </a>
+                </NavLink>
               </li>
             </ul>
           </nav>
         </div>
-        <nav className={styles.secondaryNav}>
+        <nav className="secondary-nav">
           <ul>
             <li>
-              <i className="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
+              <NavLink to="/sign-in" className="secondary-nav-links">
+                <i className="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
+              </NavLink>
             </li>
             <li>
-              <i className="fa fa-heart fa-2x" aria-hidden="true"></i>
+              <NavLink to="/wishlist" className="secondary-nav-links">
+                <i className="fa fa-heart fa-2x" aria-hidden="true"></i>
+              </NavLink>
             </li>
             <li>
-              <i className="fa fa-shopping-bag fa-2x" aria-hidden="true"></i>
+              <NavLink to="shopping-cart" className="secondary-nav-links">
+                <i className="fa fa-shopping-bag fa-2x" aria-hidden="true"></i>
+              </NavLink>
             </li>
           </ul>
         </nav>

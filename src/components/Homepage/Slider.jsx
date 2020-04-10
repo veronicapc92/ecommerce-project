@@ -1,8 +1,8 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
-import slide1 from "./assets/photos/accessories.jpg";
-import slide2 from "./assets/photos/man.jpg";
-import slide3 from "./assets/photos/striped-dress.jpg";
+import slide1 from "./photos/accessories.jpg";
+import slide2 from "./photos/man.jpg";
+import slide3 from "./photos/striped-dress.jpg";
 
 const slides = [slide1, slide2, slide3];
 

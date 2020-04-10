@@ -1,4 +1,4 @@
-.iconsContainer {
+.icons-container {
   height: 200px;
   display: flex;
   align-items: center;
@@ -6,10 +6,10 @@
   border-top: 1px lightgray solid;
 }
 
-.socialMediaIcon {
+.social-media-icon {
   margin-left: 20px;
 }
 
-.iconsContainer :nth-child(1) {
+.icons-container :nth-child(1) {
   margin-left: 0;
 }

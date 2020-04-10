@@ -12,7 +12,7 @@
   justify-content: center;
 }
 
-.imagesContainer {
+.images-container {
   margin-top: 7vw;
   margin-bottom: 10vw;
   display: grid;
@@ -20,7 +20,7 @@
   justify-items: center;
 }
 
-.imagesContainer img {
+.images-container img {
   display: block;
   cursor: pointer;
   padding: var(--picture-padding);
