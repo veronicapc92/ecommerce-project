@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import ProductCard from "./ProductCard";
 
-const ProductCards = ({ productData }) => {
+const ProductCards = ({ filteredProducts, onLike }) => {
   return (
     <React.Fragment>
-      {productData.map((product) => (
-        <ProductCard key={product.id} product={product} />
+      {filteredProducts.map((product) => (
+        <ProductCard key={product.id} product={product} onLike={onLike} />
       ))}
     </React.Fragment>
   );

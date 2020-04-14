@@ -1,19 +1,12 @@
 import React, { Component } from "react";
-import ProductCards from "./ProductCards";
-import ProductList from "../ProductList/ProductList";
-import Filter from "./../Filter/Filter";
+import ProductCards from "../ProductPage/ProductCards";
+import ProductList from "./../ProductList/ProductList";
+import Filter from "../Filter/Filter";
 import "../assets/css/fonts.css";
-import "./ProductPage.css";
+import "./FilteredPage.css";
 import axios from "axios";
 
-class ProductPage extends Component {
-  // handleFilterByProductType = (productType) => {
-  //   // const filteredProducts = this.state.products.filter(
-  //   //   (p) => p.type === productType.name
-  //   // );
-  //   this.setState({ currentProductType: productType.name });
-  // };
-
+class FilteredPage extends Component {
   render() {
     const {
       products,
@@ -22,6 +15,10 @@ class ProductPage extends Component {
       onLike,
       onFilterByProductType,
     } = this.props;
+
+    let filteredProducts = products.filter(
+      (p) => p.type === this.props.match.params.route
+    );
 
     return (
       <React.Fragment>
@@ -34,7 +31,7 @@ class ProductPage extends Component {
             <ProductList productTypes={productTypes} />
           </div>
           <div className="images-container">
-            <ProductCards onLike={onLike} filteredProducts={products} />
+            <ProductCards onLike={onLike} filteredProducts={filteredProducts} />
           </div>
         </div>
       </React.Fragment>
@@ -42,4 +39,4 @@ class ProductPage extends Component {
   }
 }
 
-export default ProductPage;
+export default FilteredPage;

@@ -1,0 +1,16 @@
+.filter-div {
+  background-color: thistle;
+}
+
+.filter-div ul {
+  list-style: none;
+  padding: 0;
+}
+
+.ladies-product-type {
+  text-decoration: none;
+  font-family: "Muli", sans-serif;
+  margin: 10px;
+  cursor: pointer;
+  color: black;
+}
