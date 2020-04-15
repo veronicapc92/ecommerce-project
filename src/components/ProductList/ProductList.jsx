@@ -11,7 +11,7 @@ const ProductList = ({ productTypes }) => {
           <li key={productType.id} className="ladies-product-type">
             <Link
               className="ladies-product-type"
-              to={`/products/${productType.route}`}
+              to={`/women/${productType.route}`}
             >
               {productType.name}
             </Link>

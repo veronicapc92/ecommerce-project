@@ -1,14 +1,12 @@
 import React, { Component } from "react";
-import ProductCards from "./ProductCards";
 import ProductList from "../ProductList/ProductList";
-import Filter from "../Filter/Filter";
+import ProductCards from "../ProductCards/ProductCards";
 import "../assets/css/fonts.css";
-import "./ProductPage.css";
-import axios from "axios";
+import "./ProductsPage.css";
 
-class FilteredProductPage extends Component {
+class ProductsPage extends Component {
   render() {
-    const { products, productTypes, currentProductType, onLike } = this.props;
+    const { products, productTypes, onLike } = this.props;
 
     return (
       <React.Fragment>
@@ -17,11 +15,7 @@ class FilteredProductPage extends Component {
             <ProductList productTypes={productTypes} />
           </div>
           <div className="images-container">
-            <ProductCards
-              onLike={onLike}
-              products={products}
-              currentProductType={currentProductType}
-            />
+            <ProductCards onLike={onLike} filteredProducts={products} />
           </div>
         </div>
       </React.Fragment>
@@ -29,4 +23,4 @@ class FilteredProductPage extends Component {
   }
 }
 
-export default FilteredProductPage;
+export default ProductsPage;

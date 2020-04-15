@@ -1,6 +1,6 @@
 import React from "react";
-import Like from "./../Like/Like";
-import fonts from "../assets/css/fonts.css";
+import Like from "../Like/Like";
+import "../assets/css/fonts.css";
 import "./ProductCard.css";
 
 const ProductCard = ({ product, onLike }) => {

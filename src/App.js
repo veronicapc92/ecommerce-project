@@ -5,9 +5,10 @@ import Footer from "./components/Footer/Footer";
 import SideDrawer from "./components/Navbar/SideDrawer";
 import Backdrop from "./components/Backdrop/Backdrop";
 import Homepage from "./components/Homepage/Homepage";
-import ProductPage from "./components/ProductPage/ProductPage";
-import FilteredPage from "./components/FilteredPage/FilteredPage";
-import SignIn from "./components/SignIn";
+import ProductsPage from "./components/ProductsPage/ProductsPage";
+import FilteredProductTypePage from "./components/FilteredProductTypePage/FilteredProductTypePage";
+import SignIn from "./components/SignIn/SignIn";
+import Register from "./components/Register/Register";
 import Wishlist from "./components/Wishlist";
 import ShoppingCart from "./components/ShoppingCart";
 import NotFound from "./components/NotFound";
@@ -16,16 +17,23 @@ import axios from "axios";
 class App extends Component {
   state = {
     sideDrawerOpen: false,
+    signInDrawerOpen: false,
+    registerDrawerOpen: false,
     products: [],
-    productTypes: [],
-    currentProductType: "",
+    productTypes: [], //not used
+    currentProductType: "", //not used so far
+    womenClothingOptions: [],
+    womenData: {},
   };
 
   async componentDidMount() {
     const { data: products } = await axios.get("http://localhost:8000/clothes");
-    const { data } = await axios.get("http://localhost:8000/productTypes");
-    const productTypes = [{ name: "View All", id: 0, route: "" }, ...data];
-    this.setState({ products, productTypes });
+    const { data: womenData } = await axios.get("http://localhost:8000/women");
+    const womenClothingOptions = [
+      { name: "View All", id: 0, route: "" },
+      ...womenData.womenClothingOptions,
+    ];
+    this.setState({ products, womenClothingOptions });
   }
 
   handleDrawerToggleClick = () => {
@@ -34,6 +42,17 @@ class App extends Component {
 
   handleBackdropClick = () => {
     this.setState({ sideDrawerOpen: false });
+  };
+  handleSignInIconClick = () => {
+    this.setState({ signInDrawerOpen: true });
+  };
+
+  handleXButtonClick = () => {
+    this.setState({ signInDrawerOpen: false, registerDrawerOpen: false });
+  };
+
+  handleRegisterSpanClick = () => {
+    this.setState({ registerDrawerOpen: true });
   };
 
   handleLike = (product) => {
@@ -44,19 +63,25 @@ class App extends Component {
     this.setState({ products });
   };
 
-  handleFilterByProductType = (productType) => {
-    // const filteredProducts = this.state.products.filter(
-    //   (p) => p.type === productType.name
-    // );
-    this.setState({ currentProductType: productType.name });
-  };
+  // handleSelectByProductType = (productType) => {
+  //   this.setState({ currentProductType: productType.route });
+  // };
+
+  // handleFilterByProductType = (productType) => {
+  //   // const filteredProducts = this.state.products.filter(
+  //   //   (p) => p.type === productType.name
+  //   // );
+  //   this.setState({ currentProductType: productType.name });
+  // };
 
   render() {
     const {
       sideDrawerOpen,
+      signInDrawerOpen,
+      registerDrawerOpen,
       products,
-      productTypes,
-      currentProductType,
+      womenClothingOptions,
+      womenData,
     } = this.state;
     let backdrop;
 
@@ -66,37 +91,48 @@ class App extends Component {
 
     return (
       <main style={{ height: "100vh" }}>
-        <NavBar onDrawerToggleClick={this.handleDrawerToggleClick} />
+        <NavBar
+          productTypes={womenClothingOptions}
+          onSignInIconClick={this.handleSignInIconClick}
+          onDrawerToggleClick={this.handleDrawerToggleClick}
+          onXButtonClick={this.handleXButtonClick}
+        />
+        <SignIn
+          show={signInDrawerOpen}
+          onXButtonClick={this.handleXButtonClick}
+          onRegisterSpanClick={this.handleRegisterSpanClick}
+        />
+        <Register
+          show={registerDrawerOpen}
+          onXButtonClick={this.handleXButtonClick}
+        />
         <SideDrawer show={sideDrawerOpen} />
         {backdrop}
         <Switch>
           <Route path="/home" component={Homepage}></Route>
           <Route
-            path="/products/:route"
+            path="/women/:route"
             render={(props) => (
-              <FilteredPage
+              <FilteredProductTypePage
                 {...props}
                 products={products}
-                productTypes={productTypes}
+                productTypes={womenClothingOptions}
                 onLike={this.handleLike}
               />
             )}
           ></Route>
           <Route
-            path="/products"
+            path="/women"
             render={(props) => (
-              <ProductPage
+              <ProductsPage
                 {...props}
                 products={products}
-                productTypes={productTypes}
-                currentProductType={currentProductType}
+                productTypes={womenClothingOptions}
                 onLike={this.handleLike}
               />
             )}
           ></Route>
-          {/* <Route path="/sign-in" component={SignIn}></Route>
-          <Route path="/wishlist" component={Wishlist}></Route>
-          <Route path="/shopping-cart" component={ShoppingCart}></Route> */}
+          {/* <Route path="/wishlist" component={Wishlist}></Route> */}
           <Route path="/not-found" component={NotFound}></Route>
           <Redirect from="/" exact to="/home" />
           <Redirect to="not-found" />

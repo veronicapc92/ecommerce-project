@@ -1,0 +1,33 @@
+.menu {
+  position: fixed;
+  top: 100px;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.options-container {
+  padding: 40px 0 90px 0;
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Muli", sans-serif;
+}
+
+.options {
+  cursor: pointer;
+}
+
+.options ul {
+  padding: 0;
+}
+
+.options li {
+  padding-top: 10px;
+  list-style: none;
+}
+
+.miscellaneous-option {
+  align-self: center;
+}
