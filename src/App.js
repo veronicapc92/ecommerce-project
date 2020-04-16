@@ -7,8 +7,7 @@ import Backdrop from "./components/Backdrop/Backdrop";
 import Homepage from "./components/Homepage/Homepage";
 import ProductsPage from "./components/ProductsPage/ProductsPage";
 import FilteredProductTypePage from "./components/FilteredProductTypePage/FilteredProductTypePage";
-import SignIn from "./components/SignIn/SignIn";
-import Register from "./components/Register/Register";
+import SignInDrawer from "./components/SignInDrawer/SignInDrawer";
 import Wishlist from "./components/Wishlist";
 import ShoppingCart from "./components/ShoppingCart";
 import NotFound from "./components/NotFound";
@@ -44,11 +43,11 @@ class App extends Component {
     this.setState({ sideDrawerOpen: false });
   };
   handleSignInIconClick = () => {
-    this.setState({ signInDrawerOpen: true });
+    this.setState({ registerDrawerOpen: false, signInDrawerOpen: true });
   };
 
   handleXButtonClick = () => {
-    this.setState({ signInDrawerOpen: false, registerDrawerOpen: false });
+    this.setState({ signInDrawerOpen: false });
   };
 
   handleRegisterSpanClick = () => {
@@ -97,15 +96,25 @@ class App extends Component {
           onDrawerToggleClick={this.handleDrawerToggleClick}
           onXButtonClick={this.handleXButtonClick}
         />
-        <SignIn
+        <SignInDrawer
           show={signInDrawerOpen}
+          registerDrawerOpen={registerDrawerOpen}
           onXButtonClick={this.handleXButtonClick}
           onRegisterSpanClick={this.handleRegisterSpanClick}
         />
-        <Register
+        {/* <SignIn
+          show={signInDrawerOpen}
+          onXButtonClick={this.handleXButtonClick}
+          onRegisterSpanClick={this.handleRegisterSpanClick}
+        /> */}
+        {/* <Register
           show={registerDrawerOpen}
           onXButtonClick={this.handleXButtonClick}
-        />
+        /> */}
+        {/* <SignInDrawer
+          show={signInDrawerOpen}
+          onXButtonClick={this.handleXButtonClick}
+        /> */}
         <SideDrawer show={sideDrawerOpen} />
         {backdrop}
         <Switch>

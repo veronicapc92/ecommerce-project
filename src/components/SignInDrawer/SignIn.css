@@ -1,40 +1,16 @@
-.register-form-container {
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  width: 450px;
-  background-color: white;
-  z-index: 400;
-  box-shadow: -5px 0px 5px -1px rgba(0, 0, 0, 0.15);
-  font-family: "Muli", sans-serif;
-}
-
-.register-form-container.hidden {
-  display: none;
-}
-
-.close-form-icon {
-  font-size: 40px;
-  text-align: right;
-  padding-right: 7px;
-  color: rgba(0, 0, 0, 0.25);
-  cursor: pointer;
-}
-
-.register-form-container h1 {
+.sign-in-form-container h1 {
   margin-top: 60px;
   padding-bottom: 30px;
   text-align: center;
 }
 
-.register-form-input,
-.register-form-button {
+.sign-in-form-input,
+.sign-in-form-button {
   display: block;
   margin: auto auto;
 }
 
-.register-form-input {
+.sign-in-form-input {
   width: 300px;
   height: 30px;
   margin-top: 30px;
@@ -45,11 +21,11 @@
   border-bottom: 0.6px solid lightgray;
 }
 
-.register-form-input:focus {
+.sign-in-form-input:focus {
   outline: none;
 }
 
-.register-form-button {
+.sign-in-form-button {
   margin-top: 60px;
   width: 240px;
   height: 40px;
@@ -59,23 +35,23 @@
   color: white;
 }
 
-.register-form-button:hover {
+.sign-in-form-button:hover {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-.register-paragraph {
+.sign-in-paragraph {
   margin-top: 30px;
   font-size: 14px;
   color: gray;
   text-align: center;
 }
 
-.register-span {
+.sign-in-span {
   color: gray;
   cursor: pointer;
   text-decoration: underline;
 }
 
-.register-span:hover {
+.sign-in-span:hover {
   color: darkgray;
 }
