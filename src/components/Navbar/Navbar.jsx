@@ -80,19 +80,16 @@ class Navbar extends Component {
                 className="secondary-nav-icons"
                 onClick={this.props.onSignInIconClick}
               >
-                <i className="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
+                <i className="fas fa-user-circle fa-lg"></i>
               </li>
               <li>
                 <NavLink to="/wishlist" className="secondary-nav-icons">
-                  <i className="fa fa-heart fa-2x" aria-hidden="true"></i>
+                  <i class="far fa-heart fa-lg"></i>
                 </NavLink>
               </li>
               <li>
                 <NavLink to="shopping-cart" className="secondary-nav-icons">
-                  <i
-                    className="fa fa-shopping-bag fa-2x"
-                    aria-hidden="true"
-                  ></i>
+                  <i className="fas fa-shopping-bag fa-lg"></i>
                 </NavLink>
               </li>
             </ul>

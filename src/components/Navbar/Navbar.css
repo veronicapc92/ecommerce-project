@@ -47,15 +47,15 @@
   font-family: "Muli", sans-serif;
   font-weight: 600;
   font-size: 17px;
-  color: #353b6e;
+  color: black;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .secondary-nav {
-  width: 160px;
-  margin-right: 100px;
+  width: 100px;
+  margin-right: 200px;
 }
 
 .secondary-nav ul {
@@ -67,7 +67,7 @@
 
 .secondary-nav-icons {
   text-decoration: none;
-  color: #353b6e;
+  color: black;
   cursor: pointer;
 }
 
