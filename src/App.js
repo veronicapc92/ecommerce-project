@@ -8,10 +8,9 @@ import Homepage from "./components/Homepage/Homepage";
 import ProductsPage from "./components/ProductsPage/ProductsPage";
 import FilteredProductTypePage from "./components/FilteredProductTypePage/FilteredProductTypePage";
 import SignInDrawer from "./components/SignInDrawer/SignInDrawer";
-import Wishlist from "./components/Wishlist";
-import ShoppingCart from "./components/ShoppingCart";
 import NotFound from "./components/NotFound";
-import axios from "axios";
+import http from "./services/httpService";
+import config from "./config.json";
 
 class App extends Component {
   state = {
@@ -26,8 +25,8 @@ class App extends Component {
   };
 
   async componentDidMount() {
-    const { data: products } = await axios.get("http://localhost:8000/clothes");
-    const { data: womenData } = await axios.get("http://localhost:8000/women");
+    const { data: products } = await http.get(config.apiUrl + "/clothes");
+    const { data: womenData } = await http.get(config.apiUrl + "/women");
     const womenClothingOptions = [
       { name: "View All", id: 0, route: "" },
       ...womenData.womenClothingOptions,
@@ -53,6 +52,13 @@ class App extends Component {
   handleRegisterSpanClick = () => {
     this.setState({ registerDrawerOpen: true });
   };
+
+  // handleEnterButtonClick = (errors) => {
+  //   console.log(Object.keys(errors).length);
+  //   // if (Object.keys(errors).length !== 0)
+  //   //   this.setState({ registerDrawerOpen: true });
+  //   // else this.setState({ registerDrawerOpen: false });
+  // };
 
   handleLike = (product) => {
     const products = [...this.state.products];
@@ -141,7 +147,6 @@ class App extends Component {
               />
             )}
           ></Route>
-          {/* <Route path="/wishlist" component={Wishlist}></Route> */}
           <Route path="/not-found" component={NotFound}></Route>
           <Redirect from="/" exact to="/home" />
           <Redirect to="not-found" />

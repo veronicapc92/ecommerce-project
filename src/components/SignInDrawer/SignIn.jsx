@@ -1,29 +1,28 @@
 import React, { Component } from "react";
 import Input from "./../Input/Input";
 import Joi from "@hapi/joi";
+import { login } from "../../services/authService";
 import "../assets/css/fonts.css";
 import "./SignIn.css";
 
 class SignIn extends Component {
   state = {
-    account: { email: "", password: "" },
+    data: { email: "", password: "" },
     errors: {},
   };
 
-  schema = Joi.object({
+  schema = {
     email: Joi.string()
       .required()
       .email({ minDomainSegments: 2, tlds: { allow: false } })
       .label("E-mail"),
-    password: Joi.string()
-      .required()
-      .pattern(new RegExp("^[a-zA-Z0-9]{6,16}$"))
-      .label("Password"),
-  });
+    password: Joi.string().required().min(6).max(16).label("Password"),
+  };
 
   validate = () => {
     const options = { abortEarly: false };
-    const { error } = this.schema.validate(this.state.account, options);
+    const schema = Joi.object(this.schema);
+    const { error } = schema.validate(this.state.data, options);
 
     if (!error) return null;
 
@@ -34,19 +33,22 @@ class SignIn extends Component {
     return errors;
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
 
     const errors = this.validate();
     this.setState({ errors: errors || {} });
     if (errors) return;
+
+    const { email, password } = this.state.data;
+    await login(email, password);
   };
 
   // validateProperty = ({ name, value }) => {
   //   const obj = { [name]: value };
-  //   const schema = Joi.object({ [name]: this.schema[name] });
-  //   const { error } = schema.validate(obj);
-  //   return error ? "This field is required" : null;
+  //   const localSchema = Joi.object({ [name]: this.schema[name] });
+  //   const { error } = localSchema.validate(obj);
+  //   return error ? error.details[0].message : null;
   // };
 
   handleInput = ({ currentTarget: input }) => {
@@ -55,26 +57,27 @@ class SignIn extends Component {
     // if (errorMessage) errors[input.name] = errorMessage;
     // else delete errors[input.name];
 
-    const account = { ...this.state.account };
-    account[input.name] = input.value;
-    this.setState({ account });
+    const data = { ...this.state.data };
+    data[input.name] = input.value;
+
+    this.setState({ data });
   };
 
   render() {
-    const { account, errors } = this.state;
+    const { data, errors } = this.state;
     return (
       <React.Fragment>
         <h1>Sign In</h1>
         <form onSubmit={this.handleSubmit} className="sign-in-form">
           <Input
-            value={account.email}
+            value={data.email}
             name="email"
             placeholder="E-mail *"
             onInput={this.handleInput}
             error={errors.email}
           />
           <Input
-            value={account.password}
+            value={data.password}
             name="password"
             placeholder="Password *"
             onInput={this.handleInput}
@@ -83,7 +86,7 @@ class SignIn extends Component {
           <button className="sign-in-form-button">Enter</button>
         </form>
         <p className="sign-in-paragraph">
-          Don't have an account?{" "}
+          Don't have an data?{" "}
           <span
             className="sign-in-span"
             onClick={this.props.onRegisterSpanClick}

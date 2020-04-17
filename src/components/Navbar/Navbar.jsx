@@ -84,7 +84,7 @@ class Navbar extends Component {
               </li>
               <li>
                 <NavLink to="/wishlist" className="secondary-nav-icons">
-                  <i class="far fa-heart fa-lg"></i>
+                  <i className="far fa-heart fa-lg"></i>
                 </NavLink>
               </li>
               <li>

@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import Input from "./../Input/Input";
 import Joi from "@hapi/joi";
+import { register } from "../../services/userService";
 import "../assets/css/fonts.css";
 import "./Register.css";
 
 class Register extends Component {
   state = {
-    account: { name: "", email: "", password: "", confirmedPassword: "" },
+    data: { name: "", email: "", password: "", confirmedPassword: "" },
     errors: {},
   };
 
@@ -25,7 +26,7 @@ class Register extends Component {
 
   validate = () => {
     const options = { abortEarly: false };
-    const { error } = this.schema.validate(this.state.account, options);
+    const { error } = this.schema.validate(this.state.data, options);
 
     if (!error) return null;
 
@@ -36,12 +37,14 @@ class Register extends Component {
     return errors;
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
 
     const errors = this.validate();
     this.setState({ errors: errors || {} });
     if (errors) return;
+
+    await register(this.state.data);
   };
 
   // validateProperty = ({ name, value }) => {
@@ -57,41 +60,41 @@ class Register extends Component {
     // if (errorMessage) errors[input.name] = errorMessage;
     // else delete errors[input.name];
 
-    const account = { ...this.state.account };
-    account[input.name] = input.value;
-    this.setState({ account });
+    const data = { ...this.state.data };
+    data[input.name] = input.value;
+    this.setState({ data });
   };
 
   render() {
-    const { account, errors } = this.state;
+    const { data, errors } = this.state;
     return (
       <React.Fragment>
         <h1>Register</h1>
         <form onSubmit={this.handleSubmit} className="register-form">
           <Input
             name="name"
-            value={account.name}
+            value={data.name}
             placeholder="Name *"
             onInput={this.handleInput}
             error={errors.name}
           />
           <Input
             name="email"
-            value={account.email}
+            value={data.email}
             placeholder="Email *"
             onInput={this.handleInput}
             error={errors.email}
           />
           <Input
             name="password"
-            value={account.password}
+            value={data.password}
             placeholder="Password *"
             onInput={this.handleInput}
             error={errors.password}
           />
           <Input
             name="confirmedPassword"
-            value={account.confirmedPassword}
+            value={data.confirmedPassword}
             placeholder="Confirm Password *"
             onInput={this.handleInput}
             error={errors.confirmedPassword}

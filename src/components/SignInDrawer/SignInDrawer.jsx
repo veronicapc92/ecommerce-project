@@ -12,6 +12,7 @@ class SignInDrawer extends Component {
       registerDrawerOpen,
       onXButtonClick,
       onRegisterSpanClick,
+      onEnterButtonClick,
     } = this.props;
 
     let classes = "sign-in-container";
