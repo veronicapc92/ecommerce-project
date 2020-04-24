@@ -8,7 +8,7 @@ const ProductList = ({ productTypes }) => {
     <div className="filter-div">
       <ul>
         {productTypes.map((productType) => (
-          <li key={productType.id} className="ladies-product-type">
+          <li className="ladies-product-type" key={productType.name}>
             <Link
               className="ladies-product-type"
               to={`/women/${productType.route}`}

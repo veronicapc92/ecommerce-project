@@ -2,8 +2,8 @@ import React from "react";
 import "./Like.css";
 
 const Like = ({ product, onLike }) => {
-  let classes = "fa fa-heart";
-  classes += product.liked ? " fa-2x" : "-o fa-2x";
+  let classes = "fa-heart fa-lg";
+  classes = (product.liked ? "fas " : "far ") + classes;
 
   return (
     <button onClick={() => onLike(product)}>

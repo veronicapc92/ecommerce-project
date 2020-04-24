@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 import NavBar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import SideDrawer from "./components/Navbar/SideDrawer";
@@ -18,20 +19,20 @@ class App extends Component {
     signInDrawerOpen: false,
     registerDrawerOpen: false,
     products: [],
-    productTypes: [], //not used
-    currentProductType: "", //not used so far
-    womenClothingOptions: [],
-    womenData: {},
+    productTypes: [],
   };
 
   async componentDidMount() {
-    const { data: products } = await http.get(config.apiUrl + "/clothes");
-    const { data: womenData } = await http.get(config.apiUrl + "/women");
-    const womenClothingOptions = [
-      { name: "View All", id: 0, route: "" },
-      ...womenData.womenClothingOptions,
-    ];
-    this.setState({ products, womenClothingOptions });
+    const { data: products } = await http.get(config.apiUrl + "/products");
+
+    const { data } = await http.get(config.apiUrl + "/producttypes");
+    const productTypes = [{ name: "View All", id: 0, route: "" }, ...data];
+
+    try {
+      const jwt = localStorage.getItem("token");
+      const user = jwtDecode(jwt);
+      this.setState({ products, productTypes, user });
+    } catch (ex) {}
   }
 
   handleDrawerToggleClick = () => {
@@ -41,6 +42,7 @@ class App extends Component {
   handleBackdropClick = () => {
     this.setState({ sideDrawerOpen: false });
   };
+
   handleSignInIconClick = () => {
     this.setState({ registerDrawerOpen: false, signInDrawerOpen: true });
   };
@@ -85,8 +87,8 @@ class App extends Component {
       signInDrawerOpen,
       registerDrawerOpen,
       products,
-      womenClothingOptions,
-      womenData,
+      productTypes,
+      user,
     } = this.state;
     let backdrop;
 
@@ -97,17 +99,19 @@ class App extends Component {
     return (
       <main style={{ height: "100vh" }}>
         <NavBar
-          productTypes={womenClothingOptions}
+          user={user}
+          productTypes={productTypes}
           onSignInIconClick={this.handleSignInIconClick}
           onDrawerToggleClick={this.handleDrawerToggleClick}
           onXButtonClick={this.handleXButtonClick}
         />
         <SignInDrawer
-          show={signInDrawerOpen}
+          show={!user && signInDrawerOpen}
           registerDrawerOpen={registerDrawerOpen}
           onXButtonClick={this.handleXButtonClick}
           onRegisterSpanClick={this.handleRegisterSpanClick}
         />
+       {/* <LogoutPopup /> */}
         {/* <SignIn
           show={signInDrawerOpen}
           onXButtonClick={this.handleXButtonClick}
@@ -131,7 +135,7 @@ class App extends Component {
               <FilteredProductTypePage
                 {...props}
                 products={products}
-                productTypes={womenClothingOptions}
+                productTypes={productTypes}
                 onLike={this.handleLike}
               />
             )}
@@ -142,7 +146,7 @@ class App extends Component {
               <ProductsPage
                 {...props}
                 products={products}
-                productTypes={womenClothingOptions}
+                productTypes={productTypes}
                 onLike={this.handleLike}
               />
             )}

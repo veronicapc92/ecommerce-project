@@ -44,7 +44,16 @@ class Register extends Component {
     this.setState({ errors: errors || {} });
     if (errors) return;
 
-    await register(this.state.data);
+    try {
+      const response = await register(this.state.data);
+      localStorage.setItem("token", response.headers["x-auth-token"]);
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        const errors = { ...this.state.errors };
+        errors.email = "This email already exists ";
+        this.setState({ errors });
+      }
+    }
   };
 
   // validateProperty = ({ name, value }) => {

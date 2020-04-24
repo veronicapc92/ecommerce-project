@@ -5,6 +5,7 @@ import Menu from "./Menu";
 import logo from "../assets/photos/gosha_transparent.png";
 import "../assets/css/fonts.css";
 import "./Navbar.css";
+import Logout from "./../Logout/Logout";
 
 class Navbar extends Component {
   state = { menuOpen: false, currentMenuOption: "" };
@@ -26,12 +27,21 @@ class Navbar extends Component {
   };
 
   render() {
+    const {
+      data,
+      user,
+      onXButtonClick,
+      onDrawerToggleClick,
+      onSignInIconClick,
+      onSignOutIconClick,
+    } = this.props;
+
     return (
       <React.Fragment>
         <header className="header">
-          <div className="main-nav" onClick={this.props.onXButtonClick}>
+          <div className="main-nav" onClick={onXButtonClick}>
             <div className="toggle-button-container">
-              <DrawerToggleButton click={this.props.onDrawerToggleClick} />
+              <DrawerToggleButton click={onDrawerToggleClick} />
             </div>
             <div className="logo-container">
               <NavLink to="/">
@@ -76,12 +86,17 @@ class Navbar extends Component {
           </div>
           <nav className="secondary-nav">
             <ul>
-              <li
-                className="secondary-nav-icons"
-                onClick={this.props.onSignInIconClick}
-              >
-                <i className="fas fa-user-circle fa-lg"></i>
-              </li>
+              {!user && (
+                <li className="secondary-nav-icons" onClick={onSignInIconClick}>
+                  <i className="fas fa-user-circle fa-lg"></i>
+                </li>
+              )}
+              {user && (
+                <li className="secondary-nav-icons">
+                  <Logout />
+                </li>
+              )}
+
               <li>
                 <NavLink to="/wishlist" className="secondary-nav-icons">
                   <i className="far fa-heart fa-lg"></i>
@@ -99,7 +114,7 @@ class Navbar extends Component {
           <Menu
             onDropdownEnter={this.handleDropdownEnter}
             onDropdownLeave={this.handleDropdownLeave}
-            data={this.props.data}
+            data={data}
           />
         )}
       </React.Fragment>

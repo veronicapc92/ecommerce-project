@@ -40,8 +40,17 @@ class SignIn extends Component {
     this.setState({ errors: errors || {} });
     if (errors) return;
 
-    const { email, password } = this.state.data;
-    await login(email, password);
+    try {
+      const { email, password } = this.state.data;
+      const { data: jwt } = await login(email, password);
+      localStorage.setItem("token", jwt);
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        const errors = { ...this.state.errors };
+        errors.email = ex.response.data;
+        this.setState({ errors });
+      }
+    }
   };
 
   // validateProperty = ({ name, value }) => {
