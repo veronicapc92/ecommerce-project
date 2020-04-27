@@ -1,39 +1,38 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import DrawerToggleButton from "./DrawerToggleButton";
-import Menu from "./Menu";
+import Logout from "./../Logout/Logout";
+import Dropdown from "./Dropdown";
 import logo from "../assets/photos/gosha_transparent.png";
 import "../assets/css/fonts.css";
 import "./Navbar.css";
-import Logout from "./../Logout/Logout";
 
 class Navbar extends Component {
-  state = { menuOpen: false, currentMenuOption: "" };
+  // state = { menuOpen: true, currentMenuOption: "" };
 
-  handleMenuEnter = (text) => {
-    this.setState({ menuOpen: true, currentMenuOption: text });
-  };
+  // handleMenuEnter = (text) => {
+  //   this.setState({ menuOpen: true, currentMenuOption: text });
+  // };
 
-  handleMenuLeave = () => {
-    this.setState({ menuOpen: false });
-  };
+  // handleMenuLeave = () => {
+  //   this.setState({ menuOpen: false });
+  // };
 
-  handleDropdownEnter = () => {
-    this.setState({ menuOpen: true });
-  };
+  // handleDropdownEnter = () => {
+  //   this.setState({ menuOpen: true });
+  // };
 
-  handleDropdownLeave = () => {
-    this.setState({ menuOpen: false });
-  };
+  // handleDropdownLeave = () => {
+  //   this.setState({ menuOpen: false });
+  // };
 
   render() {
     const {
-      data,
+      productTypes,
       user,
       onXButtonClick,
       onDrawerToggleClick,
       onSignInIconClick,
-      onSignOutIconClick,
     } = this.props;
 
     return (
@@ -48,7 +47,7 @@ class Navbar extends Component {
                 <img alt="logo" src={logo} />
               </NavLink>
             </div>
-            <nav className="navbar">
+            <nav className="navbar dropdown">
               <ul>
                 <li>
                   <NavLink className="navbar-links" to="/not-found">
@@ -56,12 +55,7 @@ class Navbar extends Component {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink
-                    className="navbar-links"
-                    to="/women"
-                    onMouseEnter={() => this.handleMenuEnter("women")}
-                    onMouseLeave={this.handleMenuLeave}
-                  >
+                  <NavLink className="navbar-links" to="/women">
                     Women
                   </NavLink>
                 </li>
@@ -82,6 +76,9 @@ class Navbar extends Component {
                   </NavLink>
                 </li>
               </ul>
+              <div class="dropdown-test">
+                <Dropdown productTypes={productTypes} />
+              </div>
             </nav>
           </div>
           <nav className="secondary-nav">
@@ -110,13 +107,6 @@ class Navbar extends Component {
             </ul>
           </nav>
         </header>
-        {this.state.menuOpen && (
-          <Menu
-            onDropdownEnter={this.handleDropdownEnter}
-            onDropdownLeave={this.handleDropdownLeave}
-            data={data}
-          />
-        )}
       </React.Fragment>
     );
   }

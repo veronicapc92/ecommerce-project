@@ -44,6 +44,7 @@ class SignIn extends Component {
       const { email, password } = this.state.data;
       const { data: jwt } = await login(email, password);
       localStorage.setItem("token", jwt);
+      window.location.reload();
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };

@@ -1,15 +1,15 @@
 .menu {
-  position: fixed;
-  top: 100px;
   width: 100%;
   background-color: white;
   display: flex;
   justify-content: center;
+  /* box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.03); */
+  border-bottom: 0.05px solid lightgray;
 }
 
 .options-container {
   padding: 40px 0 90px 0;
-  width: 40%;
+  width: 45%;
   display: flex;
   justify-content: space-between;
   font-family: "Muli", sans-serif;
@@ -21,6 +21,8 @@
 
 .options ul {
   padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .options li {
@@ -28,6 +30,8 @@
   list-style: none;
 }
 
-.miscellaneous-option {
-  align-self: center;
+@media (max-width: 1200px) {
+  .options-container {
+    width: 65%;
+  }
 }

@@ -27,7 +27,10 @@ class SignInDrawer extends Component {
         </div>
         {registerDrawerOpen && <Register />}
         {!registerDrawerOpen && (
-          <SignIn onRegisterSpanClick={onRegisterSpanClick} />
+          <SignIn
+            onRegisterSpanClick={onRegisterSpanClick}
+            onEnterButtonClick={onEnterButtonClick}
+          />
         )}
       </div>
     );

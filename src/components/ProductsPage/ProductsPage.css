@@ -39,13 +39,15 @@
 }
 
 .product-page-container {
-  margin-top: 200px;
+  /* margin-top: 200px; */
   display: flex;
+  background-color: teal;
 }
 
 .filter-container {
   width: var(--filter-container-width);
   height: 100vh;
+  background-color: blue;
 }
 
 .images-container {

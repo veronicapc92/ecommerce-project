@@ -1,5 +1,7 @@
 .individual-image-container {
   margin: 1vw;
+  background-color: pink;
+  padding: 0;
 }
 
 .product-image {

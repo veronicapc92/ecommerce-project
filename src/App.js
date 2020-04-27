@@ -28,10 +28,12 @@ class App extends Component {
     const { data } = await http.get(config.apiUrl + "/producttypes");
     const productTypes = [{ name: "View All", id: 0, route: "" }, ...data];
 
+    this.setState({ products, productTypes });
+
     try {
       const jwt = localStorage.getItem("token");
       const user = jwtDecode(jwt);
-      this.setState({ products, productTypes, user });
+      this.setState({ user });
     } catch (ex) {}
   }
 
@@ -51,16 +53,20 @@ class App extends Component {
     this.setState({ signInDrawerOpen: false });
   };
 
+  handleCloseNavbar = () => {
+    this.setState({ sideDrawerOpen: false });
+  };
+
   handleRegisterSpanClick = () => {
     this.setState({ registerDrawerOpen: true });
   };
 
-  // handleEnterButtonClick = (errors) => {
-  //   console.log(Object.keys(errors).length);
-  //   // if (Object.keys(errors).length !== 0)
-  //   //   this.setState({ registerDrawerOpen: true });
-  //   // else this.setState({ registerDrawerOpen: false });
-  // };
+  handleEnterButtonClick = (errors) => {
+    console.log(Object.keys(errors).length);
+    if (Object.keys(errors).length !== 0)
+      this.setState({ registerDrawerOpen: true });
+    else this.setState({ registerDrawerOpen: false });
+  };
 
   handleLike = (product) => {
     const products = [...this.state.products];
@@ -69,10 +75,6 @@ class App extends Component {
     products[index].liked = !products[index].liked;
     this.setState({ products });
   };
-
-  // handleSelectByProductType = (productType) => {
-  //   this.setState({ currentProductType: productType.route });
-  // };
 
   // handleFilterByProductType = (productType) => {
   //   // const filteredProducts = this.state.products.filter(
@@ -105,27 +107,17 @@ class App extends Component {
           onDrawerToggleClick={this.handleDrawerToggleClick}
           onXButtonClick={this.handleXButtonClick}
         />
+        <SideDrawer
+          show={sideDrawerOpen}
+          onCloseNavbar={this.handleCloseNavbar}
+        />
         <SignInDrawer
           show={!user && signInDrawerOpen}
           registerDrawerOpen={registerDrawerOpen}
           onXButtonClick={this.handleXButtonClick}
           onRegisterSpanClick={this.handleRegisterSpanClick}
+          onEnterButtonClick={this.handleEnterButtonClick}
         />
-       {/* <LogoutPopup /> */}
-        {/* <SignIn
-          show={signInDrawerOpen}
-          onXButtonClick={this.handleXButtonClick}
-          onRegisterSpanClick={this.handleRegisterSpanClick}
-        /> */}
-        {/* <Register
-          show={registerDrawerOpen}
-          onXButtonClick={this.handleXButtonClick}
-        /> */}
-        {/* <SignInDrawer
-          show={signInDrawerOpen}
-          onXButtonClick={this.handleXButtonClick}
-        /> */}
-        <SideDrawer show={sideDrawerOpen} />
         {backdrop}
         <Switch>
           <Route path="/home" component={Homepage}></Route>
