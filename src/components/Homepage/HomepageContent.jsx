@@ -7,7 +7,7 @@ import "./HomepageContent.css";
 const Container = () => {
   return (
     <div className="container">
-      <div className="images-container">
+      <div className="homepage-images-container">
         <img alt="denim-looks" className="card1" src={card1} />
         <img alt="summer-vibes" className="card2" src={card2} />
         <img alt="home-decor" className="card3" src={card3} />

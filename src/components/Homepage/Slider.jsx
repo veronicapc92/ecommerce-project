@@ -18,7 +18,7 @@ export default () => (
   >
     {slides.map((slide) => {
       return (
-        <div key={slide} style={{ marginTop: "100px" }}>
+        <div key={slide}>
           <img alt="cover" src={slide} />
         </div>
       );

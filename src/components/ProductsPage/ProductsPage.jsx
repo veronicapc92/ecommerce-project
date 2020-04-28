@@ -11,7 +11,7 @@ class ProductsPage extends Component {
     return (
       <React.Fragment>
         <div className="product-page-container">
-          <div className="filter-container">
+          <div className="product-type-filter-container">
             <ProductList productTypes={productTypes} />
           </div>
           <div className="images-container">

@@ -15,19 +15,27 @@
   font-family: "Muli", sans-serif;
 }
 
-.options {
-  cursor: pointer;
-}
-
 .options ul {
   padding: 0;
   display: flex;
   flex-direction: column;
+  cursor: default;
+}
+
+.options-title {
+  cursor: default;
+  font-weight: bold;
 }
 
 .options li {
   padding-top: 10px;
   list-style: none;
+}
+
+.women-clothes-links {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
 }
 
 @media (max-width: 1200px) {

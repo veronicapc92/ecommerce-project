@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import DrawerToggleButton from "./DrawerToggleButton";
 import Logout from "./../Logout/Logout";
-import Dropdown from "./Dropdown";
+import WomenDropdown from "./WomenDropdown";
 import logo from "../assets/photos/gosha_transparent.png";
 import "../assets/css/fonts.css";
 import "./Navbar.css";
@@ -47,38 +47,21 @@ class Navbar extends Component {
                 <img alt="logo" src={logo} />
               </NavLink>
             </div>
-            <nav className="navbar dropdown">
+            <nav className="navbar">
               <ul>
-                <li>
-                  <NavLink className="navbar-links" to="/not-found">
-                    New
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className="navbar-links" to="/women">
+                <li className="navbar-options">New</li>
+                <li className="dropdown">
+                  <NavLink className="navbar-options women-link" to="/women">
                     Women
                   </NavLink>
+                  <div className="dropdown-test">
+                    <WomenDropdown productTypes={productTypes} />
+                  </div>
                 </li>
-                <li>
-                  <NavLink className="navbar-links" to="/not-found">
-                    Men
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className="navbar-links" to="/not-found">
-                    Kids
-                  </NavLink>
-                </li>
-                <li>
-                  {" "}
-                  <NavLink className="navbar-links" to="/not-found">
-                    Gōsha Home
-                  </NavLink>
-                </li>
+                <li className="navbar-options">Men</li>
+                <li className="navbar-options">Kids</li>
+                <li className="navbar-options">Gōsha Home</li>
               </ul>
-              <div class="dropdown-test">
-                <Dropdown productTypes={productTypes} />
-              </div>
             </nav>
           </div>
           <nav className="secondary-nav">

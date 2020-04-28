@@ -12,7 +12,7 @@
   justify-content: center;
 }
 
-.images-container {
+.homepage-images-container {
   margin-top: 7vw;
   margin-bottom: 10vw;
   display: grid;
@@ -20,7 +20,9 @@
   justify-items: center;
 }
 
-.images-container img {
+.card1,
+.card2,
+.card3 {
   display: block;
   cursor: pointer;
   padding: var(--picture-padding);

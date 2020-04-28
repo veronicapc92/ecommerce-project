@@ -18,12 +18,15 @@ const Menu = ({ productTypes }) => {
           </ul>
         </div>
         <div className="options">
-          <span style={{ fontWeight: "bold" }}>Clothing</span>
+          <span className="options-title">Clothing</span>
           <ul>
             {productTypes.map((productType) => {
               return (
-                <li>
-                  <NavLink to={`/women/${productType.route}`}>
+                <li key={productType.name}>
+                  <NavLink
+                    className="women-clothes-links"
+                    to={`/women/${productType.route}`}
+                  >
                     {productType.name}
                   </NavLink>
                 </li>
@@ -32,7 +35,7 @@ const Menu = ({ productTypes }) => {
           </ul>
         </div>
         <div className="options">
-          <span style={{ fontWeight: "bold" }}>Accessories</span>
+          <span className="options-title">Accessories</span>
           <ul>
             <li>Shoes</li>
             <li>Jewellery</li>

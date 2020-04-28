@@ -1,5 +1,5 @@
 .header {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
@@ -37,7 +37,7 @@
   display: flex;
 }
 
-.navbar-links {
+.navbar-options {
   padding: 0 35px;
   display: block;
   height: 100%;
@@ -46,11 +46,16 @@
   font-weight: 600;
   font-size: 17px;
   color: black;
-  cursor: pointer;
+  cursor: default;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+.women-link {
+  cursor: pointer;
+}
+
 .secondary-nav {
   width: 100px;
   margin-right: 200px;
