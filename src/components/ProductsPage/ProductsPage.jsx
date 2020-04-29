@@ -6,7 +6,7 @@ import "./ProductsPage.css";
 
 class ProductsPage extends Component {
   render() {
-    const { products, productTypes, onLike } = this.props;
+    const { products, productTypes, onLike, onAddToCart } = this.props;
 
     return (
       <React.Fragment>
@@ -15,7 +15,11 @@ class ProductsPage extends Component {
             <ProductList productTypes={productTypes} />
           </div>
           <div className="images-container">
-            <ProductCards onLike={onLike} filteredProducts={products} />
+            <ProductCards
+              filteredProducts={products}
+              onLike={onLike}
+              onAddToCart={onAddToCart}
+            />
           </div>
         </div>
       </React.Fragment>

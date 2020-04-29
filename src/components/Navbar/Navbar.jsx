@@ -30,6 +30,7 @@ class Navbar extends Component {
     const {
       productTypes,
       user,
+      cart,
       onXButtonClick,
       onDrawerToggleClick,
       onSignInIconClick,
@@ -82,10 +83,9 @@ class Navbar extends Component {
                   <i className="far fa-heart fa-lg"></i>
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="shopping-cart" className="secondary-nav-icons">
-                  <i className="fas fa-shopping-bag fa-lg"></i>
-                </NavLink>
+              <li className="secondary-nav-icons shopping-cart">
+                <div className="number-of-items">{cart.length}</div>
+                <i className="fas fa-shopping-bag fa-lg"></i>
               </li>
             </ul>
           </nav>

@@ -20,6 +20,7 @@ class App extends Component {
     registerDrawerOpen: false,
     products: [],
     productTypes: [],
+    cart: [],
   };
 
   async componentDidMount() {
@@ -76,6 +77,30 @@ class App extends Component {
     this.setState({ products });
   };
 
+  // handleAddToCart = (product) => {
+  //   const products = [...this.state.products];
+  //   const index = products.indexOf(product);
+  //   products[index] = { ...product };
+  //   products[index].count++;
+  //   this.setState({ products });
+  // };
+
+  handleAddToCart = (product, size) => {
+    console.log(product, size);
+    const cart = [...this.state.cart];
+    const index = cart.findIndex(
+      (item) => item._id === product._id && item.size === size
+    );
+    console.log(index);
+
+    if (index >= 0) {
+      cart[index] = { ...this.state.cart[index] };
+      cart[index].count++;
+    } else cart.push({ _id: product._id, size, count: 1 });
+
+    this.setState({ cart });
+  };
+
   // handleFilterByProductType = (productType) => {
   //   // const filteredProducts = this.state.products.filter(
   //   //   (p) => p.type === productType.name
@@ -91,6 +116,7 @@ class App extends Component {
       products,
       productTypes,
       user,
+      cart,
     } = this.state;
     let backdrop;
 
@@ -102,6 +128,7 @@ class App extends Component {
       <main style={{ height: "100vh" }}>
         <NavBar
           user={user}
+          cart={cart}
           productTypes={productTypes}
           onSignInIconClick={this.handleSignInIconClick}
           onDrawerToggleClick={this.handleDrawerToggleClick}
@@ -140,6 +167,7 @@ class App extends Component {
                 products={products}
                 productTypes={productTypes}
                 onLike={this.handleLike}
+                onAddToCart={this.handleAddToCart}
               />
             )}
           ></Route>
