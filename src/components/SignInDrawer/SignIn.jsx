@@ -77,7 +77,7 @@ class SignIn extends Component {
     const { data, errors } = this.state;
     return (
       <React.Fragment>
-        <h1>Sign In</h1>
+        <h1 className="sign-in-headline">Sign In</h1>
         <form onSubmit={this.handleSubmit} className="sign-in-form">
           <Input
             value={data.email}

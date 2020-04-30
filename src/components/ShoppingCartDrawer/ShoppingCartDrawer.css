@@ -1,0 +1,119 @@
+.shopping-cart-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 450px;
+  background-color: white;
+  z-index: 300;
+  box-shadow: -5px 0px 5px -1px rgba(0, 0, 0, 0.15);
+  font-family: "Muli", sans-serif;
+  transform: translateX(100%);
+  transition: all 0.4s ease-out;
+}
+
+.shopping-cart-container.open {
+  transform: translateX(0%);
+}
+
+.shopping-cart-header {
+  margin: 0;
+  font-size: 20px;
+  text-align: start;
+  background-color: pink;
+}
+
+.close-shopping-cart-icon {
+  font-size: 40px;
+  text-align: right;
+  padding-right: 7px;
+  color: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  background-color: blue;
+}
+
+.shopping-cart-items-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.shopping-cart-item-container {
+  width: 90%;
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 0.5px solid darkgray;
+}
+
+.shopping-cart-item-image {
+  width: 130px;
+  height: auto;
+}
+
+.shopping-cart-item-details {
+  margin-left: 10px;
+  padding-top: 10px;
+}
+
+.shopping-cart-item-name {
+  margin: 0;
+  font-size: 15px;
+  font-weight: normal;
+}
+
+.shopping-cart-item-size {
+  margin-top: 10px;
+  font-size: 14px;
+  color: darkgray;
+}
+
+.shopping-cart-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.shopping-cart-item-quantity {
+  font-size: 14px;
+  margin: 0 5px;
+  border-bottom: 1px solid black;
+}
+
+/* 
+.shopping-cart-button {
+  margin-top: 60px;
+  width: 240px;
+  height: 40px;
+  background-color: black;
+  font-family: "Muli", sans-serif;
+  font-size: 15px;
+  color: white;
+}
+
+.shopping-cart-button:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.register-paragraph {
+  margin-top: 30px;
+  font-size: 14px;
+  color: gray;
+  text-align: center;
+}
+
+.register-span {
+  color: gray;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.register-span:hover {
+  color: darkgray;
+} */
+@media (max-width: 800px) {
+  .shopping-cart-container {
+    width: 100vw;
+  }
+}

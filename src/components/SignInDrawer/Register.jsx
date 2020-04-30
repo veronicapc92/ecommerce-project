@@ -78,7 +78,7 @@ class Register extends Component {
     const { data, errors } = this.state;
     return (
       <React.Fragment>
-        <h1>Register</h1>
+        <h1 className="register-headline">Register</h1>
         <form onSubmit={this.handleSubmit} className="register-form">
           <Input
             name="name"

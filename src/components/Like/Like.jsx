@@ -6,7 +6,7 @@ const Like = ({ product, onLike }) => {
   classes = (product.liked ? "fas " : "far ") + classes;
 
   return (
-    <button onClick={() => onLike(product)}>
+    <button className="like-button" onClick={() => onLike(product)}>
       <i className={classes} aria-hidden="true"></i>
     </button>
   );

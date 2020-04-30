@@ -6,7 +6,7 @@ import "./ProductList.css";
 const ProductList = ({ productTypes }) => {
   return (
     <div className="filter-div">
-      <ul>
+      <ul className="filter-div-list">
         {productTypes.map((productType) => (
           <li className="ladies-product-type" key={productType.name}>
             <Link

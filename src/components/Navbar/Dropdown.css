@@ -8,14 +8,14 @@
 }
 
 .options-container {
-  padding: 40px 0 90px 0;
+  padding: 120px 0;
   width: 45%;
   display: flex;
   justify-content: space-between;
   font-family: "Muli", sans-serif;
 }
 
-.options ul {
+.options {
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -25,10 +25,12 @@
 .options-title {
   cursor: default;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.options li {
-  padding-top: 10px;
+.option {
+  margin-top: 5px;
+  display: block;
   list-style: none;
 }
 

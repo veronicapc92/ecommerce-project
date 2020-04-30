@@ -9,6 +9,7 @@ import Homepage from "./components/Homepage/Homepage";
 import ProductsPage from "./components/ProductsPage/ProductsPage";
 import FilteredProductTypePage from "./components/FilteredProductTypePage/FilteredProductTypePage";
 import SignInDrawer from "./components/SignInDrawer/SignInDrawer";
+import ShoppingCartDrawer from "./components/ShoppingCartDrawer/ShoppingCartDrawer";
 import NotFound from "./components/NotFound";
 import http from "./services/httpService";
 import config from "./config.json";
@@ -18,6 +19,7 @@ class App extends Component {
     sideDrawerOpen: false,
     signInDrawerOpen: false,
     registerDrawerOpen: false,
+    shoppingCartDrawerOpen: false,
     products: [],
     productTypes: [],
     cart: [],
@@ -69,6 +71,14 @@ class App extends Component {
     else this.setState({ registerDrawerOpen: false });
   };
 
+  handleShoppingCartClick = () => {
+    this.setState({ shoppingCartDrawerOpen: true });
+  };
+
+  handleCheckout = () => {
+    this.setState({ shoppingCartDrawerOpen: false });
+  };
+
   handleLike = (product) => {
     const products = [...this.state.products];
     const index = products.indexOf(product);
@@ -86,17 +96,51 @@ class App extends Component {
   // };
 
   handleAddToCart = (product, size) => {
-    console.log(product, size);
     const cart = [...this.state.cart];
     const index = cart.findIndex(
       (item) => item._id === product._id && item.size === size
     );
-    console.log(index);
 
     if (index >= 0) {
       cart[index] = { ...this.state.cart[index] };
       cart[index].count++;
-    } else cart.push({ _id: product._id, size, count: 1 });
+    } else
+      cart.push({
+        _id: product._id,
+        name: product.name,
+        link: product.link,
+        price: product.price,
+        size,
+        count: 1,
+      });
+
+    this.setState({ cart });
+  };
+
+  handleIncrementQuantity = (item) => {
+    const cart = [...this.state.cart];
+    const index = cart.findIndex(
+      (i) => i._id === item._id && i.size === item.size
+    );
+    cart[index] = { ...item };
+    cart[index].count++;
+
+    this.setState({ cart });
+  };
+
+  handleDecrementQuantity = (item) => {
+    const cart = [...this.state.cart];
+    const index = cart.findIndex(
+      (i) => i._id === item._id && i.size === item.size
+    );
+    cart[index] = { ...item };
+
+    if (cart[index].count > 1) {
+      cart[index].count--;
+      this.setState({ cart });
+    } else {
+      cart.splice(cart[index], 1);
+    }
 
     this.setState({ cart });
   };
@@ -113,6 +157,7 @@ class App extends Component {
       sideDrawerOpen,
       signInDrawerOpen,
       registerDrawerOpen,
+      shoppingCartDrawerOpen,
       products,
       productTypes,
       user,
@@ -133,6 +178,7 @@ class App extends Component {
           onSignInIconClick={this.handleSignInIconClick}
           onDrawerToggleClick={this.handleDrawerToggleClick}
           onXButtonClick={this.handleXButtonClick}
+          onShoppingCartClick={this.handleShoppingCartClick}
         />
         <SideDrawer
           show={sideDrawerOpen}
@@ -144,6 +190,13 @@ class App extends Component {
           onXButtonClick={this.handleXButtonClick}
           onRegisterSpanClick={this.handleRegisterSpanClick}
           onEnterButtonClick={this.handleEnterButtonClick}
+        />
+        <ShoppingCartDrawer
+          show={shoppingCartDrawerOpen}
+          onCheckout={this.handleCheckout}
+          cart={cart}
+          onIncrementQuantity={this.handleIncrementQuantity}
+          onDecrementQuantity={this.handleDecrementQuantity}
         />
         {backdrop}
         <Switch>

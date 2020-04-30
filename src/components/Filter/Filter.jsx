@@ -5,7 +5,7 @@ import "./Filter.css";
 const Filter = ({ productTypes, onFilterByProductType }) => {
   return (
     <div className="filter-div">
-      <ul>
+      <ul className="filter-div-list">
         {productTypes.map((productType) => (
           <li
             onClick={() => onFilterByProductType(productType)}

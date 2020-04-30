@@ -15,7 +15,7 @@
   transform: translateX(0);
 }
 
-.side-drawer ul {
+.side-drawer-options {
   padding: 20px;
   height: 100vh;
   list-style: none;
@@ -24,13 +24,9 @@
   align-items: center;
 }
 
-.side-drawer li {
+.side-drawer-option {
   padding-top: 35px;
-  cursor: pointer;
-}
-
-.side-drawer a {
-  text-decoration: none;
+  cursor: default;
   color: black;
   font-family: "Muli", sans-serif;
   font-size: 20px;
@@ -41,6 +37,12 @@
   text-align: right;
   padding-right: 15px;
   color: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.women-products-link {
+  text-decoration: none;
+  color: black;
   cursor: pointer;
 }
 

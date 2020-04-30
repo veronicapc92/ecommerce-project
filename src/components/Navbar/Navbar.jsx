@@ -8,24 +8,6 @@ import "../assets/css/fonts.css";
 import "./Navbar.css";
 
 class Navbar extends Component {
-  // state = { menuOpen: true, currentMenuOption: "" };
-
-  // handleMenuEnter = (text) => {
-  //   this.setState({ menuOpen: true, currentMenuOption: text });
-  // };
-
-  // handleMenuLeave = () => {
-  //   this.setState({ menuOpen: false });
-  // };
-
-  // handleDropdownEnter = () => {
-  //   this.setState({ menuOpen: true });
-  // };
-
-  // handleDropdownLeave = () => {
-  //   this.setState({ menuOpen: false });
-  // };
-
   render() {
     const {
       productTypes,
@@ -34,6 +16,7 @@ class Navbar extends Component {
       onXButtonClick,
       onDrawerToggleClick,
       onSignInIconClick,
+      onShoppingCartClick,
     } = this.props;
 
     return (
@@ -83,8 +66,15 @@ class Navbar extends Component {
                   <i className="far fa-heart fa-lg"></i>
                 </NavLink>
               </li>
-              <li className="secondary-nav-icons shopping-cart">
-                <div className="number-of-items">{cart.length}</div>
+              <li
+                className="secondary-nav-icons shopping-cart"
+                onClick={onShoppingCartClick}
+              >
+                {cart.length > 0 && (
+                  <div className="number-of-items">
+                    {cart.reduce((acc, item) => acc + item.count, 0)}
+                  </div>
+                )}
                 <i className="fas fa-shopping-bag fa-lg"></i>
               </li>
             </ul>

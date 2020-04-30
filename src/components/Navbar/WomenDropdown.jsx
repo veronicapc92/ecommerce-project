@@ -7,24 +7,24 @@ const Menu = ({ productTypes }) => {
   return (
     <div className="menu">
       <div className="options-container">
-        <div className="options">
-          <ul>
-            <li>New Arrivals</li>
-            <li>Evening dresses</li>
-            <li>Office looks</li>
-            <li>Denim</li>
-            <li>Maternity wear</li>
-            <li>Plus sizes</li>
+        <div>
+          <ul className="options">
+            <li className="option">New Arrivals</li>
+            <li className="option">Evening dresses</li>
+            <li className="option">Office looks</li>
+            <li className="option">Denim</li>
+            <li className="option">Maternity wear</li>
+            <li className="option">Plus sizes</li>
           </ul>
         </div>
         <div className="options">
           <span className="options-title">Clothing</span>
-          <ul>
+          <ul className="options">
             {productTypes.map((productType) => {
               return (
                 <li key={productType.name}>
                   <NavLink
-                    className="women-clothes-links"
+                    className="women-clothes-links option"
                     to={`/women/${productType.route}`}
                   >
                     {productType.name}
@@ -36,13 +36,13 @@ const Menu = ({ productTypes }) => {
         </div>
         <div className="options">
           <span className="options-title">Accessories</span>
-          <ul>
-            <li>Shoes</li>
-            <li>Jewellery</li>
-            <li>Bags & Wallets</li>
-            <li>Scarves</li>
-            <li>Hats</li>
-            <li>Belts</li>
+          <ul className="options">
+            <li className="option">Shoes</li>
+            <li className="option">Jewellery</li>
+            <li className="option">Bags & Wallets</li>
+            <li className="option">Scarves</li>
+            <li className="option">Hats</li>
+            <li className="option">Belts</li>
           </ul>
         </div>
       </div>

@@ -14,21 +14,23 @@ const SideDrawer = ({ show, onCloseNavbar }) => {
         ×
       </div>
       <nav>
-        <ul>
-          <li onClick={onCloseNavbar}>
-            <NavLink to="/not-found">New</NavLink>
+        <ul className="side-drawer-options">
+          <li className="side-drawer-option" onClick={onCloseNavbar}>
+            New
           </li>
-          <li onClick={onCloseNavbar}>
-            <NavLink to="/women">Ladies</NavLink>
+          <li className="side-drawer-option" onClick={onCloseNavbar}>
+            <NavLink className="women-products-link" to="/women">
+              Ladies
+            </NavLink>
           </li>
-          <li onClick={onCloseNavbar}>
-            <NavLink to="/not-found">Men</NavLink>
+          <li className="side-drawer-option" onClick={onCloseNavbar}>
+            Men
           </li>
-          <li onClick={onCloseNavbar}>
-            <NavLink to="/not-found">Kids</NavLink>
+          <li className="side-drawer-option" onClick={onCloseNavbar}>
+            Kids
           </li>
-          <li onClick={onCloseNavbar}>
-            <NavLink to="not-found">Gōsha Home</NavLink>
+          <li className="side-drawer-option" onClick={onCloseNavbar}>
+            Gōsha Home
           </li>
         </ul>
       </nav>
