@@ -67,7 +67,7 @@ class Navbar extends Component {
                 </NavLink>
               </li>
               <li
-                className="secondary-nav-icons shopping-cart"
+                className="secondary-nav-icons shopping-cart-icon"
                 onClick={onShoppingCartClick}
               >
                 {cart.length > 0 && (

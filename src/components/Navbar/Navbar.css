@@ -5,7 +5,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  background-color: pink;
+  background-color: white;
   align-items: center;
   z-index: 100;
   height: 100px;
@@ -87,7 +87,7 @@
   display: flex;
 }
 
-.shopping-cart {
+.shopping-cart-icon {
   position: relative;
 }
 

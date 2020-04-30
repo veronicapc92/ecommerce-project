@@ -169,8 +169,10 @@ class App extends Component {
       backdrop = <Backdrop onBackdropClick={this.handleBackdropClick} />;
     }
 
+    let classesOfMain = shoppingCartDrawerOpen ? "hidden" : "visible";
+
     return (
-      <main style={{ height: "100vh" }}>
+      <main style={{ height: "100vh", overflow: classesOfMain }}>
         <NavBar
           user={user}
           cart={cart}
