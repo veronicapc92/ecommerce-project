@@ -8,7 +8,7 @@
   z-index: 300;
   box-shadow: -5px 0px 5px -1px rgba(0, 0, 0, 0.15);
   font-family: "Muli", sans-serif;
-  transform: translateX(110%);
+  transform: translateX(101%);
   transition: all 0.4s ease-out;
   overflow-y: scroll;
 }

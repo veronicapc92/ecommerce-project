@@ -1,18 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Logout extends Component {
-  handleLogout = () => {
+const Logout = () => {
+  function handleLogout() {
     localStorage.removeItem("token");
     window.location = "/";
-  };
-
-  render() {
-    return (
-      <div>
-        <i class="fas fa-sign-out-alt" onClick={this.handleLogout}></i>
-      </div>
-    );
   }
-}
+
+  return (
+    <div>
+      <i className="fas fa-sign-out-alt" onClick={handleLogout}></i>
+    </div>
+  );
+};
 
 export default Logout;

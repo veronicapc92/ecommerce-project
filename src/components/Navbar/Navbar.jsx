@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import DrawerToggleButton from "./DrawerToggleButton";
+import DrawerToggleButton from "./DrawerToggleButton/DrawerToggleButton";
 import Logout from "./../Logout/Logout";
-import WomenDropdown from "./WomenDropdown";
+import WomenDropdown from "./Dropdown/Dropdown";
 import logo from "../assets/photos/gosha_transparent.png";
 import "../assets/css/fonts.css";
 import "./Navbar.css";

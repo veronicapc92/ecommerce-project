@@ -1,13 +1,13 @@
 import React from "react";
-import "./Like.css";
+import styles from "./like.module.css";
 
 const Like = ({ product, onLike }) => {
   let classes = "fa-heart fa-lg";
-  classes = (product.liked ? "fas " : "far ") + classes;
+  classes += product.liked ? " fas" : " far";
 
   return (
-    <button className="like-button" onClick={() => onLike(product)}>
-      <i className={classes} aria-hidden="true"></i>
+    <button className={styles.likeButton} onClick={() => onLike(product)}>
+      <i className={classes}></i>
     </button>
   );
 };

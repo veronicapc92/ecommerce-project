@@ -3,12 +3,11 @@
   background-color: white;
   display: flex;
   justify-content: center;
-  /* box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.03); */
   border-bottom: 0.05px solid lightgray;
 }
 
-.options-container {
-  padding: 120px 0;
+.optionsContainer {
+  padding: 90px 0 120px 0;
   width: 45%;
   display: flex;
   justify-content: space-between;
@@ -22,7 +21,8 @@
   cursor: default;
 }
 
-.options-title {
+.optionsTitle {
+  display: block;
   cursor: default;
   font-weight: bold;
   margin-bottom: 10px;
@@ -34,14 +34,14 @@
   list-style: none;
 }
 
-.women-clothes-links {
+.optionLink {
   text-decoration: none;
   color: black;
   cursor: pointer;
 }
 
 @media (max-width: 1200px) {
-  .options-container {
+  .optionsContainer {
     width: 65%;
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import "../assets/css/fonts.css";
+import { Link } from "react-router-dom";
 import shoppingBagImage from "./assets/shopping-bag-bw.png";
+import "../assets/css/fonts.css";
 import "./ShoppingCartDrawer.css";
 
 class ShoppingCartDrawer extends Component {
@@ -39,7 +40,7 @@ class ShoppingCartDrawer extends Component {
               <p>Fill it with with your favourite items from our collection!</p>
               <div>
                 <button className="see-collection-button">
-                  See collection
+                  <Link to="/women">See collection</Link>
                 </button>
               </div>
             </div>

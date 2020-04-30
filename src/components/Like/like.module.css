@@ -1,10 +1,10 @@
-.like-button {
+.likeButton {
   background-color: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
 }
 
-.like-button:focus {
+.likeButton:focus {
   outline: none;
 }

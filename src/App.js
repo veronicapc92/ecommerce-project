@@ -3,7 +3,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import NavBar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
-import SideDrawer from "./components/Navbar/SideDrawer";
+import SideDrawer from "./components/Navbar/SideDrawer/SideDrawer";
 import Backdrop from "./components/Backdrop/Backdrop";
 import Homepage from "./components/Homepage/Homepage";
 import ProductsPage from "./components/ProductsPage/ProductsPage";

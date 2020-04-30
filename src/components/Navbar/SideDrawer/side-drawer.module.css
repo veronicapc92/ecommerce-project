@@ -1,0 +1,30 @@
+.options {
+  padding: 20px;
+  height: 100vh;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.option {
+  padding-top: 35px;
+  cursor: default;
+  color: black;
+  font-family: "Muli", sans-serif;
+  font-size: 20px;
+}
+
+.close {
+  font-size: 40px;
+  text-align: right;
+  padding-right: 15px;
+  color: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.optionLink {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}

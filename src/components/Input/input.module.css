@@ -1,17 +1,17 @@
-.input-container {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .input {
+  border: none;
   width: 300px;
   height: 30px;
   margin-top: 30px;
   font-family: "Muli", sans-serif;
   font-size: 15px;
   padding-bottom: 5px;
-  border: none;
   border-bottom: 0.6px solid lightgray;
 }
 
@@ -19,7 +19,7 @@
   outline: none;
 }
 
-.validation-error-message {
+.errorMessage {
   padding-top: 5px;
   width: 300px;
   height: 20px;
