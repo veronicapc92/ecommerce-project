@@ -1,20 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../assets/css/fonts.css";
 import "./ProductList.css";
+import styles from "./product-list.module.css";
 
 const ProductList = ({ productTypes }) => {
   return (
-    <div className="filter-div">
-      <ul className="filter-div-list">
+    <div className={styles.container}>
+      <ul className={styles.list}>
         {productTypes.map((productType) => (
-          <li className="ladies-product-type" key={productType.name}>
-            <Link
-              className="ladies-product-type"
-              to={`/women/${productType.route}`}
-            >
-              {productType.name}
-            </Link>
+          <li className={styles.productType} key={productType.name}>
+            <Link to={`/women/${productType.route}`}>{productType.name}</Link>
           </li>
         ))}
       </ul>

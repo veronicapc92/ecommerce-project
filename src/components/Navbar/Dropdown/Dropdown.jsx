@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "../../assets/css/fonts.css";
 import styles from "./dropdown.module.css";
 
 const Menu = ({ productTypes }) => {

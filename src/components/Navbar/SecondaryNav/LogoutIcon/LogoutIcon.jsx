@@ -1,6 +1,6 @@
 import React from "react";
 
-const Logout = () => {
+const LogoutIcon = () => {
   function handleLogout() {
     localStorage.removeItem("token");
     window.location = "/";
@@ -13,4 +13,4 @@ const Logout = () => {
   );
 };
 
-export default Logout;
+export default LogoutIcon;

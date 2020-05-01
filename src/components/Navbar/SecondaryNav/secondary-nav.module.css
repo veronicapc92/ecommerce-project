@@ -1,0 +1,31 @@
+.nav {
+  width: 100px;
+  margin-right: 200px;
+}
+
+.nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.option {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+@media (max-width: 1020px) {
+  .nav {
+    margin-right: 20px;
+    width: 100px;
+  }
+}
+
+@media (min-width: 1021px) {
+  .nav {
+    margin-right: 40px;
+    width: 130px;
+  }
+}

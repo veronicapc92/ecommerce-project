@@ -1,0 +1,12 @@
+.icon {
+  position: relative;
+}
+.numberOfItems {
+  position: absolute;
+  color: white;
+  font-size: 11px;
+  /* bottom: 0px;
+  left: 32%; */
+  font-weight: bold;
+  font-family: "Muli", sans-serif;
+}
