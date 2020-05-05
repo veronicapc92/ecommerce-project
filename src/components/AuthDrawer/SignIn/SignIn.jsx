@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import Input from "./../Input/Input";
+import Input from "../../Input/Input";
 import Joi from "@hapi/joi";
-import { login } from "../../services/authService";
-import "../assets/css/fonts.css";
-import "./SignIn.css";
+import { login } from "../../../services/authService";
+import styles from "./sign-in.module.css";
 
 class SignIn extends Component {
   state = {
@@ -77,8 +76,8 @@ class SignIn extends Component {
     const { data, errors } = this.state;
     return (
       <React.Fragment>
-        <h1 className="sign-in-headline">Sign In</h1>
-        <form onSubmit={this.handleSubmit} className="sign-in-form">
+        <h1 className={styles.headline}>Sign In</h1>
+        <form onSubmit={this.handleSubmit}>
           <Input
             value={data.email}
             name="email"
@@ -93,12 +92,12 @@ class SignIn extends Component {
             onInput={this.handleInput}
             error={errors.password}
           />
-          <button className="sign-in-form-button">Enter</button>
+          <button className={styles.button}>Enter</button>
         </form>
-        <p className="sign-in-paragraph">
-          Don't have an data?{" "}
+        <p className={styles.registerParagraph}>
+          Don't have an account?{" "}
           <span
-            className="sign-in-span"
+            className={styles.registerSpan}
             onClick={this.props.onRegisterSpanClick}
           >
             Register

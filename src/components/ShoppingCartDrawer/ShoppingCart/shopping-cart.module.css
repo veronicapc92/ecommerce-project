@@ -1,0 +1,107 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heading {
+  margin: 0;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.itemContainer {
+  width: 90%;
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 0.5px solid darkgray;
+}
+
+.image {
+  width: 130px;
+  height: auto;
+}
+
+.details {
+  width: 100%;
+  margin-left: 10px;
+  padding-top: 10px;
+  position: relative;
+}
+
+.name {
+  margin: 0;
+  font-size: 15px;
+  font-weight: normal;
+}
+
+.size {
+  margin-top: 10px;
+  font-size: 14px;
+  color: darkgray;
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.quantity {
+  font-size: 14px;
+  margin: 0 5px;
+  border-bottom: 1px solid black;
+}
+
+.price {
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+  font-weight: bold;
+}
+
+.checkoutContainer {
+  box-shadow: 0px -5px 10px 0px rgba(0, 0, 0, 0.06);
+  background-color: white;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  padding-top: 25px;
+  margin-top: 11px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.totalPriceContainer {
+  width: 90%;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
+.totalPrice {
+  font-size: 20px;
+}
+
+.checkoutButton {
+  margin: 30px 0 50px 0;
+  border: none;
+  width: 200px;
+  height: 40px;
+  background-color: black;
+  font-family: "Muli", sans-serif;
+  font-size: 15px;
+  color: white;
+}
+
+.checkoutButton:hover {
+  background-color: white;
+  border: 1.5px solid black;
+  color: black;
+}

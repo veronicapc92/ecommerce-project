@@ -8,9 +8,9 @@ import Backdrop from "./components/Backdrop/Backdrop";
 import Homepage from "./components/Homepage/Homepage";
 import ProductsPage from "./components/ProductsPage/ProductsPage";
 import FilteredProductTypePage from "./components/FilteredProductTypePage/FilteredProductTypePage";
-import SignInDrawer from "./components/SignInDrawer/SignInDrawer";
+import AuthDrawer from "./components/AuthDrawer/AuthDrawer";
 import ShoppingCartDrawer from "./components/ShoppingCartDrawer/ShoppingCartDrawer";
-import NotFound from "./components/NotFound";
+import NotFound from "./components/NotFound/NotFound";
 import http from "./services/httpService";
 import config from "./config.json";
 
@@ -75,7 +75,7 @@ class App extends Component {
     this.setState({ shoppingCartDrawerOpen: true });
   };
 
-  handleCheckout = () => {
+  handleCloseShoppingCart = () => {
     this.setState({ shoppingCartDrawerOpen: false });
   };
 
@@ -186,7 +186,7 @@ class App extends Component {
           show={sideDrawerOpen}
           onCloseNavbar={this.handleCloseNavbar}
         />
-        <SignInDrawer
+        <AuthDrawer
           show={!user && signInDrawerOpen}
           registerDrawerOpen={registerDrawerOpen}
           onXButtonClick={this.handleXButtonClick}
@@ -195,7 +195,7 @@ class App extends Component {
         />
         <ShoppingCartDrawer
           show={shoppingCartDrawerOpen}
-          onCheckout={this.handleCheckout}
+          onCloseShoppingCart={this.handleCloseShoppingCart}
           cart={cart}
           onIncrementQuantity={this.handleIncrementQuantity}
           onDecrementQuantity={this.handleDecrementQuantity}

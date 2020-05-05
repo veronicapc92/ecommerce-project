@@ -1,9 +1,13 @@
 .container {
   margin: 0 5px;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .image {
+  display: block;
   width: 20vw;
   height: auto;
   min-width: 320px;
@@ -52,10 +56,10 @@
 
 .info {
   position: relative;
-  width: 100%;
+  width: 95%;
   font-family: "Quicksand", sans-serif;
   font-size: 14px;
-  padding-top: 5px;
+  padding-top: 7px;
   padding-bottom: 35px;
   display: grid;
   grid-template-columns: 3fr 1fr;

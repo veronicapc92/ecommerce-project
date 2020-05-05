@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import ProductCards from "../ProductCards/ProductCards";
 import ProductList from "../ProductList/ProductList";
 import "../assets/css/fonts.css";
-import "../ProductsPage/ProductsPage.css";
 
 class FilteredProductTypePage extends Component {
   render() {

@@ -1,0 +1,41 @@
+.container {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.heading1,
+.heading2,
+.paragraph {
+  font-family: "Muli", sans-serif;
+  margin: 0;
+}
+
+.heading1 {
+  font-size: 60px;
+}
+
+.heading2 {
+  font-size: 160px;
+}
+
+.button {
+  border: none;
+  cursor: pointer;
+  margin-top: 60px;
+  width: 180px;
+  height: 40px;
+  background-color: black;
+  font-family: "Muli", sans-serif;
+  font-size: 15px;
+  color: white;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: white;
+  border: 1.5px solid black;
+  color: black;
+}

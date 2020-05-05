@@ -1,30 +1,23 @@
-import React, { Component } from "react";
+import React from "react";
 import ProductList from "../ProductList/ProductList";
 import ProductCards from "../ProductCards/ProductCards";
-import "../assets/css/fonts.css";
-import "./ProductsPage.css";
+import styles from "./products-page.module.css";
 
-class ProductsPage extends Component {
-  render() {
-    const { products, productTypes, onLike, onAddToCart } = this.props;
-
-    return (
-      <React.Fragment>
-        <div className="product-page-container">
-          <div className="product-type-filter-container">
-            <ProductList productTypes={productTypes} />
-          </div>
-          <div className="images-container">
-            <ProductCards
-              filteredProducts={products}
-              onLike={onLike}
-              onAddToCart={onAddToCart}
-            />
-          </div>
-        </div>
-      </React.Fragment>
-    );
-  }
-}
+const ProductsPage = ({ products, productTypes, onLike, onAddToCart }) => {
+  return (
+    <div className={styles.container}>
+      <div className={styles.filterContainer}>
+        <ProductList productTypes={productTypes} />
+      </div>
+      <div className={styles.products}>
+        <ProductCards
+          filteredProducts={products}
+          onLike={onLike}
+          onAddToCart={onAddToCart}
+        />
+      </div>
+    </div>
+  );
+};
 
 export default ProductsPage;

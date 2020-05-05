@@ -1,0 +1,31 @@
+:root {
+  --filter-container-width: 250px;
+}
+
+.container {
+  margin-top: 40px;
+  display: flex;
+}
+
+.filterContainer {
+  width: var(--filter-container-width);
+  height: 100vh;
+}
+
+.products {
+  width: calc(100vw - var(--filter-container-width));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-right: 2vw;
+}
+
+@media (max-width: 900px) {
+  .filterContainer {
+    display: none;
+  }
+  .products {
+    width: 100vw;
+    padding-right: 0;
+  }
+}

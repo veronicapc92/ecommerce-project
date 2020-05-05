@@ -1,0 +1,41 @@
+.container {
+  margin-top: 150px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image {
+  width: 100px;
+  height: auto;
+}
+
+.message {
+  margin: 25px 0 10px 0;
+  font-size: 20px;
+}
+
+.message,
+.container p {
+  width: 90%;
+  text-align: center;
+}
+
+.button {
+  border: none;
+  margin-top: 20px;
+  width: 180px;
+  height: 40px;
+  background-color: black;
+  font-family: "Muli", sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  color: white;
+}
+
+.button:hover {
+  background-color: white;
+  border: 1.5px solid black;
+  color: black;
+}

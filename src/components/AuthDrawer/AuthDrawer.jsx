@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import XButton from "../XButton/XButton";
-import Register from "./Register";
-import SignIn from "./SignIn";
-import "../assets/css/fonts.css";
-import "./SignInDrawer.css";
+import Register from "./Register/Register";
+import SignIn from "./SignIn/SignIn";
+import "./AuthDrawer.css";
 
 class SignInDrawer extends Component {
   render() {
@@ -22,8 +20,8 @@ class SignInDrawer extends Component {
 
     return (
       <div className={classes}>
-        <div className="close-form-icon">
-          <XButton onXButtonClick={onXButtonClick} />
+        <div className="close-form-icon" onClick={onXButtonClick}>
+          ×
         </div>
         {registerDrawerOpen && <Register />}
         {!registerDrawerOpen && (

@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import Input from "./../Input/Input";
+import Input from "../../Input/Input";
 import Joi from "@hapi/joi";
-import { register } from "../../services/userService";
-import "../assets/css/fonts.css";
-import "./Register.css";
+import { register } from "../../../services/userService";
+import styles from "./register.module.css";
 
 class Register extends Component {
   state = {
@@ -78,8 +77,8 @@ class Register extends Component {
     const { data, errors } = this.state;
     return (
       <React.Fragment>
-        <h1 className="register-headline">Register</h1>
-        <form onSubmit={this.handleSubmit} className="register-form">
+        <h1 className={styles.headline}>Register</h1>
+        <form onSubmit={this.handleSubmit}>
           <Input
             name="name"
             value={data.name}
@@ -108,7 +107,7 @@ class Register extends Component {
             onInput={this.handleInput}
             error={errors.confirmedPassword}
           />
-          <button className="register-form-button">Enter</button>
+          <button className={styles.button}>Enter</button>
         </form>
       </React.Fragment>
     );
