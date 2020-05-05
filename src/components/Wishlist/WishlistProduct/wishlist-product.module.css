@@ -1,0 +1,78 @@
+.container {
+  margin: 0 5px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imageContainer {
+  position: relative;
+  cursor: pointer;
+}
+
+.close {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.imageContainer:hover .close {
+  opacity: 1;
+}
+
+.image {
+  display: block;
+  width: 20vw;
+  height: auto;
+  min-width: 320px;
+  max-width: 600px;
+}
+
+.info {
+  text-align: center;
+  width: 100%;
+  font-family: "Quicksand", sans-serif;
+  font-size: 14px;
+  padding: 7px 0;
+  background-color: white;
+}
+
+.name,
+.price {
+  margin: 3px 0;
+}
+
+.button {
+  cursor: pointer;
+  border: 1.5px solid black;
+  width: 80%;
+  height: 40px;
+  background-color: white;
+  font-family: "Muli", sans-serif;
+  font-size: 15px;
+  color: black;
+  margin-bottom: 50px;
+}
+
+.button:hover {
+  background-color: black;
+  border: none;
+  color: white;
+}
+
+@media (max-width: 700px) {
+  .image {
+    width: 40vw;
+    height: auto;
+    min-width: 320px;
+    max-width: 800px;
+  }
+}

@@ -10,6 +10,7 @@ import ProductsPage from "./components/ProductsPage/ProductsPage";
 import FilteredProductTypePage from "./components/FilteredProductTypePage/FilteredProductTypePage";
 import AuthDrawer from "./components/AuthDrawer/AuthDrawer";
 import ShoppingCartDrawer from "./components/ShoppingCartDrawer/ShoppingCartDrawer";
+import Wishlist from "./components/Wishlist/Wishlist";
 import NotFound from "./components/NotFound/NotFound";
 import http from "./services/httpService";
 import config from "./config.json";
@@ -87,6 +88,13 @@ class App extends Component {
     this.setState({ products });
   };
 
+  handleDeleteWishlistProduct = (product) => {
+    const products = [...this.state.products];
+    const index = products.indexOf(product);
+    products[index] = { ...products[index] };
+    products[index].liked = false;
+    this.setState({ products });
+  };
   // handleAddToCart = (product) => {
   //   const products = [...this.state.products];
   //   const index = products.indexOf(product);
@@ -223,6 +231,17 @@ class App extends Component {
                 productTypes={productTypes}
                 onLike={this.handleLike}
                 onAddToCart={this.handleAddToCart}
+              />
+            )}
+          ></Route>
+          <Route
+            path="/wishlist"
+            render={(props) => (
+              <Wishlist
+                {...props}
+                products={products}
+                onAddToCart={this.handleAddToCart}
+                onDeleteWishlistProduct={this.handleDeleteWishlistProduct}
               />
             )}
           ></Route>
