@@ -18,7 +18,7 @@ const Menu = ({ productTypes }) => {
         </div>
         <div>
           <span className={styles.optionsTitle}>Clothing</span>
-          <ul className={styles.options}>
+          <ul className={styles.activeOptions}>
             {productTypes.map((productType) => {
               return (
                 <li key={productType.name} className={styles.option}>

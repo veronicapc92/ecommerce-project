@@ -7,8 +7,6 @@ class FilteredProductTypePage extends Component {
   render() {
     const { products, productTypes, onLike } = this.props;
 
-    console.log(products);
-
     let filteredProducts = products.filter(
       (p) => p.type === this.props.match.params.route
     );

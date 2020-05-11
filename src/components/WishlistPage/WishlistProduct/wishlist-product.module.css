@@ -50,7 +50,8 @@
   margin: 3px 0;
 }
 
-.button {
+.button,
+.sizesContainer {
   cursor: pointer;
   border: 1.5px solid black;
   width: 80%;
@@ -62,10 +63,25 @@
   margin-bottom: 50px;
 }
 
-.button:hover {
+.button:hover,
+.sizeButton:hover {
   background-color: black;
   border: none;
   color: white;
+}
+
+.sizesContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sizeButton {
+  cursor: pointer;
+  height: 80%;
+  width: 32px;
+  border: none;
+  background-color: white;
 }
 
 @media (max-width: 700px) {

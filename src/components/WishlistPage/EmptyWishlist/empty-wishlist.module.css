@@ -1,20 +1,24 @@
-.headline {
-  margin-top: 60px;
-  padding-bottom: 30px;
+.container {
   text-align: center;
-  font-size: 28px;
+  font-family: "Muli", sans-serif;
+  margin: 0 60px;
 }
 
-.button {
-  display: block;
-  margin: auto auto;
+.heading {
+  margin: 25vh 0 0 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.paragraph {
+  margin: 15px 0 0 0;
 }
 
 .button {
   cursor: pointer;
+  margin: 8vh 0 30vh 0;
   border: none;
-  margin-top: 60px;
-  width: 240px;
+  width: 200px;
   height: 40px;
   background-color: black;
   font-family: "Muli", sans-serif;

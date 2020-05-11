@@ -10,10 +10,11 @@ import ProductsPage from "./components/ProductsPage/ProductsPage";
 import FilteredProductTypePage from "./components/FilteredProductTypePage/FilteredProductTypePage";
 import AuthDrawer from "./components/AuthDrawer/AuthDrawer";
 import ShoppingCartDrawer from "./components/ShoppingCartDrawer/ShoppingCartDrawer";
-import Wishlist from "./components/Wishlist/Wishlist";
+import WishlistPage from "./components/WishlistPage/WishlistPage";
 import NotFound from "./components/NotFound/NotFound";
 import http from "./services/httpService";
 import config from "./config.json";
+import ProductPage from "./components/ProductPage/ProductPage";
 
 class App extends Component {
   state = {
@@ -24,6 +25,7 @@ class App extends Component {
     products: [],
     productTypes: [],
     cart: [],
+    chosenProduct: {},
   };
 
   async componentDidMount() {
@@ -82,8 +84,7 @@ class App extends Component {
 
   handleLike = (product) => {
     const products = [...this.state.products];
-    const index = products.indexOf(product);
-    products[index] = { ...products[index] };
+    const index = products.findIndex((p) => p._id === product._id);
     products[index].liked = !products[index].liked;
     this.setState({ products });
   };
@@ -122,7 +123,7 @@ class App extends Component {
         count: 1,
       });
 
-    this.setState({ cart });
+    this.setState({ cart, addToCartClicked: false });
   };
 
   handleIncrementQuantity = (item) => {
@@ -158,6 +159,11 @@ class App extends Component {
   //   //   (p) => p.type === productType.name
   //   // );
   //   this.setState({ currentProductType: productType.name });
+  // };
+
+  // handleProductChoice = (product) => {
+  //   const chosenProduct = product;
+  //   this.setState({ chosenProduct });
   // };
 
   render() {
@@ -231,13 +237,24 @@ class App extends Component {
                 productTypes={productTypes}
                 onLike={this.handleLike}
                 onAddToCart={this.handleAddToCart}
+                onProductChoice={this.handleProductChoice}
               />
             )}
           ></Route>
           <Route
+            path="/:productRoute"
+            render={(props) => (
+              <ProductPage
+                {...props}
+                products={products}
+                onLike={this.handleLike}
+              />
+            )}
+          />
+          <Route
             path="/wishlist"
             render={(props) => (
-              <Wishlist
+              <WishlistPage
                 {...props}
                 products={products}
                 onAddToCart={this.handleAddToCart}

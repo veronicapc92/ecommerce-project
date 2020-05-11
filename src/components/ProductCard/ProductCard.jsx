@@ -1,15 +1,16 @@
 import React from "react";
-import Like from "./Like/Like";
-import "../assets/css/fonts.css";
+import { Link } from "react-router-dom";
+import Like from "../Like/Like";
 import styles from "./product-card.module.css";
 
-const ProductCard = ({ product, onLike, onAddToCart }) => {
+const ProductCard = ({ product, onLike, onAddToCart, onProductChoice }) => {
   const sizes = ["XS", "S", "M", "L", "XL"];
-
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>
-        <img className={styles.image} src={product.link} alt={product.name} />
+        <Link to={`/${product.productRoute}`}>
+          <img className={styles.image} src={product.link} alt={product.name} />
+        </Link>
         <div className={styles.drawer}>
           <div>Select size</div>
           <div className={styles.sizes}>

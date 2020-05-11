@@ -1,20 +1,15 @@
 import React from "react";
+import EmptyWishlist from "./EmptyWishlist/EmptyWishlist";
 import WishlistProduct from "./WishlistProduct/WishlistProduct";
-import styles from "./wishlist.module.css";
+import styles from "./wishlist-page.module.css";
 
-const Wishlist = ({ products, onAddToCart, onDeleteWishlistProduct }) => {
+const WishlistPage = ({ products, onAddToCart, onDeleteWishlistProduct }) => {
   const likedProducts = products.filter((p) => p.liked === true);
 
   return (
     <React.Fragment>
-      <h1 className={styles.heading}>Your wishlist</h1>
-      {likedProducts.length === 0 && (
-        <div>
-          <div className={styles.div}>
-            You have currently no items in your wishlist.
-          </div>
-        </div>
-      )}
+      <h1 className={styles.heading}>Wishlist</h1>
+      {likedProducts.length === 0 && <EmptyWishlist />}
       {likedProducts.length > 0 && (
         <div>
           <p className={styles.paragraph}>
@@ -36,4 +31,4 @@ const Wishlist = ({ products, onAddToCart, onDeleteWishlistProduct }) => {
   );
 };
 
-export default Wishlist;
+export default WishlistPage;

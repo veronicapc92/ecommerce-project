@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   border-bottom: 0.05px solid lightgray;
+  cursor: default;
 }
 
 .optionsContainer {
@@ -14,16 +15,19 @@
   font-family: "Muli", sans-serif;
 }
 
-.options {
+.options,
+.activeOptions {
   padding: 0;
   display: flex;
   flex-direction: column;
-  cursor: default;
+}
+
+.activeOptions {
+  cursor: pointer;
 }
 
 .optionsTitle {
   display: block;
-  cursor: default;
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -36,7 +40,6 @@
 .optionLink {
   text-decoration: none;
   color: black;
-  cursor: pointer;
 }
 
 @media (max-width: 1200px) {

@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import DrawerToggleButton from "./../DrawerToggleButton/DrawerToggleButton";
-import WomenDropdown from "../Dropdown/Dropdown";
+import Dropdown from "../Dropdown/Dropdown";
 import logo from "./assets/gosha_transparent.png";
 import styles from "./main-nav.module.css";
 
@@ -24,7 +24,7 @@ const MainNav = ({ productTypes, onDrawerToggleClick }) => {
               Women
             </NavLink>
             <div className={styles.dropdownMenu}>
-              <WomenDropdown productTypes={productTypes} />
+              <Dropdown productTypes={productTypes} />
             </div>
           </li>
           <li className={styles.option}>Men</li>
