@@ -14,32 +14,99 @@
 }
 
 .container {
-  width: 40%;
-  position: relative;
-  margin-left: 5px;
-  /* background-color: pink; */
-  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.button {
-  position: absolute;
-  top: 0;
-  left: 0;
+.h1Container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.h1Container,
+.h2Container,
+.colorsContainer {
+  width: 75%;
 }
 
 .heading1 {
   margin: 20px 0 10px 0;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 600;
+  cursor: default;
+}
+
+.h2Container {
+  text-align: start;
+  cursor: default;
 }
 
 .heading2 {
-  margin: 0;
-  font-size: 20px;
+  margin: 10px 0 0 0;
+  font-size: 18px;
   font-weight: 500;
 }
 
-.dropdown {
-  width: 20vw;
-  height: 30px;
+.colorsContainer {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.blueContainer {
+  width: 22px;
+  height: 22px;
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.green,
+.red {
+  width: 20px;
+  height: 20px;
+  margin: 0 3px;
+}
+
+.blue {
+  width: 20px;
+  height: 20px;
+  left: 0;
+  background-color: #2755ab;
+}
+
+.red {
+  background-color: #992323;
+}
+
+.green {
+  background-color: #0f5e3f;
+}
+
+.button,
+.disabledButton {
+  cursor: pointer;
+  border: none;
+  margin-top: 60px;
+  width: 240px;
+  height: 40px;
+  background-color: black;
+  font-family: "Muli", sans-serif;
+  font-size: 15px;
+  color: white;
+}
+
+.button:hover {
+  background-color: white;
+  border: 1.5px solid black;
+  color: black;
+}
+
+.disabledButton {
+  cursor: default;
+  background-color: rgba(0, 0, 0, 0.5);
 }

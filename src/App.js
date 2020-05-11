@@ -242,12 +242,13 @@ class App extends Component {
             )}
           ></Route>
           <Route
-            path="/:productRoute"
+            path="/products/:productRoute"
             render={(props) => (
               <ProductPage
                 {...props}
                 products={products}
                 onLike={this.handleLike}
+                onAddToCart={this.handleAddToCart}
               />
             )}
           />

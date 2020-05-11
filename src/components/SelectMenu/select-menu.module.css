@@ -1,0 +1,43 @@
+.select {
+  width: 75%;
+  position: relative;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: "Muli", sans-serif;
+}
+
+.dropdown {
+  width: 100%;
+  border: 1px gainsboro solid;
+  margin-top: 50px;
+  height: 40px;
+  line-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dropdown :first-child,
+.dropdown :nth-child(2) {
+  margin: 0 15px;
+}
+
+.dropdownContainer {
+  position: absolute;
+  width: 100%;
+  top: 90px;
+  cursor: pointer;
+  border: 1px black solid;
+  border-top: none;
+  text-align: center;
+  background-color: white;
+}
+
+.option {
+  padding: 8px 0;
+}
+
+.option:hover {
+  background-color: black;
+  color: white;
+}

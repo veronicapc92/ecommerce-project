@@ -1,42 +1,64 @@
 import React, { Component } from "react";
 import Like from "../Like/Like";
+import SelectMenu from "./../SelectMenu/SelectMenu";
 import styles from "./product-page.module.css";
 
-// const ProductPage = ({ products }) => {
-//   console.log(products[0]);
-//   return <div>Hello</div>;
-// };
-
-// export default ProductPage;
-
 class ProductPage extends Component {
+  state = { dropdownOpen: false, size: "Choose your size" };
+
+  handleDropdown = () => {
+    this.setState({ dropdownOpen: !this.state.dropdownOpen });
+  };
+
+  handleSizeChoice = (size) => {
+    this.setState({ size, dropdownOpen: false });
+  };
+
   render() {
-    let product = this.props.products.find(
-      (p) => p.productRoute === this.props.match.params.productRoute
+    const { dropdownOpen, size } = this.state;
+    const { products, match, onLike, onAddToCart } = this.props;
+    let product = products.find(
+      (p) => p.productRoute === match.params.productRoute
     );
     product = { ...product };
+
     return (
       <div className={styles.mainContainer}>
         <img src={product.link} className={styles.image1} />
         <img src={product.secondLink} className={styles.image2} />
         <div className={styles.container}>
-          <div className={styles.button}>
-            {" "}
-            <Like
-              className={styles.button}
-              product={product}
-              onLike={this.props.onLike}
-            />
+          <div className={styles.h1Container}>
+            <h1 className={styles.heading1}>{product.name}</h1>
+            <Like product={product} onLike={onLike} />
           </div>
-          <h1 className={styles.heading1}>{product.name}</h1>
-          <h2 className={styles.heading2}>{`£${product.price}`}</h2>
-          <select className={styles.dropdown} id="sizes">
-            <option value="XS">XS</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-          </select>
+          <div className={styles.h2Container}>
+            <h2 className={styles.heading2}>{`£${product.price}`}</h2>
+          </div>
+          <div className={styles.colorsContainer}>
+            <div className={styles.blueContainer}>
+              <div className={styles.blue}></div>
+            </div>
+            <div className={styles.green}></div>
+            <div className={styles.red}></div>
+          </div>
+          <SelectMenu
+            dropdownOpen={dropdownOpen}
+            size={size}
+            onDropdown={this.handleDropdown}
+            onSizeChoice={this.handleSizeChoice}
+          />
+          {this.state.size === "Choose your size" ? (
+            <button className={styles.button} onClick={this.handleDropdown}>
+              Add to cart
+            </button>
+          ) : (
+            <button
+              className={styles.button}
+              onClick={() => onAddToCart(product, size)}
+            >
+              Add to cart
+            </button>
+          )}
         </div>
       </div>
     );

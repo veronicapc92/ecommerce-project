@@ -8,7 +8,7 @@ const ProductCard = ({ product, onLike, onAddToCart, onProductChoice }) => {
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>
-        <Link to={`/${product.productRoute}`}>
+        <Link to={`/products/${product.productRoute}`}>
           <img className={styles.image} src={product.link} alt={product.name} />
         </Link>
         <div className={styles.drawer}>
