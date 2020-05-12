@@ -10,27 +10,13 @@ class SignIn extends Component {
     errors: {},
   };
 
-  schema = {
+  schema = Joi.object({
     email: Joi.string()
       .required()
-      .email({ minDomainSegments: 2, tlds: { allow: false } })
+      .email({ tlds: { allow: false } })
       .label("E-mail"),
-    password: Joi.string().required().min(6).max(16).label("Password"),
-  };
-
-  validate = () => {
-    const options = { abortEarly: false };
-    const schema = Joi.object(this.schema);
-    const { error } = schema.validate(this.state.data, options);
-
-    if (!error) return null;
-
-    const errors = {};
-    for (let item of error.details) {
-      errors[item.path[0]] = "This field is required";
-    }
-    return errors;
-  };
+    password: Joi.string().required().label("Password"),
+  });
 
   handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,23 +39,46 @@ class SignIn extends Component {
     }
   };
 
-  // validateProperty = ({ name, value }) => {
-  //   const obj = { [name]: value };
-  //   const localSchema = Joi.object({ [name]: this.schema[name] });
-  //   const { error } = localSchema.validate(obj);
-  //   return error ? error.details[0].message : null;
-  // };
+  validate = () => {
+    const options = { abortEarly: false };
+    const { error } = this.schema.validate(this.state.data, options);
+
+    if (!error) return null;
+
+    const errors = {};
+    for (let item of error.details) {
+      if (item.message.includes("E-mail"))
+        errors[item.path[0]] = "Please enter a valid e-mail address";
+      if (item.message.includes("empty"))
+        errors[item.path[0]] = "This field is required";
+    }
+
+    return errors;
+  };
+
+  validateProperty = ({ name, value }) => {
+    const obj = { [name]: value };
+    const schema = Joi.object({ [name]: this.schema.extract(name) });
+    const { error } = schema.validate(obj);
+
+    if (!error) return null;
+
+    if (error.details[0].message.includes("empty"))
+      return "This field is required";
+    if (error.details[0].message.includes("E-mail"))
+      return "Please enter a valid e-mail address";
+  };
 
   handleInput = ({ currentTarget: input }) => {
-    // const errors = { ...this.state.errors };
-    // const errorMessage = this.validateProperty(input);
-    // if (errorMessage) errors[input.name] = errorMessage;
-    // else delete errors[input.name];
+    const errors = { ...this.state.errors };
+    const errorMessage = this.validateProperty(input);
+    if (errorMessage) errors[input.name] = errorMessage;
+    else delete errors[input.name];
 
     const data = { ...this.state.data };
     data[input.name] = input.value;
 
-    this.setState({ data });
+    this.setState({ data, errors });
   };
 
   render() {
@@ -79,18 +88,20 @@ class SignIn extends Component {
         <h1 className={styles.headline}>Sign In</h1>
         <form onSubmit={this.handleSubmit}>
           <Input
-            value={data.email}
             name="email"
+            value={data.email}
             placeholder="E-mail *"
             onInput={this.handleInput}
             error={errors.email}
+            onPropertyValidation={this.handleInput}
           />
           <Input
-            value={data.password}
             name="password"
+            value={data.password}
             placeholder="Password *"
             onInput={this.handleInput}
             error={errors.password}
+            onPropertyValidation={this.handleInput}
           />
           <button className={styles.button}>Enter</button>
         </form>

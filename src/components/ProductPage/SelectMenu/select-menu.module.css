@@ -6,10 +6,10 @@
   font-family: "Muli", sans-serif;
 }
 
-.dropdown {
+.dropdown,
+.openDropdown {
   width: 100%;
   border: 1px gainsboro solid;
-  margin-top: 50px;
   height: 40px;
   line-height: 40px;
   display: flex;
@@ -18,14 +18,21 @@
 }
 
 .dropdown :first-child,
-.dropdown :nth-child(2) {
+.dropdown :nth-child(2),
+.openDropdown :first-child,
+.openDropdown :nth-child(2) {
   margin: 0 15px;
+}
+
+.openDropdown {
+  border: 1px black solid;
+  border-bottom: none;
 }
 
 .dropdownContainer {
   position: absolute;
   width: 100%;
-  top: 90px;
+  top: 41px;
   cursor: pointer;
   border: 1px black solid;
   border-top: none;

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Like from "../Like/Like";
-import SelectMenu from "./../SelectMenu/SelectMenu";
+import SelectMenu from "./SelectMenu/SelectMenu";
 import styles from "./product-page.module.css";
 
 class ProductPage extends Component {
@@ -41,6 +41,7 @@ class ProductPage extends Component {
             <div className={styles.green}></div>
             <div className={styles.red}></div>
           </div>
+          <div className={styles.fakeLinkContainer}>Discover your size</div>
           <SelectMenu
             dropdownOpen={dropdownOpen}
             size={size}

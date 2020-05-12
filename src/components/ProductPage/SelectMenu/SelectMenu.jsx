@@ -6,11 +6,15 @@ class SelectMenu extends Component {
     const { dropdownOpen, size, onSizeChoice, onDropdown } = this.props;
     const sizes = ["XS", "S", "M", "L", "XL"];
 
+    let classes = styles.dropdown;
+    if (dropdownOpen) classes = styles.openDropdown;
+
     return (
       <div className={styles.select}>
-        <div className={styles.dropdown} onClick={onDropdown}>
+        <div className={classes} onClick={onDropdown}>
           <span>{size}</span>
-          <i class="fas fa-chevron-down fa-sm"></i>
+          {!dropdownOpen && <i className="fas fa-chevron-down fa-sm"></i>}
+          {dropdownOpen && <i className="fas fa-chevron-up fa-sm"></i>}
         </div>
         {dropdownOpen && (
           <div className={styles.dropdownContainer}>

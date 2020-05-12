@@ -220,11 +220,12 @@ class App extends Component {
           <Route
             path="/women/:route"
             render={(props) => (
-              <FilteredProductTypePage
+              <ProductsPage
                 {...props}
                 products={products}
                 productTypes={productTypes}
                 onLike={this.handleLike}
+                onAddToCart={this.handleAddToCart}
               />
             )}
           ></Route>
@@ -237,7 +238,6 @@ class App extends Component {
                 productTypes={productTypes}
                 onLike={this.handleLike}
                 onAddToCart={this.handleAddToCart}
-                onProductChoice={this.handleProductChoice}
               />
             )}
           ></Route>

@@ -18,23 +18,14 @@ class Register extends Component {
       .label("E-mail"),
     password: Joi.string()
       .required()
-      .pattern(new RegExp("^[a-zA-Z0-9]{6,16}$"))
+      .pattern(
+        new RegExp(
+          "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,16})"
+        )
+      )
       .label("Password"),
     confirmedPassword: Joi.string().required(),
   });
-
-  validate = () => {
-    const options = { abortEarly: false };
-    const { error } = this.schema.validate(this.state.data, options);
-
-    if (!error) return null;
-
-    const errors = {};
-    for (let item of error.details) {
-      errors[item.path[0]] = "This field is required";
-    }
-    return errors;
-  };
 
   handleSubmit = async (e) => {
     e.preventDefault();
@@ -55,22 +46,36 @@ class Register extends Component {
     }
   };
 
-  // validateProperty = ({ name, value }) => {
-  //   const obj = { [name]: value };
-  //   const schema = Joi.object({ [name]: this.schema[name] });
-  //   const { error } = schema.validate(obj);
-  //   return error ? "This field is required" : null;
-  // };
+  validate = () => {
+    const options = { abortEarly: false };
+    const { error } = this.schema.validate(this.state.data, options);
+
+    if (!error) return null;
+
+    const errors = {};
+    for (let item of error.details) {
+      errors[item.path[0]] = "This field is required";
+    }
+    return errors;
+  };
+
+  validateProperty = ({ name, value }) => {
+    const obj = { [name]: value };
+    const schema = Joi.object({ [name]: this.schema.extract(name) });
+    const { error } = schema.validate(obj);
+    return error ? error.details[0].message : null;
+  };
 
   handleInput = ({ currentTarget: input }) => {
-    // const errors = { ...this.state.errors };
-    // const errorMessage = this.validateProperty(input);
-    // if (errorMessage) errors[input.name] = errorMessage;
-    // else delete errors[input.name];
+    const errors = { ...this.state.errors };
+    const errorMessage = this.validateProperty(input);
+    if (errorMessage) errors[input.name] = errorMessage;
+    else delete errors[input.name];
 
     const data = { ...this.state.data };
     data[input.name] = input.value;
-    this.setState({ data });
+
+    this.setState({ data, errors });
   };
 
   render() {

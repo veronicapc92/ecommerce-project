@@ -1,11 +1,12 @@
 .mainContainer {
   display: flex;
-  margin: 5vh 0 10vh 0;
+  margin: 20px 0 10vh 0;
+  padding-left: 30px;
 }
 
 .image1,
 .image2 {
-  height: 85vh;
+  height: 83vh;
   width: auto;
 }
 
@@ -27,7 +28,8 @@
 
 .h1Container,
 .h2Container,
-.colorsContainer {
+.colorsContainer,
+.fakeLinkContainer {
   width: 75%;
 }
 
@@ -50,7 +52,7 @@
 }
 
 .colorsContainer {
-  margin-top: 40px;
+  margin: 50px 0 50px 0;
   display: flex;
   align-items: center;
 }
@@ -65,18 +67,18 @@
   align-items: center;
 }
 
-.green,
-.red {
-  width: 20px;
-  height: 20px;
-  margin: 0 3px;
-}
-
 .blue {
   width: 20px;
   height: 20px;
   left: 0;
   background-color: #2755ab;
+}
+
+.green,
+.red {
+  width: 20px;
+  height: 20px;
+  margin: 0 3px;
 }
 
 .red {
@@ -87,11 +89,20 @@
   background-color: #0f5e3f;
 }
 
+.fakeLinkContainer {
+  cursor: default;
+  text-decoration: underline;
+  font-size: 13px;
+  font-weight: 400;
+  text-align: end;
+  margin-bottom: 3px;
+}
+
 .button,
 .disabledButton {
   cursor: pointer;
   border: none;
-  margin-top: 60px;
+  margin-top: 50px;
   width: 240px;
   height: 40px;
   background-color: black;

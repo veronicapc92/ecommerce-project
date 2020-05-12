@@ -3,7 +3,21 @@ import ProductList from "../ProductList/ProductList";
 import ProductCards from "../ProductCards/ProductCards";
 import styles from "./products-page.module.css";
 
-const ProductsPage = ({ products, productTypes, onLike, onAddToCart }) => {
+const ProductsPage = ({
+  products,
+  productTypes,
+  onLike,
+  onAddToCart,
+  match,
+}) => {
+  let filteredProducts = products;
+
+  if (match.params.route !== undefined) {
+    filteredProducts = products.filter((p) => p.type === match.params.route);
+  }
+
+  console.log(match.params.route);
+
   return (
     <div className={styles.container}>
       <div className={styles.filterContainer}>
@@ -11,7 +25,7 @@ const ProductsPage = ({ products, productTypes, onLike, onAddToCart }) => {
       </div>
       <div className={styles.products}>
         <ProductCards
-          filteredProducts={products}
+          filteredProducts={filteredProducts}
           onLike={onLike}
           onAddToCart={onAddToCart}
         />

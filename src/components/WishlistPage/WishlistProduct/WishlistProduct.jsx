@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import styles from "./wishlist-product.module.css";
 
 class WishlistProduct extends Component {
@@ -17,7 +18,13 @@ class WishlistProduct extends Component {
     return (
       <div className={styles.container}>
         <div className={styles.imageContainer}>
-          <img className={styles.image} src={product.link} alt={product.name} />
+          <Link to={`/products/${product.productRoute}`}>
+            <img
+              className={styles.image}
+              src={product.link}
+              alt={product.name}
+            />
+          </Link>
           <button
             className={styles.close}
             onClick={() => onDeleteWishlistProduct(product)}

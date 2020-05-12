@@ -1,7 +1,14 @@
 import React from "react";
 import styles from "./input.module.css";
 
-const Input = ({ name, value, placeholder, error, onInput }) => {
+const Input = ({
+  name,
+  value,
+  placeholder,
+  error,
+  onInput,
+  onPropertyValidation,
+}) => {
   return (
     <div className={styles.container}>
       <input
@@ -11,6 +18,7 @@ const Input = ({ name, value, placeholder, error, onInput }) => {
         type="text"
         placeholder={placeholder}
         onChange={onInput}
+        onBlur={onPropertyValidation}
       />
       {error && <div className={styles.errorMessage}>{error}</div>}
     </div>
