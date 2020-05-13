@@ -8,6 +8,7 @@ const Input = ({
   error,
   onInput,
   onPropertyValidation,
+  onPasswordMessage,
 }) => {
   return (
     <div className={styles.container}>
@@ -16,9 +17,11 @@ const Input = ({
         name={name}
         className={styles.input}
         type="text"
+        autoComplete="off"
         placeholder={placeholder}
         onChange={onInput}
         onBlur={onPropertyValidation}
+        onFocus={onPasswordMessage}
       />
       {error && <div className={styles.errorMessage}>{error}</div>}
     </div>

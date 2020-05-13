@@ -5,6 +5,24 @@
   font-size: 28px;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.passwordMessageOff {
+  display: none;
+}
+
+.passwordMessageOn {
+  margin: 0;
+  width: 300px;
+  font-size: 11px;
+  color: gray;
+  text-align: start;
+}
+
 .button {
   display: block;
   margin: auto auto;
