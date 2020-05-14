@@ -57,7 +57,7 @@
   display: flex;
 }
 
-@media (max-width: 1020px) {
+@media (max-width: 1250px) {
   .mainNav {
     margin-left: 25px;
   }
@@ -75,7 +75,7 @@
   }
 }
 
-@media (min-width: 1021px) {
+@media (min-width: 1251px) {
   .toggleButtonContainer {
     display: none;
   }

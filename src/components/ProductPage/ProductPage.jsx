@@ -24,6 +24,7 @@ class ProductPage extends Component {
 
     return (
       <div className={styles.mainContainer}>
+        {/* <div className={images}></div> */}
         <img src={product.link} className={styles.image1} />
         <img src={product.secondLink} className={styles.image2} />
         <div className={styles.container}>

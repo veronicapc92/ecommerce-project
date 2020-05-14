@@ -6,8 +6,8 @@
 
 .image1,
 .image2 {
-  height: 83vh;
-  width: auto;
+  width: 33vw;
+  height: auto;
 }
 
 .image2 {
@@ -120,4 +120,54 @@
 .disabledButton {
   cursor: default;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 1250px) {
+  .mainContainer {
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .image1,
+  .image2 {
+    width: 40vw;
+    height: auto;
+    min-width: 400px;
+  }
+
+  .container {
+    width: 80%;
+  }
+}
+
+@media (max-width: 900px) {
+  .mainContainer {
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image1,
+  .image2 {
+    width: 60vw;
+    height: auto;
+    min-width: 300px;
+  }
+
+  .image2 {
+    margin: 15px 0 20px 0;
+  }
+
+  .container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 300px) {
+  .image1,
+  .image2 {
+    max-width: 280px;
+  }
 }

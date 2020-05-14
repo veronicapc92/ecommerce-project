@@ -48,8 +48,10 @@
   color: black;
 }
 
-@media (max-width: 1020px) {
+@media (max-width: 1250px) {
   .drawerOpen {
+    left: 0;
     top: 70px;
+    width: 100%;
   }
 }

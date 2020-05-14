@@ -23,7 +23,7 @@ const Navbar = ({
         onDrawerToggleClick={onDrawerToggleClick}
       />
       <div className="wrapper">
-        {user && <span className="name">Hi adfasdasdlsdkasdfs</span>}
+        {user && <span className="name">Hi {user.name}</span>}
         <SecondaryNav
           user={user}
           cart={cart}

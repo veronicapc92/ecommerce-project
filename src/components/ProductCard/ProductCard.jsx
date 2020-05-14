@@ -31,7 +31,7 @@ const ProductCard = ({ product, onLike, onAddToCart, onProductChoice }) => {
         <div className={styles.likeButton}>
           <Like product={product} onLike={onLike} />
         </div>
-        <div>{`£${product.price}`}</div>
+        <div className={styles.price}>{`£${product.price}`}</div>
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import AuthIcon from "./AuthIcon/AuthIcon";
-import LogoutIcon from "./LogoutIcon/LogoutIcon";
 import ShoppingCartIcon from "./ShoppingCartIcon/ShoppingCartIcon";
 import "../../assets/css/fonts.css";
 import styles from "./secondary-nav.module.css";

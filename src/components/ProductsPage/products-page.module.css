@@ -21,11 +21,13 @@
 }
 
 @media (max-width: 900px) {
-  .filterContainer {
-    display: none;
+  .container {
+    flex-direction: column;
   }
-  .products {
-    width: 100vw;
-    padding-right: 0;
+
+  .filterContainer {
+    height: 100px;
+    width: 100%;
+    margin-bottom: 60px;
   }
 }
