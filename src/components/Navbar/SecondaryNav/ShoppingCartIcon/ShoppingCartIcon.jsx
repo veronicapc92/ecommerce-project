@@ -1,11 +1,22 @@
 import React from "react";
 import styles from "./shopping-cart-icon.module.css";
 
-const SecondaryNav = ({ cart, onShoppingCartClick }) => {
+const SecondaryNav = ({
+  cart,
+  addToCartClicked,
+  onShoppingCartClick,
+  onAnimation,
+}) => {
+  let classes = addToCartClicked ? styles.itemAdded : styles.numberOfItems;
+
   return (
-    <div onClick={onShoppingCartClick} className="icon">
+    <div
+      className={styles.iconContainer}
+      onClick={onShoppingCartClick}
+      onAnimationEnd={onAnimation}
+    >
       {cart.length > 0 && (
-        <div className={styles.numberOfItems}>
+        <div className={classes}>
           {cart.reduce((acc, item) => acc + item.count, 0)}
         </div>
       )}

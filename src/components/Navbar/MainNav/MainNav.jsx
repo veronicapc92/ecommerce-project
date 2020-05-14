@@ -29,7 +29,7 @@ const MainNav = ({ productTypes, onDrawerToggleClick }) => {
           </li>
           <li className={styles.option}>Men</li>
           <li className={styles.option}>Kids</li>
-          <li className={styles.option}>Gōsha Home</li>
+          <li className={styles.option}>Gōsha Decor</li>
         </ul>
       </nav>
     </div>

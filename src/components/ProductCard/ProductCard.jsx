@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Like from "../Like/Like";
+import Like from "./Like/Like";
 import styles from "./product-card.module.css";
 
 const ProductCard = ({ product, onLike, onAddToCart, onProductChoice }) => {

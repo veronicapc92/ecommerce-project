@@ -7,9 +7,9 @@ import SideDrawer from "./components/Navbar/SideDrawer/SideDrawer";
 import Backdrop from "./components/Backdrop/Backdrop";
 import Homepage from "./components/Homepage/Homepage";
 import ProductsPage from "./components/ProductsPage/ProductsPage";
-import FilteredProductTypePage from "./components/FilteredProductTypePage/FilteredProductTypePage";
 import AuthDrawer from "./components/AuthDrawer/AuthDrawer";
 import ShoppingCartDrawer from "./components/ShoppingCartDrawer/ShoppingCartDrawer";
+import SignOut from "./components/Navbar/SecondaryNav/SignOut/SignOut";
 import WishlistPage from "./components/WishlistPage/WishlistPage";
 import NotFound from "./components/NotFound/NotFound";
 import http from "./services/httpService";
@@ -22,6 +22,8 @@ class App extends Component {
     signInDrawerOpen: false,
     registerDrawerOpen: false,
     shoppingCartDrawerOpen: false,
+    signOutDrawerOpen: false,
+    addToCartClicked: false,
     products: [],
     productTypes: [],
     cart: [],
@@ -42,6 +44,10 @@ class App extends Component {
       this.setState({ user });
     } catch (ex) {}
   }
+
+  handleAnimation = () => {
+    this.setState({ addToCartClicked: false });
+  };
 
   handleDrawerToggleClick = () => {
     this.setState({ sideDrawerOpen: true });
@@ -123,7 +129,7 @@ class App extends Component {
         count: 1,
       });
 
-    this.setState({ cart, addToCartClicked: false });
+    this.setState({ cart, addToCartClicked: true });
   };
 
   handleIncrementQuantity = (item) => {
@@ -154,6 +160,10 @@ class App extends Component {
     this.setState({ cart });
   };
 
+  handleSignOutIconClick = () => {
+    this.setState({ signOutDrawerOpen: !this.state.signOutDrawerOpen });
+  };
+
   // handleFilterByProductType = (productType) => {
   //   // const filteredProducts = this.state.products.filter(
   //   //   (p) => p.type === productType.name
@@ -170,8 +180,10 @@ class App extends Component {
     const {
       sideDrawerOpen,
       signInDrawerOpen,
+      signOutDrawerOpen,
       registerDrawerOpen,
       shoppingCartDrawerOpen,
+      addToCartClicked,
       products,
       productTypes,
       user,
@@ -183,19 +195,24 @@ class App extends Component {
       backdrop = <Backdrop onBackdropClick={this.handleBackdropClick} />;
     }
 
-    let classesOfMain = shoppingCartDrawerOpen ? "hidden" : "visible";
-
+    // let classesOfMain = shoppingCartDrawerOpen ? "hidden" : "visible";
+    // style={{ height: "100vh", overflow: classesOfMain }}
     return (
-      <main style={{ height: "100vh", overflow: classesOfMain }}>
+      <main>
         <NavBar
           user={user}
           cart={cart}
+          signOutDrawerOpen={signOutDrawerOpen}
           productTypes={productTypes}
+          addToCartClicked={addToCartClicked}
           onSignInIconClick={this.handleSignInIconClick}
+          onSignOutIconClick={this.handleSignOutIconClick}
           onDrawerToggleClick={this.handleDrawerToggleClick}
           onXButtonClick={this.handleXButtonClick}
           onShoppingCartClick={this.handleShoppingCartClick}
+          onAnimation={this.handleAnimation}
         />
+        <SignOut signOutDrawerOpen={signOutDrawerOpen} />
         <SideDrawer
           show={sideDrawerOpen}
           onCloseNavbar={this.handleCloseNavbar}

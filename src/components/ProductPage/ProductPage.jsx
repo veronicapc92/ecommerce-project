@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Like from "../Like/Like";
+import Like from "../ProductCard/Like/Like";
 import SelectMenu from "./SelectMenu/SelectMenu";
 import styles from "./product-page.module.css";
 

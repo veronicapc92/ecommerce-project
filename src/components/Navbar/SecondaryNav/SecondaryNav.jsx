@@ -9,7 +9,10 @@ import styles from "./secondary-nav.module.css";
 const SecondaryNav = ({
   user,
   cart,
+  addToCartClicked,
   onSignInIconClick,
+  onAnimation,
+  onSignOutIconClick,
   onShoppingCartClick,
 }) => {
   return (
@@ -22,7 +25,10 @@ const SecondaryNav = ({
         )}
         {user && (
           <li className={styles.option}>
-            <LogoutIcon />
+            <i
+              onClick={onSignOutIconClick}
+              className="fas fa-user-circle fa-lg"
+            ></i>
           </li>
         )}
 
@@ -34,9 +40,16 @@ const SecondaryNav = ({
         <li className={styles.option}>
           <ShoppingCartIcon
             cart={cart}
+            addToCartClicked={addToCartClicked}
+            onAnimation={onAnimation}
             onShoppingCartClick={onShoppingCartClick}
           />
         </li>
+        {/* {user && (
+          <li className={styles.option}>
+            <LogoutIcon />
+          </li>
+        )} */}
       </ul>
     </nav>
   );

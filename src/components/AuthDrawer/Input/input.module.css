@@ -4,6 +4,10 @@
   align-items: center;
 }
 
+.inputContainer {
+  position: relative;
+}
+
 .input {
   border: none;
   width: 300px;
@@ -17,6 +21,18 @@
 
 .input:focus {
   outline: none;
+}
+
+.clicked,
+.notClicked {
+  position: absolute;
+  top: 40px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.notClicked {
+  color: #c0c0c0;
 }
 
 .errorMessage {

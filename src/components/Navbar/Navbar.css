@@ -11,6 +11,16 @@
   height: 100px;
 }
 
+.name {
+  margin-right: 20px;
+  font-family: "Quicksand", sans-serif;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
 @media (max-width: 1020px) {
   .header {
     height: 70px;

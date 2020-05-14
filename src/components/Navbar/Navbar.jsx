@@ -8,9 +8,13 @@ const Navbar = ({
   productTypes,
   user,
   cart,
+  addToCartClicked,
+  signOutDrawerOpen,
   onDrawerToggleClick,
   onSignInIconClick,
+  onSignOutIconClick,
   onShoppingCartClick,
+  onAnimation,
 }) => {
   return (
     <header className="header">
@@ -18,12 +22,19 @@ const Navbar = ({
         productTypes={productTypes}
         onDrawerToggleClick={onDrawerToggleClick}
       />
-      <SecondaryNav
-        user={user}
-        cart={cart}
-        onSignInIconClick={onSignInIconClick}
-        onShoppingCartClick={onShoppingCartClick}
-      />
+      <div className="wrapper">
+        {user && <span className="name">Hi adfasdasdlsdkasdfs</span>}
+        <SecondaryNav
+          user={user}
+          cart={cart}
+          addToCartClicked={addToCartClicked}
+          signOutDrawerOpen={signOutDrawerOpen}
+          onSignInIconClick={onSignInIconClick}
+          onSignOutIconClick={onSignOutIconClick}
+          onShoppingCartClick={onShoppingCartClick}
+          onAnimation={onAnimation}
+        />
+      </div>
     </header>
   );
 };

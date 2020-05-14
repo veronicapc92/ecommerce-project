@@ -1,0 +1,55 @@
+.drawerOpen {
+  position: fixed;
+  background-color: white;
+  z-index: 50;
+  top: 100px;
+  right: 40px;
+  width: 230px;
+  /* height: 100px; */
+  display: flex;
+  flex-direction: column;
+  /* box-shadow: -5px 5px 5px -1px rgba(0, 0, 0, 0.15); */
+  border: 1px solid black;
+}
+
+.drawerClosed {
+  display: none;
+}
+
+.option1 {
+  margin: 30px 0 10px 0;
+}
+
+.option1,
+.option2 {
+  margin-left: 30px;
+  font-size: 15px;
+  font-family: "Muli", sans-serif;
+  cursor: default;
+}
+
+.button {
+  cursor: pointer;
+  border: none;
+  width: 100px;
+  height: 40px;
+  background-color: black;
+  font-family: "Muli", sans-serif;
+  font-size: 15px;
+  color: white;
+  margin: auto;
+  margin-bottom: 30px;
+  margin-top: 25px;
+}
+
+.button:hover {
+  background-color: white;
+  border: 1.5px solid black;
+  color: black;
+}
+
+@media (max-width: 1020px) {
+  .drawerOpen {
+    top: 70px;
+  }
+}

@@ -17,33 +17,35 @@
   margin-bottom: 10vw;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   justify-items: center;
 }
 
-.card1,
-.card2,
-.card3 {
+.card {
   display: block;
   cursor: pointer;
-  padding: var(--picture-padding);
+  padding: 1.7vw;
 }
 
-.card1,
-.card2 {
-  width: var(--card1-card2-width);
-  max-width: var(--card1-card2-max-width);
-  min-width: var(--card1-card2-min-width);
+.card {
+  width: 35vw;
+  max-width: 450px;
+  min-width: 300px;
   height: auto;
 }
 
-.card3 {
-  width: calc(var(--card1-card2-width) * 2 + (var(--picture-padding)) * 2);
-  max-width: calc(
-    var(--card1-card2-max-width) * 2 + var(--picture-padding) * 2
-  );
-  min-width: calc(
-    var(--card1-card2-min-width) * 2 + var(--picture-padding) * 2
-  );
-  height: auto;
-  grid-column: 1 / 4;
+@media (max-width: 600px) {
+  .imagesContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding-bottom: 5vh;
+  }
+}
+
+@media (max-width: 350px) {
+  .card {
+    min-width: 270px;
+  }
 }

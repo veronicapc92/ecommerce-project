@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import Input from "../../Input/Input";
+import Input from "../Input/Input";
 import Joi from "@hapi/joi";
 import { register } from "../../../services/userService";
 import styles from "./register.module.css";
 
 class Register extends Component {
   state = {
-    data: { name: "", email: "", password: "", confirmedPassword: "" },
+    data: { name: "", email: "", password: "" },
     errors: {},
     focusOn: false,
   };
@@ -21,7 +21,6 @@ class Register extends Component {
       .required()
       .pattern(new RegExp("^(?=.*[a-zA-Z])(?=.*[0-9])(?=.{8,16})"))
       .label("Password"),
-    confirmedPassword: Joi.string().required().label("Confirmed password"),
   });
 
   handleSubmit = async (e) => {
@@ -34,6 +33,7 @@ class Register extends Component {
     try {
       const response = await register(this.state.data);
       localStorage.setItem("token", response.headers["x-auth-token"]);
+      window.location.reload();
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
@@ -62,9 +62,6 @@ class Register extends Component {
       if (item.message.includes("empty"))
         errors[item.path[0]] = "This field is required";
     }
-
-    // if (this.state.data.password !== this.state.data.confirmedPassword)
-    //   errors.confirmedPassword = "Passwords must match";
 
     return errors;
   };
@@ -129,7 +126,6 @@ class Register extends Component {
             onPropertyValidation={() =>
               this.validateProperty("name", data.name)
             }
-            onPasswordMessage={this.handlePasswordMessage}
             error={errors.name}
           />
           <Input
@@ -140,7 +136,6 @@ class Register extends Component {
             onPropertyValidation={() =>
               this.validateProperty("email", data.email)
             }
-            onPasswordMessage={this.handlePasswordMessage}
             error={errors.email}
           />
           <Input
@@ -158,17 +153,6 @@ class Register extends Component {
             Between 8 and 16 characters containing letters, numbers and symbols
             (! @ # $ % ^ & *)
           </div>
-          <Input
-            name="confirmedPassword"
-            value={data.confirmedPassword}
-            placeholder="Confirm Password *"
-            onInput={this.handleInput}
-            onPropertyValidation={() =>
-              this.validateProperty("confirmedPassword", data.confirmedPassword)
-            }
-            onPasswordMessage={this.handlePasswordMessage}
-            error={errors.confirmedPassword}
-          />
           <button className={styles.button}>Enter</button>
         </form>
       </React.Fragment>

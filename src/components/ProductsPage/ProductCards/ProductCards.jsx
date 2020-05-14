@@ -1,5 +1,5 @@
 import React from "react";
-import ProductCard from "../ProductCard/ProductCard";
+import ProductCard from "../../ProductCard/ProductCard";
 
 const ProductCards = ({ filteredProducts, onLike, onAddToCart }) => {
   return (
