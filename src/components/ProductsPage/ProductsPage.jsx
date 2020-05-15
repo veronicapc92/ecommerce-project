@@ -1,6 +1,7 @@
 import React from "react";
 import ProductList from "./ProductList/ProductList";
 import ProductCards from "./ProductCards/ProductCards";
+import DropdownFilter from "./DropdownFilter/DropdownFilter";
 import styles from "./products-page.module.css";
 
 const ProductsPage = ({
@@ -9,6 +10,8 @@ const ProductsPage = ({
   onLike,
   onAddToCart,
   match,
+  filterDropdownOpen,
+  onFilterDropdown,
 }) => {
   let filteredProducts = products;
 
@@ -22,6 +25,13 @@ const ProductsPage = ({
     <div className={styles.container}>
       <div className={styles.filterContainer}>
         <ProductList productTypes={productTypes} />
+      </div>
+      <div className={styles.dropdownFilter}>
+        <DropdownFilter
+          productTypes={productTypes}
+          filterDropdownOpen={filterDropdownOpen}
+          onFilterDropdown={onFilterDropdown}
+        />
       </div>
       <div className={styles.products}>
         <ProductCards

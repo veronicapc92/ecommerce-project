@@ -1,38 +1,31 @@
-import React, { Component } from "react";
-import Register from "./Register/Register";
+import React from "react";
+import Register from "../../hooks/Register/Register";
 import SignIn from "./SignIn/SignIn";
-import "./AuthDrawer.css";
+import styles from "./auth-drawer.module.css";
 
-class SignInDrawer extends Component {
-  render() {
-    const {
-      show,
-      registerDrawerOpen,
-      onXButtonClick,
-      onRegisterSpanClick,
-      onEnterButtonClick,
-    } = this.props;
+const AuthDrawer = ({
+  show,
+  registerDrawerOpen,
+  onXButtonClick,
+  onRegisterSpanClick,
+  onEnterButtonClick,
+}) => {
+  let classes = show ? styles.containerOpen : styles.containerClosed;
 
-    let classes = "sign-in-container";
-    if (show) {
-      classes = "sign-in-container open";
-    }
-
-    return (
-      <div className={classes}>
-        <div className="close-form-icon" onClick={onXButtonClick}>
-          ×
-        </div>
-        {registerDrawerOpen && <Register />}
-        {!registerDrawerOpen && (
-          <SignIn
-            onRegisterSpanClick={onRegisterSpanClick}
-            onEnterButtonClick={onEnterButtonClick}
-          />
-        )}
+  return (
+    <div className={classes}>
+      <div className={styles.closeIcon} onClick={onXButtonClick}>
+        ×
       </div>
-    );
-  }
-}
+      {registerDrawerOpen && <Register />}
+      {!registerDrawerOpen && (
+        <SignIn
+          onRegisterSpanClick={onRegisterSpanClick}
+          onEnterButtonClick={onEnterButtonClick}
+        />
+      )}
+    </div>
+  );
+};
 
-export default SignInDrawer;
+export default AuthDrawer;

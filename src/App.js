@@ -7,6 +7,7 @@ import SideDrawer from "./components/Navbar/SideDrawer/SideDrawer";
 import Backdrop from "./components/Backdrop/Backdrop";
 import Homepage from "./components/Homepage/Homepage";
 import ProductsPage from "./components/ProductsPage/ProductsPage";
+import ProductPage from "./hooks/ProductPage/ProductPage";
 import AuthDrawer from "./components/AuthDrawer/AuthDrawer";
 import ShoppingCartDrawer from "./components/ShoppingCartDrawer/ShoppingCartDrawer";
 import SignOut from "./components/Navbar/SecondaryNav/SignOut/SignOut";
@@ -14,7 +15,6 @@ import WishlistPage from "./components/WishlistPage/WishlistPage";
 import NotFound from "./components/NotFound/NotFound";
 import http from "./services/httpService";
 import config from "./config.json";
-import ProductPage from "./components/ProductPage/ProductPage";
 
 class App extends Component {
   state = {
@@ -23,6 +23,7 @@ class App extends Component {
     registerDrawerOpen: false,
     shoppingCartDrawerOpen: false,
     signOutDrawerOpen: false,
+    filterDropdownOpen: false,
     addToCartClicked: false,
     products: [],
     productTypes: [],
@@ -164,6 +165,10 @@ class App extends Component {
     this.setState({ signOutDrawerOpen: !this.state.signOutDrawerOpen });
   };
 
+  handleFilterDropdown = () => {
+    this.setState({ filterDropdownOpen: !this.state.filterDropdownOpen });
+  };
+
   // handleFilterByProductType = (productType) => {
   //   // const filteredProducts = this.state.products.filter(
   //   //   (p) => p.type === productType.name
@@ -183,6 +188,7 @@ class App extends Component {
       signOutDrawerOpen,
       registerDrawerOpen,
       shoppingCartDrawerOpen,
+      filterDropdownOpen,
       addToCartClicked,
       products,
       productTypes,
@@ -241,6 +247,8 @@ class App extends Component {
                 {...props}
                 products={products}
                 productTypes={productTypes}
+                filterDropdownOpen={filterDropdownOpen}
+                onFilterDropdown={this.handleFilterDropdown}
                 onLike={this.handleLike}
                 onAddToCart={this.handleAddToCart}
               />
@@ -253,6 +261,8 @@ class App extends Component {
                 {...props}
                 products={products}
                 productTypes={productTypes}
+                filterDropdownOpen={filterDropdownOpen}
+                onFilterDropdown={this.handleFilterDropdown}
                 onLike={this.handleLike}
                 onAddToCart={this.handleAddToCart}
               />

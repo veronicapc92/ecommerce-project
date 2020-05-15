@@ -20,14 +20,27 @@
   padding-right: 2vw;
 }
 
+.dropdownFilter {
+  display: none;
+}
+
 @media (max-width: 900px) {
   .container {
     flex-direction: column;
   }
 
   .filterContainer {
-    height: 100px;
+    display: none;
+  }
+
+  .products {
+    margin-top: 60px;
     width: 100%;
-    margin-bottom: 60px;
+  }
+
+  .dropdownFilter {
+    display: flex;
+    justify-content: center;
+    z-index: 100;
   }
 }

@@ -2,13 +2,13 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./side-drawer.module.css";
 import "../../assets/css/fonts.css";
-import "./SideDrawer.css";
 
 const SideDrawer = ({ show, onCloseNavbar }) => {
-  let drawerClasses = "side-drawer";
-  if (show) {
-    drawerClasses += " open";
-  }
+  let drawerClasses = show ? styles.sideDrawerOpen : styles.sideDrawerClosed;
+  // let drawerClasses = "side-drawer";
+  // if (show) {
+  //   drawerClasses += " open";
+  // }
   return (
     <div className={drawerClasses}>
       <div className={styles.close} onClick={onCloseNavbar}>

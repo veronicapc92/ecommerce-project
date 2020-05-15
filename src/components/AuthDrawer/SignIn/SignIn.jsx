@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Input from "../Input/Input";
+import Input from "../../../hooks/Input/Input";
 import Joi from "@hapi/joi";
 import { login } from "../../../services/authService";
 import styles from "./sign-in.module.css";
@@ -22,6 +22,7 @@ class SignIn extends Component {
     e.preventDefault();
 
     const errors = this.validate();
+    console.log(errors);
     this.setState({ errors: errors || {} });
     if (errors) return;
 

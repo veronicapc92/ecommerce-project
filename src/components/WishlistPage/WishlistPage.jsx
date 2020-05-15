@@ -1,6 +1,6 @@
 import React from "react";
 import EmptyWishlist from "./EmptyWishlist/EmptyWishlist";
-import WishlistProduct from "./WishlistProduct/WishlistProduct";
+import WishlistProduct from "../../hooks/WishlistProduct/WishlistProduct";
 import styles from "./wishlist-page.module.css";
 
 const WishlistPage = ({ products, onAddToCart, onDeleteWishlistProduct }) => {

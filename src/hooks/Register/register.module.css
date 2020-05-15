@@ -26,9 +26,6 @@
 .button {
   display: block;
   margin: auto auto;
-}
-
-.button {
   cursor: pointer;
   border: none;
   margin-top: 60px;
@@ -38,6 +35,7 @@
   font-family: "Muli", sans-serif;
   font-size: 15px;
   color: white;
+  outline: none;
 }
 
 .button:hover {
