@@ -1,8 +1,9 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { ProductTypesContext } from "../../../contexts/ProductTypesContext";
 import styles from "./dropdown.module.css";
 
-const Menu = ({ productTypes }) => {
+const Menu = () => {
+  const { productTypes } = useContext(ProductTypesContext);
   return (
     <div className={styles.menu}>
       <div className={styles.optionsContainer}>
@@ -22,12 +23,12 @@ const Menu = ({ productTypes }) => {
             {productTypes.map((productType) => {
               return (
                 <li key={productType.name} className={styles.option}>
-                  <NavLink
+                  <a
                     className={styles.optionLink}
-                    to={`/women/${productType.route}`}
+                    href={`/women/${productType.route}`}
                   >
                     {productType.name}
-                  </NavLink>
+                  </a>
                 </li>
               );
             })}

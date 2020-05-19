@@ -8,7 +8,7 @@
 }
 
 .optionsContainer {
-  padding: 90px 0 120px 0;
+  padding: 20px 0 60px 0;
   width: 45%;
   display: flex;
   justify-content: space-between;
@@ -40,6 +40,10 @@
 .optionLink {
   text-decoration: none;
   color: black;
+}
+
+.optionLink:hover {
+  color: gray;
 }
 
 @media (max-width: 1200px) {

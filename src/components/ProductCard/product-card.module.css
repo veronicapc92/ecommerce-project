@@ -6,6 +6,10 @@
   align-items: center;
 }
 
+.imageLink {
+  cursor: pointer;
+}
+
 .image {
   display: block;
   width: 20vw;
@@ -16,7 +20,6 @@
 
 .imageContainer {
   position: relative;
-  cursor: pointer;
 }
 
 .drawer {
@@ -33,6 +36,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .imageContainer:hover .drawer {

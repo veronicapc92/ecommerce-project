@@ -5,7 +5,7 @@ import DropdownFilter from "./DropdownFilter/DropdownFilter";
 import { ProductsContext } from "./../../contexts/ProductsContext";
 import styles from "./products-page.module.css";
 
-const ProductsPage = ({ productTypes, match }) => {
+const ProductsPage = ({ match }) => {
   const { products } = useContext(ProductsContext);
 
   let filteredProducts = products;
@@ -17,10 +17,10 @@ const ProductsPage = ({ productTypes, match }) => {
   return (
     <div className={styles.container}>
       <div className={styles.filterContainer}>
-        <ProductList productTypes={productTypes} />
+        <ProductList />
       </div>
       <div className={styles.dropdownFilter}>
-        <DropdownFilter productTypes={productTypes} />
+        <DropdownFilter />
       </div>
       <div className={styles.products}>
         <ProductCards filteredProducts={filteredProducts} />

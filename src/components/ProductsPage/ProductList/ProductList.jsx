@@ -1,14 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
 import styles from "./product-list.module.css";
+import { ProductTypesContext } from "../../../contexts/ProductTypesContext";
 
-const ProductList = ({ productTypes }) => {
+const ProductList = () => {
+  const { productTypes } = useContext(ProductTypesContext);
   return (
     <div className={styles.container}>
       <ul className={styles.list}>
         {productTypes.map((productType) => (
           <li className={styles.productType} key={productType.name}>
-            <Link to={`/women/${productType.route}`}>{productType.name}</Link>
+            <a href={`/women/${productType.route}`}>{productType.name}</a>
           </li>
         ))}
       </ul>

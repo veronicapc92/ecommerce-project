@@ -1,24 +1,20 @@
-import React, { useState } from "react";
-import Input from "../Input/Input";
+import React from "react";
+import Input from "../../../hooks/Input/Input";
 import Joi from "@hapi/joi";
-import { register } from "../../services/userService";
-import styles from "./register.module.css";
+import { login } from "../../../services/authService";
+import styles from "./sign-in.module.css";
+import { useState } from "react";
 
-function Register() {
-  const [data, setData] = useState({ name: "", email: "", password: "" });
+function SignIn(props) {
+  const [data, setData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
-  let [focusOn, setFocus] = useState(false);
 
   const schema = Joi.object({
-    name: Joi.string().required().alphanum().label("Name"),
     email: Joi.string()
       .required()
       .email({ tlds: { allow: false } })
       .label("E-mail"),
-    password: Joi.string()
-      .required()
-      .pattern(new RegExp("^(?=.*[a-zA-Z])(?=.*[0-9])(?=.{8,16})"))
-      .label("Password"),
+    password: Joi.string().required().label("Password"),
   });
 
   async function handleSubmit(e) {
@@ -26,11 +22,10 @@ function Register() {
 
     const errorsObject = validate();
 
-    setErrors((prevErrors) => {
+    setErrors((...prevErrors) => {
       if (errorsObject)
         return {
           ...prevErrors,
-          name: errorsObject.name,
           email: errorsObject.email,
           password: errorsObject.password,
         };
@@ -40,13 +35,14 @@ function Register() {
     if (errorsObject) return;
 
     try {
-      const response = await register(data);
-      localStorage.setItem("token", response.headers["x-auth-token"]);
+      const { email, password } = data;
+      const { data: jwt } = await login(email, password);
+      localStorage.setItem("token", jwt);
       window.location.reload();
     } catch (ex) {
       setErrors((prevErrors) => {
         if (ex.response && ex.response.status === 400)
-          return { ...prevErrors, email: "This email already exists" };
+          return { ...prevErrors, email: ex.response.data };
       });
     }
   }
@@ -58,16 +54,14 @@ function Register() {
     if (!error) return null;
 
     const errors = {};
-
     for (let item of error.details) {
       if (item.message.includes("E-mail"))
         errors[item.path[0]] = "Please enter a valid e-mail address";
-      if (item.message.includes("Password"))
-        errors[item.path[0]] = "Please enter a valid password";
       if (item.message.includes("empty"))
         errors[item.path[0]] = "This field is required";
     }
 
+    console.log(errors);
     return errors;
   }
 
@@ -83,8 +77,6 @@ function Register() {
 
       if (error.details[0].message.includes("E-mail"))
         return { ...prevErrors, [name]: "Please enter a valid e-mail address" };
-      if (error.details[0].message.includes("Password"))
-        return { ...prevErrors, [name]: "Please enter a valid password" };
       if (error.details[0].message.includes("empty"))
         return { ...prevErrors, [name]: "This field is required" };
     });
@@ -96,32 +88,14 @@ function Register() {
     });
   }
 
-  function handlePasswordMessage({ currentTarget: input }) {
-    setFocus(() => {
-      if (input.name === "password") return (focusOn = true);
-      else focusOn = false;
-    });
-  }
-
-  let classes = styles.passwordMessageOn;
-  if (!focusOn) classes = styles.passwordMessageOff;
-
   return (
     <React.Fragment>
-      <h1 className={styles.headline}>Register</h1>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <Input
-          name="name"
-          value={data.name}
-          placeholder="Name *"
-          onInput={handleInput}
-          onPropertyValidation={() => validateProperty("name", data.name)}
-          error={errors.name}
-        />
+      <h1 className={styles.headline}>Sign In</h1>
+      <form onSubmit={handleSubmit}>
         <Input
           name="email"
           value={data.email}
-          placeholder="Email *"
+          placeholder="E-mail *"
           onInput={handleInput}
           onPropertyValidation={() => validateProperty("email", data.email)}
           error={errors.email}
@@ -134,17 +108,21 @@ function Register() {
           onPropertyValidation={() =>
             validateProperty("password", data.password)
           }
-          onPasswordMessage={handlePasswordMessage}
           error={errors.password}
         />
-        <div className={classes}>
-          Between 8 and 16 characters containing letters, numbers and symbols (!
-          @ # $ % ^ & *)
-        </div>
         <button className={styles.button}>Enter</button>
       </form>
+      <p className={styles.registerParagraph}>
+        Don't have an account?{" "}
+        <span
+          className={styles.registerSpan}
+          onClick={props.onRegisterSpanClick}
+        >
+          Register
+        </span>
+      </p>
     </React.Fragment>
   );
 }
 
-export default Register;
+export default SignIn;

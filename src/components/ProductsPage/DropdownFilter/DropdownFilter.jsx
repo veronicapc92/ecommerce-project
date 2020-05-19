@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FilterDropdownContext } from "./../../../contexts/FilterDropdownContext";
+import { ProductTypesContext } from "../../../contexts/ProductTypesContext";
 import styles from "./dropdown-filter.module.css";
 
-const DropdownFilter = ({ productTypes }) => {
+const DropdownFilter = () => {
+  const { productTypes } = useContext(ProductTypesContext);
   const { filterDropdownOpen, handleFilterDropdown } = useContext(
     FilterDropdownContext
   );

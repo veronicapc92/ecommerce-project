@@ -5,7 +5,6 @@ import "../assets/css/fonts.css";
 import "./Navbar.css";
 
 const Navbar = ({
-  productTypes,
   user,
   signOutDrawerOpen,
   onDrawerToggleClick,
@@ -15,10 +14,7 @@ const Navbar = ({
 }) => {
   return (
     <header className="header">
-      <MainNav
-        productTypes={productTypes}
-        onDrawerToggleClick={onDrawerToggleClick}
-      />
+      <MainNav onDrawerToggleClick={onDrawerToggleClick} />
       <div className="wrapper">
         {user.name && <span className="name">Hi {user.name}</span>}
         <SecondaryNav

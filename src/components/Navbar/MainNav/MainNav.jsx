@@ -5,7 +5,7 @@ import Dropdown from "../Dropdown/Dropdown";
 import logo from "./assets/gosha_transparent.png";
 import styles from "./main-nav.module.css";
 
-const MainNav = ({ productTypes, onDrawerToggleClick }) => {
+const MainNav = ({ onDrawerToggleClick }) => {
   return (
     <div className={styles.mainNav}>
       <div className={styles.toggleButtonContainer}>
@@ -20,11 +20,11 @@ const MainNav = ({ productTypes, onDrawerToggleClick }) => {
         <ul>
           <li className={styles.option}>New</li>
           <li className={styles.dropdown}>
-            <NavLink className={styles.option} to="/women">
+            <a className={styles.option} href="/women">
               Women
-            </NavLink>
+            </a>
             <div className={styles.dropdownMenu}>
-              <Dropdown productTypes={productTypes} />
+              <Dropdown />
             </div>
           </li>
           <li className={styles.option}>Men</li>
