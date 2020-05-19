@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { ProductsContext } from "./../../contexts/ProductsContext";
+import { CartContext } from "./../../contexts/CartContext";
 import styles from "./wishlist-product.module.css";
 
-function WishlistProduct({ product, onDeleteWishlistProduct, onAddToCart }) {
+function WishlistProduct({ product }) {
+  const { handleDeleteWishlistProduct } = useContext(ProductsContext);
+  const { handleAddToCart } = useContext(CartContext);
+
   let [addToCartClicked, setAddToCart] = useState(false);
 
   const sizes = ["XS", "S", "M", "L", "XL"];
@@ -15,7 +20,7 @@ function WishlistProduct({ product, onDeleteWishlistProduct, onAddToCart }) {
         </Link>
         <button
           className={styles.close}
-          onClick={() => onDeleteWishlistProduct(product)}
+          onClick={() => handleDeleteWishlistProduct(product)}
         >
           ×
         </button>
@@ -35,7 +40,7 @@ function WishlistProduct({ product, onDeleteWishlistProduct, onAddToCart }) {
             <button
               className={styles.sizeButton}
               onClick={() => {
-                onAddToCart(product, size);
+                handleAddToCart(product, size);
               }}
             >
               {size}

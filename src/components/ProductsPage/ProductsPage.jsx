@@ -1,25 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import ProductList from "./ProductList/ProductList";
 import ProductCards from "./ProductCards/ProductCards";
 import DropdownFilter from "./DropdownFilter/DropdownFilter";
+import { ProductsContext } from "./../../contexts/ProductsContext";
 import styles from "./products-page.module.css";
 
-const ProductsPage = ({
-  products,
-  productTypes,
-  onLike,
-  onAddToCart,
-  match,
-  filterDropdownOpen,
-  onFilterDropdown,
-}) => {
+const ProductsPage = ({ productTypes, match }) => {
+  const { products } = useContext(ProductsContext);
+
   let filteredProducts = products;
 
   if (match.params.route !== undefined) {
     filteredProducts = products.filter((p) => p.type === match.params.route);
   }
-
-  console.log(match.params.route);
 
   return (
     <div className={styles.container}>
@@ -27,18 +20,10 @@ const ProductsPage = ({
         <ProductList productTypes={productTypes} />
       </div>
       <div className={styles.dropdownFilter}>
-        <DropdownFilter
-          productTypes={productTypes}
-          filterDropdownOpen={filterDropdownOpen}
-          onFilterDropdown={onFilterDropdown}
-        />
+        <DropdownFilter productTypes={productTypes} />
       </div>
       <div className={styles.products}>
-        <ProductCards
-          filteredProducts={filteredProducts}
-          onLike={onLike}
-          onAddToCart={onAddToCart}
-        />
+        <ProductCards filteredProducts={filteredProducts} />
       </div>
     </div>
   );

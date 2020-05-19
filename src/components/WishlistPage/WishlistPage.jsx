@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import EmptyWishlist from "./EmptyWishlist/EmptyWishlist";
 import WishlistProduct from "../../hooks/WishlistProduct/WishlistProduct";
+import { ProductsContext } from "./../../contexts/ProductsContext";
 import styles from "./wishlist-page.module.css";
 
-const WishlistPage = ({ products, onAddToCart, onDeleteWishlistProduct }) => {
-  const likedProducts = products.filter((p) => p.liked === true);
+const WishlistPage = () => {
+  const { products } = useContext(ProductsContext);
+
+  const likedProducts = products.filter((p) => p.liked);
 
   return (
     <React.Fragment>
@@ -17,12 +20,7 @@ const WishlistPage = ({ products, onAddToCart, onDeleteWishlistProduct }) => {
           </p>
           <div className={styles.container}>
             {likedProducts.map((product) => (
-              <WishlistProduct
-                key={product._id}
-                product={product}
-                onAddToCart={onAddToCart}
-                onDeleteWishlistProduct={onDeleteWishlistProduct}
-              />
+              <WishlistProduct key={product._id} product={product} />
             ))}
           </div>
         </div>

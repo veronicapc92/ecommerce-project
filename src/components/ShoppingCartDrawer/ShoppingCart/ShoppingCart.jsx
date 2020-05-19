@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CartContext } from "./../../../contexts/CartContext";
 import styles from "./shopping-cart.module.css";
 
-const ShoppingCart = ({ cart, onIncrementQuantity, onDecrementQuantity }) => {
+const ShoppingCart = () => {
+  const { cart, handleIncrementQuantity, handleDecrementQuantity } = useContext(
+    CartContext
+  );
+
   const totalPricePerItem = cart.map((item) => item.count * item.price);
   const totalPrice = totalPricePerItem.reduce((acc, value) => acc + value, 0);
 
@@ -18,14 +23,14 @@ const ShoppingCart = ({ cart, onIncrementQuantity, onDecrementQuantity }) => {
             <p className={styles.size}>Size: {item.size}</p>
             <button
               className={styles.button}
-              onClick={() => onIncrementQuantity(item)}
+              onClick={() => handleIncrementQuantity(item)}
             >
               +
             </button>
             <span className={styles.quantity}>{item.count}</span>
             <button
               className={styles.button}
-              onClick={() => onDecrementQuantity(item)}
+              onClick={() => handleDecrementQuantity(item)}
             >
               -
             </button>

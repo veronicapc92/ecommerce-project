@@ -1,19 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./shopping-cart-icon.module.css";
+import { CartContext } from "../../../../contexts/CartContext";
 
-const SecondaryNav = ({
-  cart,
-  addToCartClicked,
-  onShoppingCartClick,
-  onAnimation,
-}) => {
+const ShoppingCartIcon = ({ onShoppingCartClick }) => {
+  const { cart, addToCartClicked, setAddToCart } = useContext(CartContext);
+
   let classes = addToCartClicked ? styles.itemAdded : styles.numberOfItems;
 
   return (
     <div
       className={styles.iconContainer}
       onClick={onShoppingCartClick}
-      onAnimationEnd={onAnimation}
+      onAnimationEnd={() => setAddToCart(false)}
     >
       {cart.length > 0 && (
         <div className={classes}>
@@ -25,4 +23,4 @@ const SecondaryNav = ({
   );
 };
 
-export default SecondaryNav;
+export default ShoppingCartIcon;

@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Like from "../Like/Like";
+import { CartContext } from "./../../contexts/CartContext";
+import { ProductsContext } from "./../../contexts/ProductsContext";
 import styles from "./product-card.module.css";
 
-const ProductCard = ({ product, onLike, onAddToCart }) => {
+const ProductCard = ({ product }) => {
   const sizes = ["XS", "S", "M", "L", "XL"];
+
+  const { handleAddToCart } = useContext(CartContext);
+
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>
@@ -18,7 +23,7 @@ const ProductCard = ({ product, onLike, onAddToCart }) => {
               <div
                 className={styles.size}
                 key={size}
-                onClick={() => onAddToCart(product, size)}
+                onClick={() => handleAddToCart(product, size)}
               >
                 {size}
               </div>
@@ -29,7 +34,7 @@ const ProductCard = ({ product, onLike, onAddToCart }) => {
       <div className={styles.info}>
         <div className={styles.name}>{product.name}</div>
         <div className={styles.likeButton}>
-          <Like product={product} onLike={onLike} />
+          <Like product={product} />
         </div>
         <div className={styles.price}>{`£${product.price}`}</div>
       </div>

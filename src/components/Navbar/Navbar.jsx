@@ -7,14 +7,11 @@ import "./Navbar.css";
 const Navbar = ({
   productTypes,
   user,
-  cart,
-  addToCartClicked,
   signOutDrawerOpen,
   onDrawerToggleClick,
   onSignInIconClick,
   onSignOutIconClick,
   onShoppingCartClick,
-  onAnimation,
 }) => {
   return (
     <header className="header">
@@ -23,16 +20,13 @@ const Navbar = ({
         onDrawerToggleClick={onDrawerToggleClick}
       />
       <div className="wrapper">
-        {user && <span className="name">Hi {user.name}</span>}
+        {user.name && <span className="name">Hi {user.name}</span>}
         <SecondaryNav
           user={user}
-          cart={cart}
-          addToCartClicked={addToCartClicked}
           signOutDrawerOpen={signOutDrawerOpen}
           onSignInIconClick={onSignInIconClick}
           onSignOutIconClick={onSignOutIconClick}
           onShoppingCartClick={onShoppingCartClick}
-          onAnimation={onAnimation}
         />
       </div>
     </header>

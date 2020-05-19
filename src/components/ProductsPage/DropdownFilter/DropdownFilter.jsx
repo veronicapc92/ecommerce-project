@@ -1,18 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { FilterDropdownContext } from "./../../../contexts/FilterDropdownContext";
 import styles from "./dropdown-filter.module.css";
 
-const DropdownFilter = ({
-  filterDropdownOpen,
-  productTypes,
-  onFilterDropdown,
-}) => {
+const DropdownFilter = ({ productTypes }) => {
+  const { filterDropdownOpen, handleFilterDropdown } = useContext(
+    FilterDropdownContext
+  );
+
   let classes = styles.dropdown;
   if (filterDropdownOpen) classes = styles.openDropdown;
 
   return (
     <div className={styles.select}>
-      <div className={classes} onClick={onFilterDropdown}>
+      <div className={classes} onClick={handleFilterDropdown}>
         <span>Products</span>
         {!filterDropdownOpen && <i className="fas fa-chevron-down fa-sm"></i>}
         {filterDropdownOpen && <i className="fas fa-chevron-up fa-sm"></i>}
@@ -23,7 +24,7 @@ const DropdownFilter = ({
             <Link
               className={styles.link}
               to={`/women/${productType.route}`}
-              onClick={onFilterDropdown}
+              onClick={handleFilterDropdown}
             >
               <div key={productType} className={styles.option}>
                 {productType.name}

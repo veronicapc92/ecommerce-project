@@ -7,22 +7,19 @@ import styles from "./secondary-nav.module.css";
 
 const SecondaryNav = ({
   user,
-  cart,
-  addToCartClicked,
   onSignInIconClick,
-  onAnimation,
   onSignOutIconClick,
   onShoppingCartClick,
 }) => {
   return (
     <nav className={styles.nav}>
       <ul>
-        {!user && (
+        {!user.name && (
           <li className={styles.option}>
             <AuthIcon onSignInIconClick={onSignInIconClick} />
           </li>
         )}
-        {user && (
+        {user.name && (
           <li className={styles.option}>
             <i
               onClick={onSignOutIconClick}
@@ -37,18 +34,8 @@ const SecondaryNav = ({
           </NavLink>
         </li>
         <li className={styles.option}>
-          <ShoppingCartIcon
-            cart={cart}
-            addToCartClicked={addToCartClicked}
-            onAnimation={onAnimation}
-            onShoppingCartClick={onShoppingCartClick}
-          />
+          <ShoppingCartIcon onShoppingCartClick={onShoppingCartClick} />
         </li>
-        {/* {user && (
-          <li className={styles.option}>
-            <LogoutIcon />
-          </li>
-        )} */}
       </ul>
     </nav>
   );

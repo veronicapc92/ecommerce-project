@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Like from "../../components/Like/Like";
 import SelectMenu from "../../components/SelectMenu/SelectMenu";
+import { CartContext } from "./../../contexts/CartContext";
+import { ProductsContext } from "./../../contexts/ProductsContext";
 import styles from "./product-page.module.css";
 
-function ProductPage({ products, match, onLike, onAddToCart }) {
+function ProductPage({ match }) {
+  const { products } = useContext(ProductsContext);
+  const { handleAddToCart } = useContext(CartContext);
+
   let [dropdownOpen, setDropdownState] = useState(false);
   let [size, setSize] = useState("Choose your size");
 
@@ -24,7 +29,7 @@ function ProductPage({ products, match, onLike, onAddToCart }) {
       <div className={styles.container}>
         <div className={styles.h1Container}>
           <h1 className={styles.heading1}>{product.name}</h1>
-          <Like product={product} onLike={onLike} />
+          <Like product={product} />
         </div>
         <div className={styles.h2Container}>
           <h2 className={styles.heading2}>{`£${product.price}`}</h2>
@@ -53,7 +58,7 @@ function ProductPage({ products, match, onLike, onAddToCart }) {
         ) : (
           <button
             className={styles.button}
-            onClick={() => onAddToCart(product, size)}
+            onClick={() => handleAddToCart(product, size)}
           >
             Add to cart
           </button>
