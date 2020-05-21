@@ -1,9 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import DrawerToggleButton from "./../DrawerToggleButton/DrawerToggleButton";
-import Dropdown from "../Dropdown/Dropdown";
 import logo from "./assets/gosha_transparent.png";
 import styles from "./main-nav.module.css";
+import Dropdown from "../../Dropdown/Dropdown";
+import DrawerToggleButton from "./../DrawerToggleButton/DrawerToggleButton";
 
 const MainNav = ({ onDrawerToggleClick }) => {
   return (

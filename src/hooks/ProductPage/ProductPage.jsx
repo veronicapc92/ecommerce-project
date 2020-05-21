@@ -1,21 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import Like from "../../components/Like/Like";
 import SelectMenu from "../../components/SelectMenu/SelectMenu";
-import { CartContext } from "./../../contexts/CartContext";
 import { ProductsContext } from "./../../contexts/ProductsContext";
 import styles from "./product-page.module.css";
 
 function ProductPage({ match }) {
   const { products } = useContext(ProductsContext);
-  const { handleAddToCart } = useContext(CartContext);
-
-  let [dropdownOpen, setDropdownState] = useState(false);
-  let [size, setSize] = useState("Choose your size");
-
-  function handleSizeChoice(size) {
-    setSize(size);
-    setDropdownState(false);
-  }
 
   let product = products.find(
     (p) => p.productRoute === match.params.productRoute
@@ -42,27 +32,7 @@ function ProductPage({ match }) {
           <div className={styles.red}></div>
         </div>
         <div className={styles.fakeLinkContainer}>Discover your size</div>
-        <SelectMenu
-          dropdownOpen={dropdownOpen}
-          size={size}
-          onDropdown={() => setDropdownState((prevState) => !prevState)}
-          onSizeChoice={handleSizeChoice}
-        />
-        {size === "Choose your size" ? (
-          <button
-            className={styles.button}
-            onClick={() => setDropdownState((prevState) => !prevState)}
-          >
-            Add to cart
-          </button>
-        ) : (
-          <button
-            className={styles.button}
-            onClick={() => handleAddToCart(product, size)}
-          >
-            Add to cart
-          </button>
-        )}
+        <SelectMenu product={product} />
       </div>
     </div>
   );

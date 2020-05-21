@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./sign-out.module.css";
-import { useClickOutside } from "./../../hooks/useClickOutside";
+import { useClickOutside } from "../useClickOutside";
 
 function SignOut(props) {
   const { visible, setVisible, ref } = useClickOutside(false);

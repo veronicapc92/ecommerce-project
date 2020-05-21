@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ProductTypesContext } from "../../../contexts/ProductTypesContext";
+import { ProductTypesContext } from "../../contexts/ProductTypesContext";
 import styles from "./dropdown.module.css";
 
 const Menu = () => {

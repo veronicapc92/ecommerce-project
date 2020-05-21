@@ -3,14 +3,19 @@ import styles from "./shopping-cart-icon.module.css";
 import { CartContext } from "../../contexts/CartContext";
 
 const ShoppingCartIcon = ({ onShoppingCartClick }) => {
-  const { cart, addToCartClicked, setAddToCart } = useContext(CartContext);
+  const {
+    cart,
+    addToCartClicked,
+    setCartDrawerState,
+    setAddToCart,
+  } = useContext(CartContext);
 
   let classes = addToCartClicked ? styles.itemAdded : styles.numberOfItems;
 
   return (
     <div
       className={styles.iconContainer}
-      onClick={onShoppingCartClick}
+      onClick={() => setCartDrawerState(true)}
       onAnimationEnd={() => setAddToCart(false)}
     >
       {cart.length > 0 && (

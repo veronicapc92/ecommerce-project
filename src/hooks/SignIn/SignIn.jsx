@@ -1,11 +1,10 @@
-import React from "react";
-import Input from "../Input/Input";
+import React, { useState, useContext } from "react";
 import Joi from "@hapi/joi";
+import Input from "../Input/Input";
 import { login } from "../../services/authService";
 import styles from "./sign-in.module.css";
-import { useState } from "react";
 
-function SignIn(props) {
+function SignIn({ registerDrawerOpen, setRegisterDrawerState }) {
   const [data, setData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
 
@@ -116,7 +115,7 @@ function SignIn(props) {
         Don't have an account?{" "}
         <span
           className={styles.registerSpan}
-          onClick={props.onRegisterSpanClick}
+          onClick={() => setRegisterDrawerState(true)}
         >
           Register
         </span>

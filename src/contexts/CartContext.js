@@ -8,6 +8,7 @@ const CartContextProvider = (props) => {
     return localData ? JSON.parse(localData) : [];
   });
   let [addToCartClicked, setAddToCart] = useState(false);
+  let [cartDrawerOpen, setCartDrawerState] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -72,8 +73,10 @@ const CartContextProvider = (props) => {
   return (
     <CartContext.Provider
       value={{
+        cartDrawerOpen,
         cart,
         addToCartClicked,
+        setCartDrawerState,
         setAddToCart,
         handleAddToCart,
         handleIncrementQuantity,

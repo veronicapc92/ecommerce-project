@@ -98,30 +98,6 @@
   margin-bottom: 3px;
 }
 
-.button,
-.disabledButton {
-  cursor: pointer;
-  border: none;
-  margin-top: 50px;
-  width: 240px;
-  height: 40px;
-  background-color: black;
-  font-family: "Muli", sans-serif;
-  font-size: 15px;
-  color: white;
-}
-
-.button:hover {
-  background-color: white;
-  border: 1.5px solid black;
-  color: black;
-}
-
-.disabledButton {
-  cursor: default;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
 @media (max-width: 1250px) {
   .mainContainer {
     justify-content: center;

@@ -4,10 +4,13 @@
   cursor: pointer;
   font-size: 14px;
   font-family: "Muli", sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 .dropdown,
-.openDropdown {
+.openDropdown,
+.error {
   width: 100%;
   border: 1px gainsboro solid;
   height: 40px;
@@ -20,8 +23,14 @@
 .dropdown :first-child,
 .dropdown :nth-child(2),
 .openDropdown :first-child,
-.openDropdown :nth-child(2) {
+.openDropdown :nth-child(2),
+.error :first-child,
+.error :nth-child(2) {
   margin: 0 15px;
+}
+
+.error {
+  border: 1px red solid;
 }
 
 .openDropdown {
@@ -47,4 +56,30 @@
 .option:hover {
   background-color: black;
   color: white;
+}
+
+.button,
+.disabledButton {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  margin-top: 50px;
+  width: 240px;
+  height: 40px;
+  background-color: black;
+  font-family: "Muli", sans-serif;
+  font-size: 15px;
+  color: white;
+  align-self: center;
+}
+
+.button:hover {
+  background-color: white;
+  border: 1.5px solid black;
+  color: black;
+}
+
+.disabledButton {
+  cursor: default;
+  background-color: rgba(0, 0, 0, 0.5);
 }

@@ -3,13 +3,11 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import NavBar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
-import SideDrawer from "./components/Navbar/SideDrawer/SideDrawer";
+import SideDrawer from "./components/SideDrawer/SideDrawer";
 import Backdrop from "./components/Backdrop/Backdrop";
 import Homepage from "./components/Homepage/Homepage";
 import ProductsPage from "./components/ProductsPage/ProductsPage";
 import ProductPage from "./hooks/ProductPage/ProductPage";
-import AuthDrawer from "./components/AuthDrawer/AuthDrawer";
-import ShoppingCartDrawer from "./components/ShoppingCartDrawer/ShoppingCartDrawer";
 import WishlistPage from "./components/WishlistPage/WishlistPage";
 import NotFound from "./components/NotFound/NotFound";
 import CartContextProvider from "./contexts/CartContext";
@@ -20,8 +18,6 @@ import SignOutContextProvider from "./contexts/SignOutContext";
 function App() {
   let [user, setUser] = useState({});
   let [sideDrawerOpen, setSideDrawer] = useState(false);
-  let [registerDrawerOpen, setRegisterDrawer] = useState(false);
-  let [shoppingCartDrawerOpen, setShoppingCartDrawer] = useState(false);
 
   useEffect(() => {
     async function getUser() {
@@ -58,18 +54,11 @@ function App() {
             <NavBar
               user={user}
               onDrawerToggleClick={() => setSideDrawer(true)}
-              onShoppingCartClick={() => setShoppingCartDrawer(true)}
             />
-            {/* <SignOut /> */}
           </SignOutContextProvider>
-          <AuthDrawer
-            registerDrawerOpen={registerDrawerOpen}
-            onRegisterSpanClick={() => setRegisterDrawer(true)}
-            // onEnterButtonClick={handleEnterButtonClick}
-          />
-          <ShoppingCartDrawer
-            show={shoppingCartDrawerOpen}
-            onCloseShoppingCart={() => setShoppingCartDrawer(false)}
+          <SideDrawer
+            show={sideDrawerOpen}
+            onCloseNavbar={() => setSideDrawer(false)}
           />
           {backdrop}
           <ProductsContextProvider>

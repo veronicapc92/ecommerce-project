@@ -1,6 +1,6 @@
 import React from "react";
 import MainNav from "./MainNav/MainNav";
-import SecondaryNav from "./SecondaryNav/SecondaryNav";
+import SecondaryNav from "../SecondaryNav/SecondaryNav";
 import "../assets/css/fonts.css";
 import "./Navbar.css";
 

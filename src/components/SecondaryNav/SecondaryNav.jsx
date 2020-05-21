@@ -1,10 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import ShoppingCartIcon from "../../ShoppingCartIcon/ShoppingCartIcon";
-import "../../assets/css/fonts.css";
 import styles from "./secondary-nav.module.css";
-import SignOut from "../../SignOut/SignOut";
-import AuthDrawer from "./../../AuthDrawer/AuthDrawer";
+import SignOut from "../../hooks/SignOut/SignOut";
+import AuthDrawer from "../../hooks/AuthDrawer/AuthDrawer";
+import ShoppingCartDrawer from "../ShoppingCartDrawer/ShoppingCartDrawer";
 
 const SecondaryNav = ({ user, onShoppingCartClick }) => {
   return (
@@ -26,7 +25,8 @@ const SecondaryNav = ({ user, onShoppingCartClick }) => {
           </NavLink>
         </li>
         <li className={styles.option}>
-          <ShoppingCartIcon onShoppingCartClick={onShoppingCartClick} />
+          {/* <ShoppingCartIcon onShoppingCartClick={onShoppingCartClick} /> */}
+          <ShoppingCartDrawer />
         </li>
       </ul>
     </nav>
