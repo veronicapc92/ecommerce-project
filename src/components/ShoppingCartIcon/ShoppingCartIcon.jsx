@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styles from "./shopping-cart-icon.module.css";
-import { CartContext } from "../../../../contexts/CartContext";
+import { CartContext } from "../../contexts/CartContext";
 
 const ShoppingCartIcon = ({ onShoppingCartClick }) => {
   const { cart, addToCartClicked, setAddToCart } = useContext(CartContext);

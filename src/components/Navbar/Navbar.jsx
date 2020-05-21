@@ -6,7 +6,6 @@ import "./Navbar.css";
 
 const Navbar = ({
   user,
-  signOutDrawerOpen,
   onDrawerToggleClick,
   onSignInIconClick,
   onSignOutIconClick,
@@ -19,7 +18,6 @@ const Navbar = ({
         {user.name && <span className="name">Hi {user.name}</span>}
         <SecondaryNav
           user={user}
-          signOutDrawerOpen={signOutDrawerOpen}
           onSignInIconClick={onSignInIconClick}
           onSignOutIconClick={onSignOutIconClick}
           onShoppingCartClick={onShoppingCartClick}

@@ -10,24 +10,20 @@ import ProductsPage from "./components/ProductsPage/ProductsPage";
 import ProductPage from "./hooks/ProductPage/ProductPage";
 import AuthDrawer from "./components/AuthDrawer/AuthDrawer";
 import ShoppingCartDrawer from "./components/ShoppingCartDrawer/ShoppingCartDrawer";
-import SignOut from "./components/SignOut/SignOut";
 import WishlistPage from "./components/WishlistPage/WishlistPage";
 import NotFound from "./components/NotFound/NotFound";
 import CartContextProvider from "./contexts/CartContext";
-import FilterDropdownContextProvider from "./contexts/FilterDropdownContext";
 import ProductsContextProvider from "./contexts/ProductsContext";
 import ProductTypesContextProvider from "./contexts/ProductTypesContext";
+import SignOutContextProvider from "./contexts/SignOutContext";
 
 function App() {
   let [user, setUser] = useState({});
   let [sideDrawerOpen, setSideDrawer] = useState(false);
-  let [signInDrawerOpen, setSignInDrawer] = useState(false);
   let [registerDrawerOpen, setRegisterDrawer] = useState(false);
   let [shoppingCartDrawerOpen, setShoppingCartDrawer] = useState(false);
-  let [signOutDrawerOpen, setSignOutDrawer] = useState(false);
 
   useEffect(() => {
-
     async function getUser() {
       try {
         const jwt = localStorage.getItem("token");
@@ -48,12 +44,6 @@ function App() {
   //   });
   // }
 
-  function handleSignOutIconClick() {
-    setSignOutDrawer((prevState) => {
-      return !prevState;
-    });
-  }
-
   let backdrop;
 
   if (sideDrawerOpen) {
@@ -63,50 +53,47 @@ function App() {
   return (
     <main>
       <ProductTypesContextProvider>
-      <CartContextProvider>
-        <NavBar
-          user={user}
-          signOutDrawerOpen={signOutDrawerOpen}
-          onSignInIconClick={() => setSignInDrawer(true)}
-          onSignOutIconClick={handleSignOutIconClick}
-          onDrawerToggleClick={() => setSideDrawer(true)}
-          onShoppingCartClick={() => setShoppingCartDrawer(true)}
-
-        />
-        <SignOut signOutDrawerOpen={signOutDrawerOpen}
-        onLeave={() => setSignOutDrawer(false)} />
-        <SideDrawer
-          show={sideDrawerOpen}
-          onCloseNavbar={() => setSideDrawer(false)}
-        />
-        <AuthDrawer
-          show={!user.name && signInDrawerOpen}
-          registerDrawerOpen={registerDrawerOpen}
-          onXButtonClick={() => setSignInDrawer(false)}
-          onRegisterSpanClick={() => setRegisterDrawer(true)}
-          // onEnterButtonClick={handleEnterButtonClick}
-        />
-        <ShoppingCartDrawer
-          show={shoppingCartDrawerOpen}
-          onCloseShoppingCart={() => setShoppingCartDrawer(false)}
-
-        />
-        {backdrop}
-        <ProductsContextProvider>
-          <FilterDropdownContextProvider>
+        <CartContextProvider>
+          <SignOutContextProvider>
+            <NavBar
+              user={user}
+              onDrawerToggleClick={() => setSideDrawer(true)}
+              onShoppingCartClick={() => setShoppingCartDrawer(true)}
+            />
+            {/* <SignOut /> */}
+          </SignOutContextProvider>
+          <AuthDrawer
+            registerDrawerOpen={registerDrawerOpen}
+            onRegisterSpanClick={() => setRegisterDrawer(true)}
+            // onEnterButtonClick={handleEnterButtonClick}
+          />
+          <ShoppingCartDrawer
+            show={shoppingCartDrawerOpen}
+            onCloseShoppingCart={() => setShoppingCartDrawer(false)}
+          />
+          {backdrop}
+          <ProductsContextProvider>
             <Switch>
               <Route path="/home" component={Homepage}></Route>
-              <Route path="/women/:route" render={(props) => <ProductsPage {...props} />}/>
-              <Route path="/women" render={(props) => <ProductsPage {...props} />}/>
-              <Route path="/products/:productRoute" render={(props) => <ProductPage {...props} />}/>
-              <Route path="/wishlist" component={WishlistPage}/>
-              <Route path="/not-found" component={NotFound}/>
+              <Route
+                path="/women/:route"
+                render={(props) => <ProductsPage {...props} />}
+              />
+              <Route
+                path="/women"
+                render={(props) => <ProductsPage {...props} />}
+              />
+              <Route
+                path="/products/:productRoute"
+                render={(props) => <ProductPage {...props} />}
+              />
+              <Route path="/wishlist" component={WishlistPage} />
+              <Route path="/not-found" component={NotFound} />
               <Redirect from="/" exact to="/home" />
               <Redirect to="not-found" />
             </Switch>
-          </FilterDropdownContextProvider>
-        </ProductsContextProvider>
-      </CartContextProvider>
+          </ProductsContextProvider>
+        </CartContextProvider>
       </ProductTypesContextProvider>
       <Footer />
     </main>

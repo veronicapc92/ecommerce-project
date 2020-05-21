@@ -1,7 +1,7 @@
 import React from "react";
-import Input from "../../../hooks/Input/Input";
+import Input from "../Input/Input";
 import Joi from "@hapi/joi";
-import { login } from "../../../services/authService";
+import { login } from "../../services/authService";
 import styles from "./sign-in.module.css";
 import { useState } from "react";
 

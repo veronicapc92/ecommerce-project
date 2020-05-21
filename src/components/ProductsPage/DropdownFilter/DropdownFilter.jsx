@@ -1,36 +1,40 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { FilterDropdownContext } from "./../../../contexts/FilterDropdownContext";
 import { ProductTypesContext } from "../../../contexts/ProductTypesContext";
 import styles from "./dropdown-filter.module.css";
+import { useClickOutside } from "../../../hooks/useClickOutside";
 
 const DropdownFilter = () => {
   const { productTypes } = useContext(ProductTypesContext);
-  const { filterDropdownOpen, handleFilterDropdown } = useContext(
-    FilterDropdownContext
-  );
+
+  const { visible, setVisible, ref } = useClickOutside(false);
+
+  function handleFilterDropdown() {
+    setVisible((prevState) => {
+      return !prevState;
+    });
+  }
 
   let classes = styles.dropdown;
-  if (filterDropdownOpen) classes = styles.openDropdown;
+  if (visible) classes = styles.openDropdown;
 
   return (
     <div className={styles.select}>
-      <div className={classes} onClick={handleFilterDropdown}>
+      <div className={classes} ref={ref} onClick={handleFilterDropdown}>
         <span>Products</span>
-        {!filterDropdownOpen && <i className="fas fa-chevron-down fa-sm"></i>}
-        {filterDropdownOpen && <i className="fas fa-chevron-up fa-sm"></i>}
+        {!visible && <i className="fas fa-chevron-down fa-sm"></i>}
+        {visible && <i className="fas fa-chevron-up fa-sm"></i>}
       </div>
-      {filterDropdownOpen && (
+      {visible && (
         <div className={styles.dropdownContainer}>
           {productTypes.map((productType) => (
             <Link
+              key={productType}
               className={styles.link}
               to={`/women/${productType.route}`}
               onClick={handleFilterDropdown}
             >
-              <div key={productType} className={styles.option}>
-                {productType.name}
-              </div>
+              <div className={styles.option}>{productType.name}</div>
             </Link>
           ))}
         </div>
