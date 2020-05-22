@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import EmptyWishlist from "./EmptyWishlist/EmptyWishlist";
+import EmptyWishlist from "../EmptyWishlist/EmptyWishlist";
 import WishlistProduct from "../../hooks/WishlistProduct/WishlistProduct";
 import { ProductsContext } from "./../../contexts/ProductsContext";
 import styles from "./wishlist-page.module.css";
