@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import http from "./../services/httpService";
-import config from "./../config.json";
+// import config from "./../config.json";
 
 export const ProductsContext = createContext();
 
@@ -12,7 +12,8 @@ const ProductsContextProvider = (props) => {
 
   useEffect(() => {
     async function getProducts() {
-      const { data: products } = await http.get(config.apiUrl + "/products");
+      const { data: products } = await http.get("/products");
+      // const { data: products } = await http.get(config.apiUrl + "/products");
 
       setProducts(products);
     }

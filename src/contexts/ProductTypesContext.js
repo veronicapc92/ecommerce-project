@@ -9,7 +9,8 @@ const ProductTypesContextProvider = (props) => {
 
   useEffect(() => {
     async function getProductTypes() {
-      const { data } = await http.get(config.apiUrl + "/producttypes");
+      // const { data } = await http.get(config.apiUrl + "/producttypes");
+      const { data } = await http.get("/producttypes");
       const productTypes = [{ name: "View All", id: 0, route: "" }, ...data];
 
       setProductTypes(productTypes);
