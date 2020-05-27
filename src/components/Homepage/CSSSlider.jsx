@@ -9,14 +9,6 @@ import styles from "./css-slider.module.css";
 
 const CSSSlider = () => {
   return (
-    // <div className={styles.container}>
-    //   <img src={slide1} className={styles.image} />
-    // </div>
-    // <source
-    //   srcset={slide3}
-    //   media="(max-width: 700px)"
-    //   className={styles.image}
-    // />
     <div className={styles.slider}>
       <ul>
         <li>
