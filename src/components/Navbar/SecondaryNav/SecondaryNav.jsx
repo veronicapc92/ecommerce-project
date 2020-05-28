@@ -1,9 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./secondary-nav.module.css";
-import SignOut from "../../hooks/SignOut/SignOut";
-import AuthDrawer from "../../hooks/AuthDrawer/AuthDrawer";
-import ShoppingCartDrawer from "../ShoppingCartDrawer/ShoppingCartDrawer";
+import SignOut from "../SignOut/SignOut";
+import AuthDrawer from "../../AuthDrawer/AuthDrawer";
+import ShoppingCartDrawer from "../../ShoppingCartDrawer/ShoppingCartDrawer";
 
 const SecondaryNav = ({ user, onShoppingCartClick }) => {
   return (

@@ -36,11 +36,12 @@
   .products {
     margin-top: 60px;
     width: 100%;
+    padding-right: 0;
   }
 
   .dropdownFilter {
     display: flex;
     justify-content: center;
-    z-index: 100;
+    z-index: 80;
   }
 }

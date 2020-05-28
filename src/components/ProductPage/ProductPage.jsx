@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import Like from "../../components/Like/Like";
-import SelectMenu from "../../components/SelectMenu/SelectMenu";
-import { ProductsContext } from "./../../contexts/ProductsContext";
+import Like from "../shared/Like/Like";
+import SelectMenu from "./SelectMenu/SelectMenu";
+import { ProductsContext } from "../../contexts/ProductsContext";
 import styles from "./product-page.module.css";
 
 function ProductPage({ match }) {

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { ProductsContext } from "./../../contexts/ProductsContext";
-import { CartContext } from "./../../contexts/CartContext";
+import { ProductsContext } from "../../../contexts/ProductsContext";
+import { CartContext } from "../../../contexts/CartContext";
 import styles from "./wishlist-product.module.css";
 
 function WishlistProduct({ product }) {

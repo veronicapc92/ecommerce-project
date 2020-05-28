@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 import jwtDecode from "jwt-decode";
-import NavBar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer/Footer";
-import SideDrawer from "./components/SideDrawer/SideDrawer";
 import Backdrop from "./components/Backdrop/Backdrop";
+import Footer from "./components/Footer/Footer";
 import Homepage from "./components/Homepage/Homepage";
-import ProductsPage from "./components/ProductsPage/ProductsPage";
-import ProductPage from "./hooks/ProductPage/ProductPage";
-import WishlistPage from "./components/WishlistPage/WishlistPage";
+import NavBar from "./components/Navbar/Navbar";
 import NotFound from "./components/NotFound/NotFound";
+import SideDrawer from "./components/SideDrawer/SideDrawer";
+import ProductPage from "./components/ProductPage/ProductPage";
+import ProductsPage from "./components/ProductsPage/ProductsPage";
+import WishlistPage from "./components/WishlistPage/WishlistPage";
 import CartContextProvider from "./contexts/CartContext";
 import ProductsContextProvider from "./contexts/ProductsContext";
 import ProductTypesContextProvider from "./contexts/ProductTypesContext";
@@ -33,18 +33,10 @@ function App() {
     getUser();
   }, []);
 
-  // function handleEnterButtonClick(errors) {
-  //   setRegisterDrawer(() => {
-  //     if (Object.keys(errors).length !== 0) return true;
-  //     else return false;
-  //   });
-  // }
-
   let backdrop;
 
-  if (sideDrawerOpen) {
+  if (sideDrawerOpen)
     backdrop = <Backdrop onBackdropClick={() => setSideDrawer(false)} />;
-  }
 
   return (
     <main>

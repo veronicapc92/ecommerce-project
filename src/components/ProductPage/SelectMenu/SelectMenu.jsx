@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import styles from "./select-menu.module.css";
-import { CartContext } from "./../../contexts/CartContext";
-import { useClickOutside } from './../../hooks/useClickOutside';
+import { CartContext } from "../../../contexts/CartContext";
+import { useClickOutside } from "../../../hooks/useClickOutside";
 
 function SelectMenu({ product }) {
   const sizes = ["XS", "S", "M", "L", "XL"];

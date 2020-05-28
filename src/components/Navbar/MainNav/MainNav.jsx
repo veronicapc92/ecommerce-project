@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import logo from "./assets/gosha_transparent.png";
 import styles from "./main-nav.module.css";
 import Dropdown from "../Dropdown/Dropdown";
-import DrawerToggleButton from "../Navbar/DrawerToggleButton/DrawerToggleButton";
+import DrawerToggleButton from "../DrawerToggleButton/DrawerToggleButton";
 
 const MainNav = ({ onDrawerToggleClick }) => {
   return (

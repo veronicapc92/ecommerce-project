@@ -1,7 +1,7 @@
 import React from "react";
-import MainNav from "../MainNav/MainNav";
-import SecondaryNav from "../SecondaryNav/SecondaryNav";
-import "../assets/css/fonts.css";
+import MainNav from "./MainNav/MainNav";
+import SecondaryNav from "./SecondaryNav/SecondaryNav";
+import "../../fonts/fonts.css";
 import "./Navbar.css";
 
 const Navbar = ({

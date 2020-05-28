@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import Joi from "@hapi/joi";
 import Input from "../Input/Input";
-import { login } from "../../services/authService";
+import { login } from "../../../services/authService";
 import styles from "./sign-in.module.css";
 
 function SignIn({ registerDrawerOpen, setRegisterDrawerState }) {

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import EmptyShoppingCart from "../EmptyShoppingCart/EmptyShoppingCart";
+import EmptyShoppingCart from "./EmptyShoppingCart/EmptyShoppingCart";
 import ShoppingCartIcon from "../ShoppingCartIcon/ShoppingCartIcon";
-import ShoppingCart from "../ShoppingCart/ShoppingCart";
+import ShoppingCart from "./ShoppingCart/ShoppingCart";
 import { CartContext } from "../../contexts/CartContext";
 import "./ShoppingCartDrawer.css";
 

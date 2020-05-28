@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
-import Register from "../Register/Register";
-import SignIn from "../SignIn/SignIn";
+import Register from "./Register/Register";
+import SignIn from "./SignIn/SignIn";
 import styles from "./auth-drawer.module.css";
-import { useClickOutside } from "../useClickOutside";
+import { useClickOutside } from "../../hooks/useClickOutside";
 
 function AuthDrawer(props) {
   const { visible, setVisible, ref } = useClickOutside(false);

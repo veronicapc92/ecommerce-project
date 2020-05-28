@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Input from "../Input/Input";
 import Joi from "@hapi/joi";
-import { register } from "../../services/userService";
+import { register } from "../../../services/userService";
 import styles from "./register.module.css";
 
 function Register() {

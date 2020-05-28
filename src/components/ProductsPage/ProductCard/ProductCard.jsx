@@ -1,12 +1,19 @@
-import React, { useContext } from "react";
-import Like from "../Like/Like";
-import { CartContext } from "./../../contexts/CartContext";
+import React, { useState, useContext } from "react";
+import Like from "../../shared/Like/Like";
+import { CartContext } from "../../../contexts/CartContext";
 import styles from "./product-card.module.css";
 
 const ProductCard = ({ product }) => {
   const sizes = ["XS", "S", "M", "L", "XL"];
 
+  const [drawerOpen, setDrawerState] = useState(false);
   const { handleAddToCart } = useContext(CartContext);
+
+  function changeDrawerState() {
+    setDrawerState((prevState) => !prevState);
+  }
+
+  let classes = drawerOpen ? styles.drawerOpen : styles.drawerClosed;
 
   return (
     <div className={styles.container}>
@@ -39,6 +46,20 @@ const ProductCard = ({ product }) => {
             ))}
           </div>
         </div>
+        <div className={classes}>
+          <div>Select size</div>
+          <div className={styles.sizes}>
+            {sizes.map((size) => (
+              <div
+                className={styles.size}
+                key={size}
+                onClick={() => handleAddToCart(product, size)}
+              >
+                {size}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
       <div className={styles.info}>
         <div className={styles.name}>{product.name}</div>
@@ -46,6 +67,9 @@ const ProductCard = ({ product }) => {
           <Like product={product} />
         </div>
         <div className={styles.price}>{`£${product.price}`}</div>
+        <button className={styles.addButton} onClick={changeDrawerState}>
+          Add to cart
+        </button>
       </div>
     </div>
   );
