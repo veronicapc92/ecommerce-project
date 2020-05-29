@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
+import { CartContext } from "../../../contexts/CartContext";
 import styles from "./shopping-cart-icon.module.css";
-import { CartContext } from "../../contexts/CartContext";
 
-const ShoppingCartIcon = ({ onShoppingCartClick }) => {
+const ShoppingCartIcon = () => {
   const {
     cart,
     addToCartClicked,

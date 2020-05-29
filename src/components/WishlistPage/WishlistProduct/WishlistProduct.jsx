@@ -4,20 +4,30 @@ import { ProductsContext } from "../../../contexts/ProductsContext";
 import { CartContext } from "../../../contexts/CartContext";
 import styles from "./wishlist-product.module.css";
 
-function WishlistProduct({ product }) {
+const WishlistProduct = ({ product }) => {
+  const sizes = ["XS", "S", "M", "L", "XL"];
   const { handleDeleteWishlistProduct } = useContext(ProductsContext);
   const { handleAddToCart } = useContext(CartContext);
-
   let [addToCartClicked, setAddToCart] = useState(false);
-
-  const sizes = ["XS", "S", "M", "L", "XL"];
 
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>
-        <Link to={`/products/${product.productRoute}`}>
-          <img className={styles.image} src={product.link} alt={product.name} />
-        </Link>
+        {product.productRoute === "cigarette-trousers" ? (
+          <Link to={`/products/${product.productRoute}`}>
+            <img
+              className={styles.image}
+              src={product.link}
+              alt={product.name}
+            />
+          </Link>
+        ) : (
+          <img
+            className={styles.notClickableImage}
+            src={product.link}
+            alt={product.name}
+          />
+        )}
         <button
           className={styles.close}
           onClick={() => handleDeleteWishlistProduct(product)}
@@ -38,6 +48,7 @@ function WishlistProduct({ product }) {
         <div className={styles.sizesContainer}>
           {sizes.map((size) => (
             <button
+              key={size}
               className={styles.sizeButton}
               onClick={() => {
                 handleAddToCart(product, size);
@@ -50,6 +61,6 @@ function WishlistProduct({ product }) {
       )}
     </div>
   );
-}
+};
 
 export default WishlistProduct;

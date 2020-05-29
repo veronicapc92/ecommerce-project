@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import styles from "./like.module.css";
 import { ProductsContext } from "../../../contexts/ProductsContext";
+import styles from "./like.module.css";
 
 const Like = ({ product }) => {
   const { handleLike } = useContext(ProductsContext);

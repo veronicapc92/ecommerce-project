@@ -3,7 +3,7 @@ import styles from "./select-menu.module.css";
 import { CartContext } from "../../../contexts/CartContext";
 import { useClickOutside } from "../../../hooks/useClickOutside";
 
-function SelectMenu({ product }) {
+const SelectMenu = ({ product }) => {
   const sizes = ["XS", "S", "M", "L", "XL"];
   let [size, setSize] = useState("Choose your size");
   const [addToCartClicked, setAddToCartClicked] = useState(false);
@@ -60,6 +60,6 @@ function SelectMenu({ product }) {
       </button>
     </div>
   );
-}
+};
 
 export default SelectMenu;

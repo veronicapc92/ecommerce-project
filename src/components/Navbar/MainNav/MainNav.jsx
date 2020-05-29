@@ -1,15 +1,15 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import DropdownMenu from "../DropdownMenu/DropdownMenu";
+import DrawerToggleButton from "../DrawerToggleButton/DrawerToggleButton";
 import logo from "./assets/gosha_transparent.png";
 import styles from "./main-nav.module.css";
-import Dropdown from "../Dropdown/Dropdown";
-import DrawerToggleButton from "../DrawerToggleButton/DrawerToggleButton";
 
 const MainNav = ({ onDrawerToggleClick }) => {
   return (
     <div className={styles.mainNav}>
       <div className={styles.toggleButtonContainer}>
-        <DrawerToggleButton click={onDrawerToggleClick} />
+        <DrawerToggleButton onDrawerToggleClick={onDrawerToggleClick} />
       </div>
       <div>
         <NavLink to="/">
@@ -17,14 +17,14 @@ const MainNav = ({ onDrawerToggleClick }) => {
         </NavLink>
       </div>
       <nav className={styles.navbar}>
-        <ul>
+        <ul className={styles.ul}>
           <li className={styles.option}>New</li>
           <li className={styles.dropdown}>
             <a className={styles.option} href="/women">
               Women
             </a>
             <div className={styles.dropdownMenu}>
-              <Dropdown />
+              <DropdownMenu />
             </div>
           </li>
           <li className={styles.option}>Men</li>

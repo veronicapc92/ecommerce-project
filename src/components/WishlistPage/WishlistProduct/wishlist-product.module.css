@@ -8,7 +8,6 @@
 
 .imageContainer {
   position: relative;
-  cursor: pointer;
 }
 
 .close {
@@ -28,12 +27,18 @@
   opacity: 1;
 }
 
-.image {
+.image,
+.notClickableImage {
+  cursor: pointer;
   display: block;
   width: 20vw;
   height: auto;
   min-width: 320px;
   max-width: 600px;
+}
+
+.notClickableImage {
+  cursor: default;
 }
 
 .info {

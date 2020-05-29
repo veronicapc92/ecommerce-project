@@ -4,7 +4,7 @@ import SelectMenu from "./SelectMenu/SelectMenu";
 import { ProductsContext } from "../../contexts/ProductsContext";
 import styles from "./product-page.module.css";
 
-function ProductPage({ match }) {
+const ProductPage = ({ match }) => {
   const { products } = useContext(ProductsContext);
 
   let product = products.find(
@@ -36,6 +36,6 @@ function ProductPage({ match }) {
       </div>
     </div>
   );
-}
+};
 
 export default ProductPage;

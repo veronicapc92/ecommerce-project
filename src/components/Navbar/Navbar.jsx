@@ -2,26 +2,15 @@ import React from "react";
 import MainNav from "./MainNav/MainNav";
 import SecondaryNav from "./SecondaryNav/SecondaryNav";
 import "../../fonts/fonts.css";
-import "./Navbar.css";
+import styles from "./navbar.module.css";
 
-const Navbar = ({
-  user,
-  onDrawerToggleClick,
-  onSignInIconClick,
-  onSignOutIconClick,
-  onShoppingCartClick,
-}) => {
+const Navbar = ({ user, onDrawerToggleClick }) => {
   return (
-    <header className="header">
+    <header className={styles.header}>
       <MainNav onDrawerToggleClick={onDrawerToggleClick} />
-      <div className="wrapper">
-        {user.name && <span className="name">Hi {user.name}</span>}
-        <SecondaryNav
-          user={user}
-          onSignInIconClick={onSignInIconClick}
-          onSignOutIconClick={onSignOutIconClick}
-          onShoppingCartClick={onShoppingCartClick}
-        />
+      <div className={styles.wrapper}>
+        {user.name && <span className={styles.name}>Hi {user.name}</span>}
+        <SecondaryNav user={user} />
       </div>
     </header>
   );

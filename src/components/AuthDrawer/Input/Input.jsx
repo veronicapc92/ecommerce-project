@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./input.module.css";
 
-function Input({
+const Input = ({
   name,
   value,
   placeholder,
@@ -9,7 +9,7 @@ function Input({
   onInput,
   onPropertyValidation,
   onPasswordMessage,
-}) {
+}) => {
   const [eyeClicked, setEyeState] = useState(false);
 
   let classes = eyeClicked ? styles.clicked : styles.notClicked;
@@ -40,6 +40,6 @@ function Input({
       {error && <div className={styles.errorMessage}>{error}</div>}
     </div>
   );
-}
+};
 
 export default Input;

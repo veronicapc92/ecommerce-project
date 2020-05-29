@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ProductTypesContext } from "../../../contexts/ProductTypesContext";
-import styles from "./dropdown-filter.module.css";
 import { useClickOutside } from "../../../hooks/useClickOutside";
+import styles from "./dropdown-list.module.css";
 
-const DropdownFilter = () => {
+const DropdownList = () => {
   const { productTypes } = useContext(ProductTypesContext);
-
   const { visible, setVisible, ref } = useClickOutside(false);
 
   function handleFilterDropdown() {
@@ -15,8 +14,8 @@ const DropdownFilter = () => {
     });
   }
 
-  let classes = styles.dropdown;
-  if (visible) classes = styles.openDropdown;
+  let classes = styles.dropdownClosed;
+  if (visible) classes = styles.dropdownOpen;
 
   return (
     <div className={styles.select}>
@@ -43,4 +42,4 @@ const DropdownFilter = () => {
   );
 };
 
-export default DropdownFilter;
+export default DropdownList;

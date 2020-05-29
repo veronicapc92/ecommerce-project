@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import ProductList from "./ProductList/ProductList";
 import ProductCards from "./ProductCards/ProductCards";
-import DropdownFilter from "./DropdownFilter/DropdownFilter";
+import DropdownList from "./DropdownList/DropdownList";
 import { ProductsContext } from "./../../contexts/ProductsContext";
 import styles from "./products-page.module.css";
 
@@ -20,7 +20,7 @@ const ProductsPage = ({ match }) => {
         <ProductList />
       </div>
       <div className={styles.dropdownFilter}>
-        <DropdownFilter />
+        <DropdownList />
       </div>
       <div className={styles.products}>
         <ProductCards filteredProducts={filteredProducts} />

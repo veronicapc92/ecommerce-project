@@ -1,13 +1,11 @@
 import React from "react";
-import Slider from "./Slider";
-import HomepageContent from "./HomepageContent";
-import CSSSlider from "./CSSSlider";
+import HomepageContent from "./HomepageContent/HomepageContent";
+import Slider from "./Slider/Slider";
 
 const Homepage = () => {
   return (
     <React.Fragment>
-      {/* <Slider /> */}
-      <CSSSlider />
+      <Slider />
       <HomepageContent />
     </React.Fragment>
   );

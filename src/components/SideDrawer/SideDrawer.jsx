@@ -1,13 +1,9 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import styles from "./side-drawer.module.css";
 
 const SideDrawer = ({ show, onCloseNavbar }) => {
   let drawerClasses = show ? styles.sideDrawerOpen : styles.sideDrawerClosed;
-  // let drawerClasses = "side-drawer";
-  // if (show) {
-  //   drawerClasses += " open";
-  // }
+
   return (
     <div className={drawerClasses}>
       <div className={styles.close} onClick={onCloseNavbar}>
@@ -19,9 +15,9 @@ const SideDrawer = ({ show, onCloseNavbar }) => {
             New
           </li>
           <li className={styles.option} onClick={onCloseNavbar}>
-            <NavLink className={styles.optionLink} to="/women">
+            <a className={styles.optionLink} href="/women">
               Women
-            </NavLink>
+            </a>
           </li>
           <li className={styles.option} onClick={onCloseNavbar}>
             Men

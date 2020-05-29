@@ -5,7 +5,6 @@ import styles from "./product-card.module.css";
 
 const ProductCard = ({ product }) => {
   const sizes = ["XS", "S", "M", "L", "XL"];
-
   const [drawerOpen, setDrawerState] = useState(false);
   const { handleAddToCart } = useContext(CartContext);
 
@@ -63,7 +62,7 @@ const ProductCard = ({ product }) => {
       </div>
       <div className={styles.info}>
         <div className={styles.name}>{product.name}</div>
-        <div className={styles.likeButton}>
+        <div className={styles.likeContainer}>
           <Like product={product} />
         </div>
         <div className={styles.price}>{`£${product.price}`}</div>

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Input from "../Input/Input";
 import Joi from "@hapi/joi";
+import Input from "../Input/Input";
 import { register } from "../../../services/userService";
 import styles from "./register.module.css";
 
-function Register() {
+const Register = () => {
   const [data, setData] = useState({ name: "", email: "", password: "" });
   const [errors, setErrors] = useState({});
   let [focusOn, setFocus] = useState(false);
@@ -145,6 +145,6 @@ function Register() {
       </form>
     </React.Fragment>
   );
-}
+};
 
 export default Register;

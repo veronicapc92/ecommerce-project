@@ -38,6 +38,7 @@
   margin: auto;
   margin-bottom: 30px;
   margin-top: 25px;
+  outline: none;
 }
 
 .button:hover {

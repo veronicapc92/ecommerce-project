@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import EmptyWishlist from "./EmptyWishlist/EmptyWishlist";
 import WishlistProduct from "./WishlistProduct/WishlistProduct";
 import { ProductsContext } from "./../../contexts/ProductsContext";

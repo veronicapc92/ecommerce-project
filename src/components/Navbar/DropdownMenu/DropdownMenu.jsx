@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { ProductTypesContext } from "../../../contexts/ProductTypesContext";
-import styles from "./dropdown.module.css";
+import styles from "./dropdown-menu.module.css";
 
-const Menu = () => {
+const DropdownMenu = () => {
   const { productTypes } = useContext(ProductTypesContext);
+
   return (
     <div className={styles.menu}>
       <div className={styles.optionsContainer}>
@@ -50,4 +51,4 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export default DropdownMenu;

@@ -6,7 +6,6 @@ const ShoppingCart = () => {
   const { cart, handleIncrementQuantity, handleDecrementQuantity } = useContext(
     CartContext
   );
-
   const totalPricePerItem = cart.map((item) => item.count * item.price);
   const totalPrice = totalPricePerItem.reduce((acc, value) => acc + value, 0);
 
@@ -17,7 +16,7 @@ const ShoppingCart = () => {
       </h1>
       {cart.map((item) => (
         <div key={`${item._id}${item.size}`} className={styles.itemContainer}>
-          <img className={styles.image} src={item.link} />
+          <img className={styles.image} alt={item.name} src={item.link} />
           <div className={styles.details}>
             <h2 className={styles.name}>{item.name}</h2>
             <p className={styles.size}>Size: {item.size}</p>

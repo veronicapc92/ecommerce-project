@@ -1,14 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import styles from "./secondary-nav.module.css";
 import SignOut from "../SignOut/SignOut";
 import AuthDrawer from "../../AuthDrawer/AuthDrawer";
 import ShoppingCartDrawer from "../../ShoppingCartDrawer/ShoppingCartDrawer";
+import styles from "./secondary-nav.module.css";
 
-const SecondaryNav = ({ user, onShoppingCartClick }) => {
+const SecondaryNav = ({ user }) => {
   return (
     <nav className={styles.nav}>
-      <ul>
+      <ul className={styles.ul}>
         {!user.name && (
           <li className={styles.option}>
             <AuthDrawer />
@@ -25,7 +25,6 @@ const SecondaryNav = ({ user, onShoppingCartClick }) => {
           </NavLink>
         </li>
         <li className={styles.option}>
-          {/* <ShoppingCartIcon onShoppingCartClick={onShoppingCartClick} /> */}
           <ShoppingCartDrawer />
         </li>
       </ul>

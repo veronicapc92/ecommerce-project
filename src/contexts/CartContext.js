@@ -60,11 +60,8 @@ const CartContextProvider = (props) => {
       );
       cart[index] = { ...item };
 
-      if (cart[index].count > 1) {
-        cart[index].count--;
-      } else {
-        cart.splice(cart[index], 1);
-      }
+      if (cart[index].count > 1) cart[index].count--;
+      else cart.splice(cart[index], 1);
 
       return cart;
     });

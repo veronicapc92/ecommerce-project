@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "./sign-out.module.css";
 import { useClickOutside } from "../../../hooks/useClickOutside";
+import styles from "./sign-out.module.css";
 
-function SignOut(props) {
+const SignOut = () => {
   const { visible, setVisible, ref } = useClickOutside(false);
 
   function changeVisible() {
@@ -28,6 +28,6 @@ function SignOut(props) {
       )}
     </div>
   );
-}
+};
 
 export default SignOut;

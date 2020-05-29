@@ -1,11 +1,11 @@
 import React from "react";
-import card1 from "./photos/denim-looks.png";
-import card2 from "./photos/summer-vibes.png";
-import card3 from "./photos/gosha-decor.png";
-import card4 from "./photos/menswear.png";
+import card1 from "../assets/denim-looks.png";
+import card2 from "../assets/summer-vibes.png";
+import card3 from "../assets/gosha-decor.png";
+import card4 from "../assets/menswear.png";
 import styles from "./homepage-content.module.css";
 
-const Container = () => {
+const HomepageContent = () => {
   return (
     <div className={styles.container}>
       <div className={styles.imagesContainer}>
@@ -18,4 +18,4 @@ const Container = () => {
   );
 };
 
-export default Container;
+export default HomepageContent;

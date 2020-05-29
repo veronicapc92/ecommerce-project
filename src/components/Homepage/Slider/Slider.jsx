@@ -1,54 +1,54 @@
 import React from "react";
-import slide1 from "./photos/accessories1.png";
-import slide2 from "./photos/accessories2.png";
-import slide3 from "./photos/dress1.png";
-import slide4 from "./photos/dress2.png";
-import slide5 from "./photos/man1.png";
-import slide6 from "./photos/man2.png";
-import styles from "./css-slider.module.css";
+import slide1 from "../assets/accessories1.png";
+import slide2 from "../assets/accessories2.png";
+import slide3 from "../assets/dress1.png";
+import slide4 from "../assets/dress2.png";
+import slide5 from "../assets/man1.png";
+import slide6 from "../assets/man2.png";
+import styles from "./slider.module.css";
 
-const CSSSlider = () => {
+const Slider = () => {
   return (
     <div className={styles.slider}>
-      <ul>
+      <ul className={styles.ul}>
         <li>
           <picture>
             <source
-              srcset={slide2}
+              srcSet={slide2}
               media="(max-width: 700px)"
               className={styles.image}
             />
-            <img src={slide1} alt="PP" className={styles.image} />
+            <img src={slide1} alt="accessories" className={styles.image} />
           </picture>
         </li>
         <li>
           <picture>
             <source
-              srcset={slide4}
+              srcSet={slide4}
               media="(max-width: 700px)"
               className={styles.image}
             />
-            <img src={slide3} alt="PP" className={styles.image} />
+            <img src={slide3} alt="dress" className={styles.image} />
           </picture>
         </li>
         <li>
           <picture>
             <source
-              srcset={slide6}
+              srcSet={slide6}
               media="(max-width: 700px)"
               className={styles.image}
             />
-            <img src={slide5} alt="PP" className={styles.image} />
+            <img src={slide5} alt="menswear" className={styles.image} />
           </picture>
         </li>
         <li>
           <picture>
             <source
-              srcset={slide2}
+              srcSet={slide2}
               media="(max-width: 700px)"
               className={styles.image}
             />
-            <img src={slide1} alt="PP" className={styles.image} />
+            <img src={slide1} alt="accessories" className={styles.image} />
           </picture>
         </li>
       </ul>
@@ -56,4 +56,4 @@ const CSSSlider = () => {
   );
 };
 
-export default CSSSlider;
+export default Slider;
