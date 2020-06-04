@@ -5,6 +5,8 @@ import { useClickOutside } from "../../hooks/useClickOutside";
 import styles from "./auth-drawer.module.css";
 
 const AuthDrawer = () => {
+  //useClickOutside is a custom hook used to manage the visibility of an element
+  //and set it to not visible when we click outside of it.
   const { visible, setVisible, ref } = useClickOutside(false);
   const [registerDrawerOpen, setRegisterDrawerState] = useState(false);
 

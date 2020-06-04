@@ -6,6 +6,8 @@ import styles from "./dropdown-list.module.css";
 
 const DropdownList = () => {
   const { productTypes } = useContext(ProductTypesContext);
+  //useClickOutside is a custom hook used to manage the visibility of an element
+  //and set it to not visible when we click outside of it.
   const { visible, setVisible, ref } = useClickOutside(false);
 
   function handleFilterDropdown() {
@@ -26,6 +28,8 @@ const DropdownList = () => {
       </div>
       {visible && (
         <div className={styles.dropdownContainer}>
+          {/* Instead of hardcoding the product list, we take the productTypes array,
+            map it and display each element inside of a <Link> tag*/}
           {productTypes.map((productType) => (
             <Link
               key={productType}

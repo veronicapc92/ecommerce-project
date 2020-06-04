@@ -17,6 +17,7 @@ const ProductCard = ({ product }) => {
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>
+        {/* Enabling the product page link only for the cigarette trousers image */}
         {product.productRoute === "cigarette-trousers" ? (
           <a
             className={styles.imageLink}
@@ -31,6 +32,7 @@ const ProductCard = ({ product }) => {
         ) : (
           <img className={styles.image} src={product.link} alt={product.name} />
         )}
+        {/* Drawer visible when screen width > 1250px; */}
         <div className={styles.drawer}>
           <div>Select size</div>
           <div className={styles.sizes}>
@@ -45,6 +47,7 @@ const ProductCard = ({ product }) => {
             ))}
           </div>
         </div>
+        {/* Drawer visible when screen width < 1250px; */}
         <div className={classes}>
           <div>Select size</div>
           <div className={styles.sizes}>
@@ -66,6 +69,7 @@ const ProductCard = ({ product }) => {
           <Like product={product} />
         </div>
         <div className={styles.price}>{`£${product.price}`}</div>
+        {/* Button visible when screen width < 1250px */}
         <button className={styles.addButton} onClick={changeDrawerState}>
           Add to cart
         </button>

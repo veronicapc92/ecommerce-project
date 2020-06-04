@@ -44,6 +44,7 @@ const WishlistProduct = ({ product }) => {
           Add to cart
         </button>
       )}
+      {/* Displaying the sizes if the Add to Cart button has been cliked*/}
       {addToCartClicked && (
         <div className={styles.sizesContainer}>
           {sizes.map((size) => (

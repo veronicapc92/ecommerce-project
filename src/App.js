@@ -13,7 +13,6 @@ import WishlistPage from "./components/WishlistPage/WishlistPage";
 import CartContextProvider from "./contexts/CartContext";
 import ProductsContextProvider from "./contexts/ProductsContext";
 import ProductTypesContextProvider from "./contexts/ProductTypesContext";
-import SignOutContextProvider from "./contexts/SignOutContext";
 
 function App() {
   let [user, setUser] = useState({});
@@ -42,12 +41,7 @@ function App() {
     <main>
       <ProductTypesContextProvider>
         <CartContextProvider>
-          <SignOutContextProvider>
-            <NavBar
-              user={user}
-              onDrawerToggleClick={() => setSideDrawer(true)}
-            />
-          </SignOutContextProvider>
+          <NavBar user={user} onDrawerToggleClick={() => setSideDrawer(true)} />
           <SideDrawer
             show={sideDrawerOpen}
             onCloseNavbar={() => setSideDrawer(false)}

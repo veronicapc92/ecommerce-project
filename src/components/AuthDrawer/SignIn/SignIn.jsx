@@ -19,8 +19,10 @@ const SignIn = ({ setRegisterDrawerState }) => {
   async function handleSubmit(e) {
     e.preventDefault();
 
+    //Checking for errors
     const errorsObject = validate();
 
+    //Updating the errors object
     setErrors((...prevErrors) => {
       if (errorsObject)
         return {
@@ -46,6 +48,8 @@ const SignIn = ({ setRegisterDrawerState }) => {
     }
   }
 
+  //Validation of all fields at once
+  //This function is called when submitting the form
   function validate() {
     const options = { abortEarly: false };
     const { error } = schema.validate(data, options);
@@ -64,6 +68,8 @@ const SignIn = ({ setRegisterDrawerState }) => {
     return errors;
   }
 
+  //Validation of each field individually
+  //This function is called when a field loses focus
   function validateProperty(name, value) {
     const obj = { [name]: value };
     const localSchema = Joi.object({ [name]: schema.extract(name) });
@@ -115,7 +121,7 @@ const SignIn = ({ setRegisterDrawerState }) => {
         Don't have an account?{" "}
         <span
           className={styles.registerSpan}
-          onClick={() => setRegisterDrawerState(true)}
+          onClick={() => setRegisterDrawerState(true)} //Opens the Register drawer on click
         >
           Register
         </span>

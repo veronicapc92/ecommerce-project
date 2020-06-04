@@ -7,6 +7,7 @@ import styles from "./product-page.module.css";
 const ProductPage = ({ match }) => {
   const { products } = useContext(ProductsContext);
 
+  //Finding the product to display by looking at the route in the browser
   let product = products.find(
     (p) => p.productRoute === match.params.productRoute
   );

@@ -8,8 +8,12 @@ const SelectMenu = ({ product }) => {
   let [size, setSize] = useState("Choose your size");
   const [addToCartClicked, setAddToCartClicked] = useState(false);
   const { handleAddToCart } = useContext(CartContext);
+  //useClickOutside is a custom hook used to manage the visibility of an element
+  //and set it to not visible when we click outside of it.
   const { visible, setVisible, ref } = useClickOutside(false);
 
+  //Making the border of the sizes container red if we click the Add to cart button
+  //but we haven't chosen any size
   let classes = styles.dropdown;
   if (addToCartClicked && size === "Choose your size" && !visible)
     classes = styles.error;
@@ -25,10 +29,14 @@ const SelectMenu = ({ product }) => {
   }
 
   function handleAddToCartClick(product, size) {
+    //If we haven't chosen any size, addToCartClicked will be set to true, so
+    //the border of the sizes container turns red indicating we need
+    //to select a size
     setAddToCartClicked(() => {
       if (size === "Choose your size") return true;
     });
 
+    //If we have chosen a size, the item is added to cart
     if (size !== "Choose your size") handleAddToCart(product, size);
   }
 

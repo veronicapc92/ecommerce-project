@@ -10,15 +10,18 @@ const ProductsPage = ({ match }) => {
 
   let filteredProducts = products;
 
+  //Filtering the products to display by looking at the route in the browser
   if (match.params.route !== undefined) {
     filteredProducts = products.filter((p) => p.type === match.params.route);
   }
 
   return (
     <div className={styles.container}>
+      {/* ProductList is visible when screen size > 900px */}
       <div className={styles.filterContainer}>
         <ProductList />
       </div>
+      {/* DropdownList is visible when screen size < 900px */}
       <div className={styles.dropdownFilter}>
         <DropdownList />
       </div>

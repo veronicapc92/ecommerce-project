@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../../contexts/CartContext";
-import shoppingBagImage from "./assets/shopping-bag-bw.png";
+import shoppingBagImage from "../assets/shopping-bag-bw.png";
 import styles from "./empty-shopping-cart.module.css";
 
 const EmptyShoppingCart = () => {

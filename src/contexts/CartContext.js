@@ -10,6 +10,7 @@ const CartContextProvider = (props) => {
   let [addToCartClicked, setAddToCart] = useState(false);
   let [cartDrawerOpen, setCartDrawerState] = useState(false);
 
+  // Storing the added to cart items into the local storage
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);

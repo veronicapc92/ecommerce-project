@@ -24,8 +24,10 @@ const Register = () => {
   async function handleSubmit(e) {
     e.preventDefault();
 
+    //Checking for errors
     const errorsObject = validate();
 
+    //Updating the errors object
     setErrors((prevErrors) => {
       if (errorsObject)
         return {
@@ -51,6 +53,8 @@ const Register = () => {
     }
   }
 
+  //Validation of all fields at once
+  //This function is called when submitting the form
   function validate() {
     const options = { abortEarly: false };
     const { error } = schema.validate(data, options);
@@ -71,6 +75,8 @@ const Register = () => {
     return errors;
   }
 
+  //Validation of each field individually
+  //This function is called when a field loses focus
   function validateProperty(name, value) {
     const obj = { [name]: value };
     const localSchema = Joi.object({ [name]: schema.extract(name) });
@@ -96,6 +102,8 @@ const Register = () => {
     });
   }
 
+  //Changing the state of focusOn depending
+  //on wether the password field has focus or not
   function handlePasswordMessage({ currentTarget: input }) {
     setFocus(() => {
       if (input.name === "password") return (focusOn = true);
@@ -103,6 +111,7 @@ const Register = () => {
     });
   }
 
+  //Displaying the password message when focusOn is true
   let classes = styles.passwordMessageOn;
   if (!focusOn) classes = styles.passwordMessageOff;
 

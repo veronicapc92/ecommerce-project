@@ -21,6 +21,8 @@ const DropdownMenu = () => {
         <div>
           <span className={styles.optionsTitle}>Clothing</span>
           <ul className={styles.activeOptions}>
+            {/* Instead of hardcoding the product list, we take the productTypes array,
+            map it and display each element inside of a <li> tag*/}
             {productTypes.map((productType) => {
               return (
                 <li key={productType.name} className={styles.option}>

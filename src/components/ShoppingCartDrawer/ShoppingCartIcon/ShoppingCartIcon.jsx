@@ -18,6 +18,7 @@ const ShoppingCartIcon = () => {
       onClick={() => setCartDrawerState(true)}
       onAnimationEnd={() => setAddToCart(false)}
     >
+      {/* Displaying the number of items inside of the shopping bag icon */}
       {cart.length > 0 && (
         <div className={classes}>
           {cart.reduce((acc, item) => acc + item.count, 0)}

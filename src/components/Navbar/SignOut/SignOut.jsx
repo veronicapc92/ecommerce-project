@@ -3,6 +3,8 @@ import { useClickOutside } from "../../../hooks/useClickOutside";
 import styles from "./sign-out.module.css";
 
 const SignOut = () => {
+  //useClickOutside is a custom hook used to manage the visibility of an element
+  //and set it to not visible when we click outside of it.
   const { visible, setVisible, ref } = useClickOutside(false);
 
   function changeVisible() {
