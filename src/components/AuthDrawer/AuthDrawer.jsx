@@ -22,10 +22,11 @@ const AuthDrawer = () => {
         <div className={styles.closeIcon} onClick={() => setVisible(false)}>
           ×
         </div>
-        {registerDrawerOpen && <Register />}
+        {/* {registerDrawerOpen && <Register />}
         {!registerDrawerOpen && (
           <SignIn setRegisterDrawerState={setRegisterDrawerState} />
-        )}
+        )} */}
+        <Register />
       </div>
     </div>
   );
